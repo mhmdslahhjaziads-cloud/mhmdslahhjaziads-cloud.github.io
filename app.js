@@ -126,7 +126,7 @@
     railLinks.forEach(link => {link.setAttribute('aria-label', root.querySelector('.hp-dock-panel a[href="'+link.getAttribute('href')+'"]').textContent);});
     navigation.setAttribute('aria-label', english ? 'Site navigation' : 'أقسام الموقع');
     root.setAttribute('aria-label', english ? 'Mohamed Salah Hegazy portfolio' : 'موقع محمد صلاح حجازي');
-    root.querySelector('.hp-map').setAttribute('aria-label', english ? 'Workflow from advertising to optimization' : 'مسار عمل من الإعلان إلى التحسين');
+    root.querySelector('.hp-map')?.setAttribute('aria-label', english ? 'Workflow from advertising to optimization' : 'مسار عمل من الإعلان إلى التحسين');
     const campaignCTA = root.querySelector('#hp-campaign-cta');
     campaignCTA.href = 'https://wa.me/201558272805?text=' + encodeURIComponent(campaignCTA.getAttribute('data-message-' + language));
     root.querySelector('.hp-email-cta').href = 'mailto:mhmdslahhjazi.ads@gmail.com?subject=' + encodeURIComponent(english ? 'Collaboration with Mohamed Salah Hegazy' : 'تعاون مع محمد صلاح حجازي');
@@ -240,11 +240,12 @@
     const labels = root.querySelector('.hp-moving-labels');
     const labelBounds = labels.getBoundingClientRect();
     let previousLabelY = -40;
-    labels.querySelectorAll(':scope > span').forEach((label,index)=>{
+    const labelItems = labels.querySelectorAll(':scope > span');
+    labelItems.forEach((label,index)=>{
       const selected = label.dataset.labelSection === active;
       label.classList.toggle('hp-label-current',selected);
       const sectionTop = document.getElementById(label.dataset.labelSection).getBoundingClientRect().top;
-      const y = Math.max(index * 40,previousLabelY + 40,Math.min(labelBounds.height - (5-index)*40,sectionTop-labelBounds.top));
+      const y = Math.max(index * 40,previousLabelY + 40,Math.min(labelBounds.height - (labelItems.length-index)*40,sectionTop-labelBounds.top));
       previousLabelY = y;
       label.style.setProperty('--hp-label-y',y+'px');
     });
@@ -271,7 +272,7 @@
     if (event.target === header && event.propertyName === 'width' && !docked) measureHeader();
   });
 
-  const revealElements = root.querySelectorAll('.hp-section-heading,.hp-service,.hp-tool-group,.hp-job,.hp-education,.hp-callout');
+  const revealElements = root.querySelectorAll('.hp-section-heading,.hp-service,.hp-tool-group,.hp-job,.hp-education,.hp-callout,.hp-reference-heading,.hp-method-card,.hp-background-story,.hp-background-note');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -280,14 +281,15 @@
     }, {threshold:0.12,rootMargin:'0px 0px -10px 0px'});
     revealElements.forEach(function (element, index) {
       element.classList.add('hp-reveal');
-      element.style.setProperty('--hp-delay', (index % 3) * 65 + 'ms');
+      const methodIndex = element.classList.contains('hp-method-card') ? Array.from(element.parentElement.children).indexOf(element) : -1;
+      element.style.setProperty('--hp-delay', (methodIndex >= 0 ? methodIndex * 120 : (index % 3) * 65) + 'ms');
       observer.observe(element);
     });
     root.classList.toggle('hp-motion', !motion.matches);
     motion.addEventListener('change', function () {root.classList.toggle('hp-motion', !motion.matches);});
   }
 
-  root.querySelectorAll('.hp-map,.hp-service').forEach(function (element) {
+  root.querySelectorAll('.hp-map,.hp-service,.hp-method-card').forEach(function (element) {
     let frame = null;
     element.addEventListener('pointermove', function (event) {
       if (motion.matches || !finePointer.matches) return;
