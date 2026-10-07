@@ -1,0 +1,7 @@
+{
+  "name": "mohamed-salah-hegazy-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Arabic and English portfolio for Mohamed Salah Hegazy",
+  "scripts": { "check": "node scripts/verify-site.mjs" }
+}

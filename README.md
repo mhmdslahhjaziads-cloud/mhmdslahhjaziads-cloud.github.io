@@ -1,41 +1,77 @@
-# Mohamed Salah Hegazy — Portfolio
+# Mohamed Salah Hegazy · Portfolio
 
-موقع محمد صلاح حجازي: التسويق بالأداء، إدارة الحسابات والتتبّع. نسخة كاملة من آخر تصميم معتمد، بالعربية والإنجليزية، مع الوضع الفاتح والداكن ودعم الموبايل وتقليل الحركة.
+**Performance Marketing · Tracking · Account Management · Learning Website Design**
 
-## ملفات المشروع
+[Live portfolio](https://mhmdslahhjaziads-cloud.github.io/) · [LinkedIn](https://www.linkedin.com/in/mhmdslahhjazi/) · [Deployment](docs/DEPLOYMENT.md) · [Maintenance](docs/MAINTENANCE.md)
+
+موقع محمد صلاح حجازي الشخصي، بالعربية والإنجليزية، لعرض الخدمات والأدوات وطريقة العمل والخلفية المهنية والتواصل.
+
+> **Beta / نسخة تجريبية:** الموقع في مرحلة الاختبار والتطوير؛ بيانات وأعمال إضافية ستُنشر لاحقًا.
+
+## Features
+
+- Arabic / English with RTL / LTR layouts.
+- Light and charcoal dark themes with saved browser preferences.
+- Responsive navigation, four work and learning cards and a downloadable CV.
+- Soft neon hover on toolkit logos and subtle hover scaling on other cards.
+- Reduced-motion support and locally hosted fonts and icons.
+
+## Project structure
 
 ```text
-index.html       المحتوى، بيانات SEO وروابط التواصل
-styles.css       التصميم والألوان والحركة وتنسيق الموبايل
-app.js           اللغة والتنقل والأنيميشن
-preferences.js   حفظ اختيار اللغة والمظهر
-assets/          الصورة الشخصية، CV وأيقونة الموقع
-assets/fonts/    الخطوط المحلية
-docs/            دليل النشر وربط الدومين
-netlify.toml     إعدادات نشر Netlify
-vercel.json      إعدادات نشر Vercel
+.
+├── index.html                 # Page content, navigation and SEO
+├── assets/
+│   ├── css/styles.css         # Theme, layout and interactions
+│   ├── js/
+│   │   ├── app.js             # Navigation, language and motion
+│   │   └── preferences.js     # Initial browser preferences
+│   ├── fonts/                 # Local IBM Plex Sans Arabic + license
+│   ├── brand-icons.svg        # Platform logo sprite
+│   ├── brand-icons-LICENSE.txt
+│   ├── mohamed-avatar.png
+│   ├── favicon.svg
+│   └── cv.pdf
+├── docs/
+│   ├── DEPLOYMENT.md
+│   ├── MAINTENANCE.md
+│   └── CHANGELOG.md
+├── scripts/verify-site.mjs     # Dependency-free validation
+├── package.json
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── .nojekyll
+├── netlify.toml
+└── vercel.json
 ```
 
-الموقع HTML/CSS/JavaScript ثابت: لا يحتاج تثبيت مكتبات أو عملية build. مجلد النشر هو جذر المشروع `.`.
+## Run locally
 
-## التشغيل المحلي
+From the repository directory:
 
 ```sh
 python -m http.server 8080
 ```
 
-افتح `http://localhost:8080`. افتح مجلد المشروع نفسه قبل تنفيذ الأمر.
+Open [localhost:8080](http://localhost:8080). Serving this static HTML/CSS/JavaScript site needs no installation or build.
 
-## النشر والدومين
+## Check changes
 
-العنوان المجاني المستهدف: [mhmdslahhjaziads-cloud.github.io](https://mhmdslahhjaziads-cloud.github.io).
+With Node.js installed:
 
-راجع [دليل النشر وربط الدومين](docs/DEPLOYMENT.md). النشر من فرع `main` وجذر المشروع عبر GitHub Pages. بيانات SEO مضبوطة على العنوان المجاني. لم يتم شراء أو ربط دومين مستقل بعد.
+```sh
+npm run check
+```
 
-## التحديث
+Checks cover local assets, section anchors, logo references, structured data and JavaScript syntax. Browser checks remain necessary for layout, interaction and accessibility.
 
-عدّل ملفات HTML/CSS/JS مباشرة ثم اعمل commit إلى `main`. عند ربط الاستضافة بـGitHub، يتحدث الموقع تلقائيًا حسب إعدادات الاستضافة. ملفات الموقع لا تعتمد على مسارات جهاز محلي أو خدمات بناء خاصة.
+## Publish and maintain
 
-قبل اعتماد رابط جديد: حدّث `canonical` و`og:url` و`url` داخل JSON-LD في `index.html` إلى الرابط النهائي. روابط الأقسام والصور والخطوط نسبية لتعمل على الاستضافة الجديدة.
+GitHub Pages publishes `main` from `/ (root)` at [mhmdslahhjaziads-cloud.github.io](https://mhmdslahhjaziads-cloud.github.io/).
 
-المحتوى والتصميم خاصان بصاحب الموقع. رخصة الخط موجودة داخل `assets/fonts/OFL.txt`.
+See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for hosting, [MAINTENANCE.md](docs/MAINTENANCE.md) for edits and [CHANGELOG.md](docs/CHANGELOG.md) for recent changes.
+
+## Credits and ownership
+
+Portfolio content, portrait and CV belong to Mohamed Salah Hegazy. No open-source license is granted for the portfolio itself. Third-party notices are retained in [assets/fonts/OFL.txt](assets/fonts/OFL.txt) and [assets/brand-icons-LICENSE.txt](assets/brand-icons-LICENSE.txt).

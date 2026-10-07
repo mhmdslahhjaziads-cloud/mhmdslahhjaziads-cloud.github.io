@@ -5,3 +5,10 @@ node_modules/
 .vercel/
 .env
 .env.*
+
+*.log
+coverage/
+.playwright/
+work/
+*.zip
+*.tar.gz
