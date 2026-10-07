@@ -117,7 +117,7 @@
     root.querySelectorAll('[data-ar][data-en]').forEach(element => {
       element.textContent = element.getAttribute('data-' + language);
     });
-    languageButton.textContent = english ? 'العربية ↗' : 'EN ↗';
+    languageButton.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 7h14M5 17h14"/></svg><span>' + (english ? 'العربية' : 'English') + '</span>';
     languageButton.setAttribute('aria-label', english ? 'Switch to Arabic' : 'Switch to English');
     dockLanguage.textContent = english ? 'العربية ↗' : 'EN ↗';
     dockLanguage.setAttribute('aria-label', languageButton.getAttribute('aria-label'));
@@ -170,7 +170,7 @@
     updateControlLabels();
   }
   function syncMenuAccess() {
-    navigation.inert = window.matchMedia('(max-width: 820px)').matches && menuButton.getAttribute('aria-expanded') !== 'true';
+    navigation.inert = window.matchMedia('(max-width: 1100px)').matches && menuButton.getAttribute('aria-expanded') !== 'true';
   }
   window.addEventListener('resize', syncMenuAccess, {passive:true});
   syncMenuAccess();
