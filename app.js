@@ -170,7 +170,7 @@
     updateControlLabels();
   }
   function syncMenuAccess() {
-    navigation.inert = window.matchMedia('(max-width: 1100px)').matches && menuButton.getAttribute('aria-expanded') !== 'true';
+    navigation.inert = window.matchMedia('(max-width: 1300px)').matches && menuButton.getAttribute('aria-expanded') !== 'true';
   }
   window.addEventListener('resize', syncMenuAccess, {passive:true});
   syncMenuAccess();
