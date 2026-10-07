@@ -166,8 +166,14 @@
   function setMenu(open) {
     navigation.classList.toggle('hp-open', open);
     menuButton.setAttribute('aria-expanded', String(open));
+    syncMenuAccess();
     updateControlLabels();
   }
+  function syncMenuAccess() {
+    navigation.inert = window.matchMedia('(max-width: 820px)').matches && menuButton.getAttribute('aria-expanded') !== 'true';
+  }
+  window.addEventListener('resize', syncMenuAccess, {passive:true});
+  syncMenuAccess();
 
   languageButton.addEventListener('click', function () {
     preferences.language = preferences.language === 'ar' ? 'en' : 'ar';

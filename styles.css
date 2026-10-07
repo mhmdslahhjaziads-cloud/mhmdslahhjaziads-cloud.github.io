@@ -520,4 +520,29 @@ body.hp-dark #hegazy-preview .hp-job:first-child h3{color:#c8dbb8;}
 @media(max-width:480px){#hegazy-preview #hp-contact{padding:20px;}#hegazy-preview #hp-contact>h2{font-size:25px;}#hegazy-preview #hp-contact .hp-contact-rows .hp-action{gap:11px;padding:11px 12px;}#hegazy-preview #hp-contact .hp-contact-row-copy small{font-size:11px;}}
 @media(prefers-reduced-motion:reduce){#hegazy-preview #hp-contact .hp-contact-rows .hp-action{transition:none;}#hegazy-preview #hp-contact .hp-contact-rows .hp-action:hover{transform:none;}}
 
+/* Menu option 5: a compact numbered list with a reversible reveal. */
+@media(max-width:820px){
+#hegazy-preview .hp-nav>.hp-links{display:flex;flex-direction:column;gap:0;padding:8px 20px;border:1px solid var(--hp-line);border-radius:16px;background:var(--hp-surface);backdrop-filter:blur(18px);box-shadow:0 14px 38px #20362719;max-height:calc(100dvh - 100px);overflow-y:auto;counter-reset:hp-menu-step;transform-origin:top center;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-10px) scale(.985);clip-path:inset(0 0 100% 0 round 16px);transition:opacity .22s ease,transform .32s cubic-bezier(.22,1,.36,1),clip-path .32s cubic-bezier(.22,1,.36,1),visibility 0s .32s;}
+#hegazy-preview .hp-nav>.hp-links.hp-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1);clip-path:inset(0 0 0 0 round 16px);transition:opacity .26s ease,transform .46s cubic-bezier(.22,1,.36,1),clip-path .46s cubic-bezier(.22,1,.36,1),visibility 0s;animation:none;}
+#hegazy-preview .hp-nav>.hp-links a{display:flex;align-items:center;gap:14px;min-height:58px;width:100%;padding:10px 0;background:transparent;color:var(--hp-ink);border:0;border-radius:0;box-shadow:none;font-size:15px;font-weight:600;translate:none;opacity:0;transform:translateY(-8px);transition:opacity .16s ease,transform .22s ease,color .2s ease;animation:none;}
+#hegazy-preview .hp-nav>.hp-links a:not(:last-child){border-bottom:1px solid color-mix(in srgb,var(--hp-line) 13%,transparent);}
+#hegazy-preview .hp-nav>.hp-links.hp-open a{opacity:1;transform:translateY(0);transition:opacity .3s ease var(--hp-menu-delay,40ms),transform .42s cubic-bezier(.22,1,.36,1) var(--hp-menu-delay,40ms),color .2s ease;animation:none;}
+#hegazy-preview .hp-nav>.hp-links a:nth-child(2){--hp-menu-delay:90ms;}
+#hegazy-preview .hp-nav>.hp-links a:nth-child(3){--hp-menu-delay:140ms;}
+#hegazy-preview .hp-nav>.hp-links a:nth-child(4){--hp-menu-delay:190ms;color:#075e54;}
+#hegazy-preview .hp-nav>.hp-links a:before{content:counter(hp-menu-step,decimal-leading-zero);width:26px;height:auto;flex:0 0 26px;padding:0;background:none;border-radius:0;color:var(--hp-menu-accent);font-size:12px;font-weight:700;}
+#hegazy-preview .hp-nav>.hp-links a:after{display:block;content:'↗';position:static;margin-inline-start:auto;width:auto;height:auto;background:none;color:var(--hp-muted);font-size:17px;opacity:.8;transform:none;transition:transform .24s ease;}
+#hegazy-preview .hp-nav>.hp-links a:hover,#hegazy-preview .hp-nav>.hp-links a:focus-visible{color:var(--hp-menu-accent);box-shadow:none;translate:none;}
+#hegazy-preview .hp-nav>.hp-links a:hover:after{transform:translate(-3px,-3px);}
+#hegazy-preview .hp-nav>.hp-links a:focus-visible{outline:2px solid var(--hp-menu-accent);outline-offset:3px;border-radius:4px;}
+body.hp-dark #hegazy-preview .hp-nav>.hp-links a:last-child{color:var(--hp-sage);}
+#hegazy-preview .hp-menu-lines{height:14px;border:0;background:none;transition:transform .3s ease;}
+#hegazy-preview .hp-menu-lines:before,#hegazy-preview .hp-menu-lines:after{content:'';position:absolute;inset-inline:0;height:1.5px;background:currentColor;transition:transform .3s cubic-bezier(.22,1,.36,1),top .3s ease;}
+#hegazy-preview .hp-menu-lines:before{top:3px;}
+#hegazy-preview .hp-menu-lines:after{top:10px;}
+#hegazy-preview .hp-menu-button[aria-expanded=true] .hp-menu-lines:before{top:6.5px;transform:rotate(45deg);}
+#hegazy-preview .hp-menu-button[aria-expanded=true] .hp-menu-lines:after{top:6.5px;transform:rotate(-45deg);}
+}
+@media(max-width:820px) and (prefers-reduced-motion:reduce){#hegazy-preview .hp-nav>.hp-links,#hegazy-preview .hp-nav>.hp-links.hp-open,#hegazy-preview .hp-nav>.hp-links a,#hegazy-preview .hp-nav>.hp-links.hp-open a,#hegazy-preview .hp-menu-lines:before,#hegazy-preview .hp-menu-lines:after{transition:none;animation:none;}}
+
 #hegazy-preview h1{font-weight:700;}#hegazy-preview h2,#hegazy-preview h3,#hegazy-preview .hp-name{font-weight:700;}
