@@ -400,9 +400,36 @@ body.hp-dark #hegazy-preview #hp-contact>h2{color:#c8dbb8;}
 #hegazy-preview .hp-moving-labels>.hp-label-current:before{display:none;}
 #hegazy-preview .hp-moving-labels>.hp-label-current{color:var(--hp-ink);background:none!important;box-shadow:none;border:0;}
 #hegazy-preview.hp-motion .hp-service.hp-visible .hp-tags span{animation:none;translate:0 0;rotate:0deg;transition:translate .22s ease,scale .22s ease,box-shadow .22s ease;}
-@media(hover:hover) and (pointer:fine){#hegazy-preview.hp-motion .hp-service.hp-visible .hp-tags span:hover{translate:0 -2px;scale:1.035;}}
+@media(hover:hover) and (pointer:fine){#hegazy-preview.hp-motion .hp-service.hp-visible .hp-tags span:hover{translate:0 -2px;scale:1.06;box-shadow:0 4px 16px color-mix(in srgb,var(--hp-brand,var(--hp-sage)) 22%,transparent);}}
 @media(prefers-reduced-motion:reduce){#hegazy-preview.hp-motion .hp-service.hp-visible .hp-tags span{transition:none;translate:0 0;scale:1;}}
 @media(min-width:900px){#hegazy-preview .hp-moving-labels>span{font-size:12px;line-height:22px;letter-spacing:0;}#hegazy-preview .hp-moving-labels>.hp-label-current{font-size:14px;font-weight:700;}}
 @media(min-width:900px){body{padding-right:132px;}#hegazy-preview{max-width:none;width:100%;padding-inline:20px;}#hegazy-preview .hp-moving-labels{right:28px;width:104px;}}
+@media(min-width:821px){
+#hegazy-preview .hp-links{gap:9px;}
+#hegazy-preview .hp-links a{padding:7px 13px;border-radius:7px;font-size:15px;font-weight:600;line-height:1.5;background:#347cf1;color:#fff;box-shadow:0 2px 0 #252c2626;transition:translate .2s ease,box-shadow .2s ease;}
+#hegazy-preview .hp-links a:nth-child(2){background:#f46348;color:#17201c;}
+#hegazy-preview .hp-links a:nth-child(3){background:#925bf5;}
+#hegazy-preview .hp-links a:nth-child(4){background:#f6b817;color:#17201c;}
+#hegazy-preview .hp-links a:after{display:none;}
+#hegazy-preview .hp-links a:hover,#hegazy-preview .hp-links a:focus-visible{translate:0 -2px;box-shadow:0 4px 0 #252c2640;}
+}
+@media(min-width:821px) and (max-width:1050px){#hegazy-preview .hp-links{gap:5px;}#hegazy-preview .hp-links a{font-size:13px;padding:6px 8px;}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-links a{transition:none;translate:0 0;}}
+#hegazy-preview .hp-tools-strip{display:block;overflow:hidden;container-type:inline-size;padding:22px 0;}
+#hegazy-preview .hp-platform-track{display:flex;width:max-content;direction:ltr;}
+#hegazy-preview .hp-platform-set{display:flex;align-items:center;justify-content:space-around;flex:0 0 auto;width:max(100cqi,900px);padding-inline:18px;gap:32px;direction:rtl;box-sizing:border-box;}
+#hegazy-preview .hp-platform-set>span{flex-shrink:0;min-height:24px;justify-content:center;white-space:nowrap;}
+#hegazy-preview.hp-motion .hp-platform-track{animation:hp-platform-scroll 32s linear infinite;}
+#hegazy-preview .hp-tools-strip:hover .hp-platform-track{animation-play-state:paused;}
+@keyframes hp-platform-scroll{to{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview.hp-motion .hp-platform-track{animation:none;width:100%;}#hegazy-preview .hp-platform-set{width:100%;flex-wrap:wrap;gap:16px;}#hegazy-preview .hp-platform-set[aria-hidden="true"]{display:none;}}
+#hegazy-preview .hp-tool-chips span,#hegazy-preview .hp-service .hp-tags span{font-size:11px;line-height:1.6;padding:7px 10px;min-height:34px;border-radius:6px;box-sizing:border-box;}
+#hegazy-preview .hp-service .hp-tags{gap:8px;}
+#hegazy-preview .hp-job{padding-bottom:25px;}
+#hegazy-preview .hp-job h3{font-size:17px;font-weight:700;line-height:1.6;}
+#hegazy-preview .hp-job p{font-size:14px;font-weight:500;line-height:1.85;margin-top:7px;}
+#hegazy-preview .hp-current{font-size:12px;font-weight:600;}
+@media(hover:none){#hegazy-preview.hp-motion .hp-service.hp-visible .hp-tags span:active{scale:1.06;}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview.hp-motion .hp-service.hp-visible .hp-tags span:active{scale:1;}}
 
 #hegazy-preview h1{font-weight:700;}#hegazy-preview h2,#hegazy-preview h3,#hegazy-preview .hp-name{font-weight:700;}
