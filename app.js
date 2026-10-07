@@ -144,7 +144,7 @@
     root.dataset.appearance = preferences.theme;
     document.body.classList.toggle('hp-dark', dark);
     themeButton.setAttribute('aria-pressed', String(dark));
-    document.querySelector('meta[name="theme-color"]').content = dark ? '#171c19' : '#f6f3ec';
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#0b0e11' : '#f6f3ec';
     themeButton.innerHTML = dark
       ? '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg>'
       : '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"/></svg>';
@@ -289,7 +289,7 @@
     motion.addEventListener('change', function () {root.classList.toggle('hp-motion', !motion.matches);});
   }
 
-  root.querySelectorAll('.hp-map,.hp-service,.hp-method-card').forEach(function (element) {
+  root.querySelectorAll('.hp-map,.hp-service,.hp-method-card,.hp-tool-group').forEach(function (element) {
     let frame = null;
     element.addEventListener('pointermove', function (event) {
       if (motion.matches || !finePointer.matches) return;
