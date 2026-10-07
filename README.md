@@ -1,2 +1,41 @@
-# mohamed-salah-hegazy-portfolio
-Mohamed Salah Hegazy — Arabic/English portfolio, ready for static hosting and a custom domain.
+# Mohamed Salah Hegazy — Portfolio
+
+موقع محمد صلاح حجازي: التسويق بالأداء، إدارة الحسابات والتتبّع. نسخة كاملة من آخر تصميم معتمد، بالعربية والإنجليزية، مع الوضع الفاتح والداكن ودعم الموبايل وتقليل الحركة.
+
+## ملفات المشروع
+
+```text
+index.html       المحتوى، بيانات SEO وروابط التواصل
+styles.css       التصميم والألوان والحركة وتنسيق الموبايل
+app.js           اللغة والتنقل والأنيميشن
+preferences.js   حفظ اختيار اللغة والمظهر
+assets/          الصورة الشخصية، CV وأيقونة الموقع
+assets/fonts/    الخطوط المحلية
+docs/            دليل النشر وربط الدومين
+netlify.toml     إعدادات نشر Netlify
+vercel.json      إعدادات نشر Vercel
+```
+
+الموقع HTML/CSS/JavaScript ثابت: لا يحتاج تثبيت مكتبات أو عملية build. مجلد النشر هو جذر المشروع `.`.
+
+## التشغيل المحلي
+
+```sh
+python -m http.server 8080
+```
+
+افتح `http://localhost:8080`. افتح مجلد المشروع نفسه قبل تنفيذ الأمر.
+
+## النشر والدومين
+
+العنوان المجاني المستهدف: [mhmdslahhjaziads-cloud.github.io](https://mhmdslahhjaziads-cloud.github.io).
+
+راجع [دليل النشر وربط الدومين](docs/DEPLOYMENT.md). النشر من فرع `main` وجذر المشروع عبر GitHub Pages. بيانات SEO مضبوطة على العنوان المجاني. لم يتم شراء أو ربط دومين مستقل بعد.
+
+## التحديث
+
+عدّل ملفات HTML/CSS/JS مباشرة ثم اعمل commit إلى `main`. عند ربط الاستضافة بـGitHub، يتحدث الموقع تلقائيًا حسب إعدادات الاستضافة. ملفات الموقع لا تعتمد على مسارات جهاز محلي أو خدمات بناء خاصة.
+
+قبل اعتماد رابط جديد: حدّث `canonical` و`og:url` و`url` داخل JSON-LD في `index.html` إلى الرابط النهائي. روابط الأقسام والصور والخطوط نسبية لتعمل على الاستضافة الجديدة.
+
+المحتوى والتصميم خاصان بصاحب الموقع. رخصة الخط موجودة داخل `assets/fonts/OFL.txt`.
