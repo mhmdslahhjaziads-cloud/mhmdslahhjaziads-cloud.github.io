@@ -182,7 +182,13 @@
 
   function updateScroll() {
     const range = document.documentElement.scrollHeight - window.innerHeight;
-    root.style.setProperty('--hp-progress', range > 0 ? Math.max(0, Math.min(1, window.scrollY / range)).toFixed(4) : '0');
+    const progress = range > 0 ? Math.max(0, Math.min(1, window.scrollY / range)) : 0;
+    root.style.setProperty('--hp-progress', progress.toFixed(4));
+    const percent = String(Math.round(progress * 100)).padStart(3, '0') + '%';
+    root.querySelectorAll('.hp-progress-value,.hp-mobile-progress').forEach(value => {value.textContent = percent;});
+    const visibleFraction = Math.min(1, window.innerHeight / document.documentElement.scrollHeight);
+    root.style.setProperty('--hp-view-size', (visibleFraction * 100) + '%');
+    root.style.setProperty('--hp-view-start', (progress * (1 - visibleFraction) * 100) + '%');
     header.classList.toggle('hp-scrolled', window.scrollY > 20);
     const nextDocked = window.matchMedia('(min-width: 900px)').matches && window.scrollY > (docked ? 70 : 150);
     if (nextDocked !== docked) {
@@ -269,6 +275,33 @@
       element.style.setProperty('--hp-ry', '0deg');
     });
   });
+  // Repeat the compact strip far enough to fill any viewport, then duplicate
+  // that complete group so the horizontal loop never reveals an empty edge.
+  const platformStrip = root.querySelector('.hp-tools-strip');
+  const platformTrack = root.querySelector('.hp-platform-track');
+  const platformSet = platformTrack.querySelector('.hp-platform-set');
+  const platformItems = [...platformSet.children].map(item => item.cloneNode(true));
+  function fillPlatformStrip() {
+    if (!platformStrip.clientWidth) return;
+    platformSet.replaceChildren(...platformItems.map(item => item.cloneNode(true)));
+    if (!motion.matches) {
+      while (platformSet.offsetWidth < platformStrip.clientWidth + 120) {
+        platformItems.forEach(item => {
+          const copy = item.cloneNode(true);
+          copy.setAttribute('aria-hidden', 'true');
+          platformSet.append(copy);
+        });
+      }
+    }
+    const duplicate = platformSet.cloneNode(true);
+    duplicate.setAttribute('aria-hidden', 'true');
+    platformTrack.lastElementChild.replaceWith(duplicate);
+    platformTrack.style.setProperty('--hp-marquee-duration', (platformSet.offsetWidth / 38) + 's');
+  }
+  new ResizeObserver(fillPlatformStrip).observe(platformStrip);
+  motion.addEventListener('change', fillPlatformStrip);
+  document.fonts.ready.then(fillPlatformStrip);
+  fillPlatformStrip();
   applyLanguage();
   applyTheme();
   measureHeader();
