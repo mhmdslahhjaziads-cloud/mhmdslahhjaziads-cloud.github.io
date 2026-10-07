@@ -9,7 +9,12 @@
 
 ## 2026-10-08 · Portfolio refinements
 
-- Added learning website design as the fourth work/learning card.
+- Added phone-only toolkit accordions with one open category at a time.
+- Added scroll entrances and touch feedback for background, experience and contact on phones.
+- Enlarged the profile note and updated it to digital marketing.
+- Updated the introduction to media buying, tracking and learning Salla, Zid and Shopify.
+
+- Added a learning website design card and removed the Account Manager service card.
 - Added a beta badge explaining that more content will be added.
 - Applied neon toolkit hover and subtle hover scaling on other cards.
 - Updated LinkedIn and enlarged the floating portrait menu.
