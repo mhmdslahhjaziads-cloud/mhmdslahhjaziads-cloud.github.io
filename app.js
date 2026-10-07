@@ -81,6 +81,32 @@
     queueLetters();
   }
 
+  const platformLogos = {'Meta':'meta','Google Ads':'googleads','Google Tag Manager':'googletagmanager','GTM':'googletagmanager','GA4':'googleanalytics','Google Analytics 4':'googleanalytics','TikTok':'tiktok','Snapchat':'snapchat','YouTube':'youtube','Shopify':'shopify','WooCommerce':'woocommerce','WordPress':'wordpress','Salla':'salla','Zid':'zid','Excel':'excel','Google Sheets':'googlesheets','Notion':'notion','ChatGPT':'openai','Claude':'claude'};
+  const platformPattern = new RegExp('(?<![A-Za-z])(' + Object.keys(platformLogos).sort((a,b)=>b.length-a.length).join('|') + ')(?![A-Za-z])', 'g');
+  function decoratePlatformMentions() {
+    root.querySelectorAll('p[data-ar][data-en]').forEach(paragraph => {
+      const text = paragraph.textContent;
+      const fragment = document.createDocumentFragment();
+      let cursor = 0;
+      for (const match of text.matchAll(platformPattern)) {
+        fragment.append(document.createTextNode(text.slice(cursor,match.index)));
+        const mention = document.createElement('span');
+        mention.className = 'hp-inline-brand';
+        const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        svg.setAttribute('class','hp-brand-icon');
+        svg.setAttribute('viewBox','0 0 24 24');
+        svg.setAttribute('aria-hidden','true');
+        const use = document.createElementNS('http://www.w3.org/2000/svg','use');
+        use.setAttribute('href','assets/brand-icons.svg#brand-'+platformLogos[match[0]]);
+        svg.append(use);
+        mention.append(svg,document.createTextNode(match[0]));
+        fragment.append(mention);
+        cursor = match.index + match[0].length;
+      }
+      fragment.append(document.createTextNode(text.slice(cursor)));
+      paragraph.replaceChildren(fragment);
+    });
+  }
   function applyLanguage() {
     const english = preferences.language === 'en';
     const language = english ? 'en' : 'ar';
@@ -108,6 +134,7 @@
     document.querySelector('meta[name="description"]').content = english
       ? 'Mohamed Salah Hegazy — performance marketing, account management, tracking and data accuracy for e-commerce. Explore my experience and get in touch.'
       : 'محمد صلاح حجازي — التسويق بالأداء، إدارة الحسابات، ومتابعة التتبّع ودقة البيانات للتجارة الإلكترونية. اكتشف خبرتي وأدواتي وتواصل معي.';
+    decoratePlatformMentions();
     prepareLetterMotion();
     updateControlLabels();
   }

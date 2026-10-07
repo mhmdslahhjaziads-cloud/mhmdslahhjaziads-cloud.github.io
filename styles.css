@@ -482,5 +482,10 @@ body.hp-dark #hegazy-preview .hp-job:first-child h3{color:#c8dbb8;}
 #hegazy-preview .hp-hero-foot span:nth-child(even){color:var(--hp-peach);}
 @media(max-width:600px){#hegazy-preview .hp-hero-foot{font-size:13px;gap:8px;}}
 @media(min-width:821px){#hegazy-preview[dir=rtl] .hp-map{--hp-map-x:18px;translate:18px 0;}}
+#hegazy-preview .hp-brand-icon{display:inline-block;width:16px;height:16px;flex:0 0 16px;fill:currentColor;vertical-align:-.15em;}
+#hegazy-preview span[data-brand]:has(>.hp-brand-icon):before{display:none;}
+#hegazy-preview .hp-inline-brand{display:inline-flex;align-items:baseline;gap:4px;white-space:nowrap;direction:ltr;}
+#hegazy-preview .hp-inline-brand .hp-brand-icon{width:13px;height:13px;flex-basis:13px;align-self:center;}
+#hegazy-preview .hp-contact-actions .hp-brand-icon{width:18px;height:18px;flex-basis:18px;}
 
 #hegazy-preview h1{font-weight:700;}#hegazy-preview h2,#hegazy-preview h3,#hegazy-preview .hp-name{font-weight:700;}
