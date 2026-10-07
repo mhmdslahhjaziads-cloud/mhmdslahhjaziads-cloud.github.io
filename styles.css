@@ -668,5 +668,7 @@ body{background-color:#f6f3ec;}
 #hegazy-preview.hp-motion #hp-toolkit .hp-tool-group.hp-visible .hp-tool-chips>span[data-brand]{animation:hp-ai-float 5.5s ease-in-out infinite;animation-delay:var(--hp-chip-delay,0s);}
 @media(max-width:600px){#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]{font-size:11px;padding:8px 10px;min-height:38px;}}
 @media(prefers-reduced-motion:reduce){#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]{animation:none!important;translate:none;rotate:0deg;}}
+#hegazy-preview .hp-reference-hero+.hp-closing{margin:0 0 28px;}
+#hegazy-preview .hp-reference-hero{padding-bottom:24px;}
 
 #hegazy-preview h1{font-weight:700;}#hegazy-preview h2,#hegazy-preview h3,#hegazy-preview .hp-name{font-weight:700;}
