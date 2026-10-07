@@ -478,5 +478,9 @@ body.hp-dark #hegazy-preview #hp-contact>h2{color:#c8dbb8;}
 body.hp-dark #hegazy-preview .hp-job:first-child h3{color:#c8dbb8;}
 #hegazy-preview .hp-job:first-child:before{background:var(--hp-peach);box-shadow:0 0 0 4px color-mix(in srgb,var(--hp-peach) 20%,transparent);}
 @media(max-width:600px){#hegazy-preview .hp-job h3{font-size:15px;}#hegazy-preview .hp-job p{font-size:13px;}#hegazy-preview .hp-job{padding-bottom:20px;}}
+#hegazy-preview .hp-hero-foot{font-size:15px;font-weight:700;line-height:1.8;gap:12px;color:var(--hp-ink);flex-wrap:wrap;}
+#hegazy-preview .hp-hero-foot span:nth-child(even){color:var(--hp-peach);}
+@media(max-width:600px){#hegazy-preview .hp-hero-foot{font-size:13px;gap:8px;}}
+@media(min-width:821px){#hegazy-preview[dir=rtl] .hp-map{translate:18px 0;}}
 
 #hegazy-preview h1{font-weight:700;}#hegazy-preview h2,#hegazy-preview h3,#hegazy-preview .hp-name{font-weight:700;}
