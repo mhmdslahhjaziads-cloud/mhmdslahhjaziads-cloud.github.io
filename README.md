@@ -1,6 +1,6 @@
 # Mohamed Salah Hegazy · Portfolio
 
-**Performance Marketing · Tracking · Account Management · Learning Website Design**
+**Media Buying · Tracking · Learning Website Design**
 
 [Live portfolio](https://mhmdslahhjaziads-cloud.github.io/) · [LinkedIn](https://www.linkedin.com/in/mhmdslahhjazi/) · [Deployment](docs/DEPLOYMENT.md) · [Maintenance](docs/MAINTENANCE.md)
 
@@ -12,8 +12,9 @@
 
 - Arabic / English with RTL / LTR layouts.
 - Light and charcoal dark themes with saved browser preferences.
-- Responsive navigation, four work and learning cards and a downloadable CV.
+- Responsive navigation, three work and learning cards and a downloadable CV.
 - Soft neon hover on toolkit logos and subtle hover scaling on other cards.
+- Phone-only toolkit accordions and scroll entrances for the lower sections.
 - Reduced-motion support and locally hosted fonts and icons.
 
 ## Project structure
