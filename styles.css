@@ -488,4 +488,36 @@ body.hp-dark #hegazy-preview .hp-job:first-child h3{color:#c8dbb8;}
 #hegazy-preview .hp-inline-brand .hp-brand-icon{width:13px;height:13px;flex-basis:13px;align-self:center;}
 #hegazy-preview .hp-contact-actions .hp-brand-icon{width:18px;height:18px;flex-basis:18px;}
 
+/* Contact option 3: calm brand accents, one full clickable row per channel. */
+#hegazy-preview #hp-contact{border:1.5px solid var(--hp-ink);border-radius:22px;box-shadow:none;padding:30px;}
+#hegazy-preview #hp-contact>h2{display:block;font-size:clamp(24px,2.2vw,31px);line-height:1.55;margin-bottom:8px;color:var(--hp-ink);}
+#hegazy-preview #hp-contact>h2:after{content:none;animation:none;}
+#hegazy-preview #hp-contact .hp-contact-intro{font-size:14px;line-height:1.9;margin:0;color:var(--hp-muted);}
+#hegazy-preview #hp-contact .hp-contact-rows{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;margin-top:23px;width:100%;}
+#hegazy-preview #hp-contact .hp-contact-rows .hp-action{display:flex;align-items:center;justify-content:flex-start;gap:14px;min-height:70px;width:100%;padding:12px 15px;border:1px solid color-mix(in srgb,var(--hp-sage) 50%,var(--hp-surface));border-radius:12px;background:var(--hp-surface);color:var(--hp-ink);box-shadow:none;text-align:start;transform:none;}
+#hegazy-preview #hp-contact .hp-contact-rows #hp-campaign-cta{background:color-mix(in srgb,var(--hp-sage) 23%,var(--hp-surface));border-color:color-mix(in srgb,var(--hp-sage) 75%,var(--hp-ink));}
+#hegazy-preview #hp-contact .hp-contact-badge{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:10px;background:#e0eee3;color:#075e54;}
+#hegazy-preview #hp-contact .hp-email-cta .hp-contact-badge{background:#f6e5dd;color:#915038;}
+#hegazy-preview #hp-contact .hp-linkedin-cta .hp-contact-badge{background:#e1eaf0;color:#0a66c2;}
+#hegazy-preview #hp-contact .hp-contact-badge svg{width:22px;height:22px;}
+#hegazy-preview #hp-contact .hp-contact-row-copy{display:flex;flex-direction:column;gap:3px;min-width:0;white-space:normal;}
+#hegazy-preview #hp-contact .hp-contact-row-copy strong{font-size:15px;font-weight:700;line-height:1.6;}
+#hegazy-preview #hp-contact .hp-contact-row-copy small{font-size:12px;line-height:1.7;color:var(--hp-muted);}
+#hegazy-preview #hp-contact .hp-contact-row-arrow{margin-inline-start:auto;color:var(--hp-muted);font-size:17px;}
+#hegazy-preview #hp-contact #hp-campaign-cta{--hp-row-brand:#25d366;--hp-row-ink:#102b1b;}
+#hegazy-preview #hp-contact .hp-email-cta{--hp-row-brand:#915038;--hp-row-ink:#fff;}
+#hegazy-preview #hp-contact .hp-linkedin-cta{--hp-row-brand:#0a66c2;--hp-row-ink:#fff;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview #hp-contact .hp-contact-rows .hp-action:hover{background:var(--hp-row-brand);border-color:var(--hp-row-brand);box-shadow:0 3px 12px #20362716;transform:translateY(-1px);color:var(--hp-row-ink);}#hegazy-preview #hp-contact .hp-contact-rows .hp-action:hover :is(.hp-contact-row-copy small,.hp-contact-row-arrow){color:var(--hp-row-ink);}#hegazy-preview #hp-contact .hp-contact-rows .hp-action:hover .hp-contact-badge{background:#ffffff26;color:var(--hp-row-ink);}}
+#hegazy-preview #hp-contact .hp-contact-rows .hp-action:focus-visible{outline:3px solid var(--hp-row-brand);outline-offset:3px;background:var(--hp-row-brand);color:var(--hp-row-ink);}
+#hegazy-preview #hp-contact .hp-contact-rows .hp-action:focus-visible :is(.hp-contact-row-copy small,.hp-contact-row-arrow){color:var(--hp-row-ink);}
+#hegazy-preview #hp-contact .hp-contact-rows .hp-action:focus-visible .hp-contact-badge{background:#ffffff26;color:var(--hp-row-ink);}
+#hegazy-preview #hp-contact .hp-contact-rows .hp-action:active{background:var(--hp-row-brand);color:var(--hp-row-ink);}
+#hegazy-preview #hp-contact .hp-contact-rows .hp-action:active :is(.hp-contact-row-copy small,.hp-contact-row-arrow){color:var(--hp-row-ink);}
+#hegazy-preview #hp-contact .hp-contact-rows .hp-action:active .hp-contact-badge{background:#ffffff26;color:var(--hp-row-ink);}
+@media(hover:hover) and (pointer:fine){#hegazy-preview #hp-contact .hp-contact-rows #hp-campaign-cta:hover{background:var(--hp-row-brand);border-color:var(--hp-row-brand);color:var(--hp-row-ink);}}
+#hegazy-preview #hp-contact .hp-contact-rows #hp-campaign-cta:is(:focus-visible,:active){background:var(--hp-row-brand);border-color:var(--hp-row-brand);color:var(--hp-row-ink);}
+@media(max-width:820px){#hegazy-preview #hp-contact{padding:24px;}}
+@media(max-width:480px){#hegazy-preview #hp-contact{padding:20px;}#hegazy-preview #hp-contact>h2{font-size:25px;}#hegazy-preview #hp-contact .hp-contact-rows .hp-action{gap:11px;padding:11px 12px;}#hegazy-preview #hp-contact .hp-contact-row-copy small{font-size:11px;}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview #hp-contact .hp-contact-rows .hp-action{transition:none;}#hegazy-preview #hp-contact .hp-contact-rows .hp-action:hover{transform:none;}}
+
 #hegazy-preview h1{font-weight:700;}#hegazy-preview h2,#hegazy-preview h3,#hegazy-preview .hp-name{font-weight:700;}
