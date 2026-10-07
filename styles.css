@@ -657,5 +657,16 @@ body{background-color:#f6f3ec;}
 @media(hover:none){#hegazy-preview .hp-method-card:after{opacity:.65;translate:0 0;scale:1;}}
 @media(prefers-reduced-motion:reduce){#hegazy-preview .hp-method-card:after{transition:none;}}
 #hegazy-preview.hp-motion .hp-method-card.hp-visible{transition-delay:var(--hp-delay,0ms),0ms,0ms,0ms;}
+/* Keep the reference cards with the original colorful, floating brand badges. */
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]{background:var(--hp-brand);color:#fff;border:1px solid transparent;border-radius:7px;box-shadow:0 4px 14px color-mix(in srgb,var(--hp-brand) 20%,transparent);padding:10px 12px;font-size:13px;font-weight:600;min-height:42px;}
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]:hover{background:var(--hp-brand);color:#fff;box-shadow:0 7px 22px color-mix(in srgb,var(--hp-brand) 32%,transparent);scale:1.06;}
+#hegazy-preview #hp-toolkit .hp-tool-chips>span:is([data-brand="GA4"],[data-brand="Shopify"],[data-brand="Salla"],[data-brand="Snapchat Ads"]){color:#17201c;border-color:#17201c1c;}
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand="Google Ads"]{background:linear-gradient(110deg,#4285f4 0 70%,#34a853 70% 83%,#fbbc04 83%);color:#fff;}
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand^="TikTok"]{background:#101013;color:#fff;border-color:#25f4ee;box-shadow:2px 2px 0 #fe2c55,-1px -1px 0 #25f4ee;}
+#hegazy-preview #hp-toolkit .hp-brand-icon{width:18px;height:18px;flex-basis:18px;}
+#hegazy-preview #hp-toolkit .hp-tool-chips{gap:11px;padding-block:5px;}
+#hegazy-preview.hp-motion #hp-toolkit .hp-tool-group.hp-visible .hp-tool-chips>span[data-brand]{animation:hp-ai-float 5.5s ease-in-out infinite;animation-delay:var(--hp-chip-delay,0s);}
+@media(max-width:600px){#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]{font-size:11px;padding:8px 10px;min-height:38px;}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]{animation:none!important;translate:none;rotate:0deg;}}
 
 #hegazy-preview h1{font-weight:700;}#hegazy-preview h2,#hegazy-preview h3,#hegazy-preview .hp-name{font-weight:700;}
