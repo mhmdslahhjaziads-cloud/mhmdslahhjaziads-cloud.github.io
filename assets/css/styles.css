@@ -774,4 +774,6 @@ body.hp-dark{background:#0b0e11;}
 
 #hegazy-preview .hp-profile-note small{font-size:16px;line-height:1.8;font-weight:500;}
 
+#hegazy-preview .hp-hero-story .hp-intro{white-space:pre-line;}
+
 #hegazy-preview h1{font-weight:700;}#hegazy-preview h2,#hegazy-preview h3,#hegazy-preview .hp-name{font-weight:700;}
