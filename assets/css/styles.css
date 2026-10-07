@@ -722,7 +722,7 @@ body.hp-dark{background:#0b0e11;}
 #hegazy-preview.hp-docked .hp-nav{left:calc(100% - 92px);width:76px;height:76px;min-height:76px;}
 #hegazy-preview .hp-dock-toggle{padding:4px;}
 #hegazy-preview .hp-dock-indicator{width:28px;height:28px;display:grid;place-items:center;font-size:23px;line-height:1;bottom:-2px;left:-3px;border:2px solid var(--hp-ink);}
-#hegazy-preview .hp-services{grid-template-columns:repeat(4,minmax(0,1fr));}
+#hegazy-preview .hp-services{grid-template-columns:repeat(3,minmax(0,1fr));}
 #hegazy-preview .hp-website-service .hp-icon{background:#cde58f;}
 #hegazy-preview .hp-website-service .hp-number b{background:#cde58f;color:#171a17;}
 @media(max-width:1100px){#hegazy-preview .hp-services{grid-template-columns:repeat(2,minmax(0,1fr));}}
@@ -751,5 +751,27 @@ body.hp-dark{background:#0b0e11;}
 #hegazy-preview.hp-motion :is(.hp-action,.hp-control,.hp-profile-note,.hp-background-tags>span,.hp-service .hp-tag,.hp-hero-status>span):hover{translate:0 0;rotate:0deg;transform:none;scale:1.045;}
 }
 @media(prefers-reduced-motion:reduce){#hegazy-preview :is(.hp-service,.hp-tool-group,.hp-method-card,.hp-background-story,.hp-background-note,.hp-job,.hp-education,.hp-callout,.hp-action,.hp-control,.hp-profile-note,.hp-portrait-card,.hp-background-tags>span,.hp-service .hp-tag,.hp-hero-status>span){scale:1!important;}}
+
+/* Touch devices receive scroll entrances and press feedback without hover. */
+#hegazy-preview .hp-tool-toggle{display:none;}
+#hegazy-preview .hp-tool-panel,#hegazy-preview .hp-tool-panel-inner{display:contents;}
+@keyframes hp-phone-enter{from{opacity:0;scale:.975;}to{opacity:1;scale:1;}}
+@media(max-width:600px){
+#hegazy-preview.hp-motion :is(.hp-background-story,.hp-background-note,.hp-job,#hp-contact).hp-visible{animation:hp-phone-enter .65s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--hp-delay,0ms);}
+#hegazy-preview.hp-motion :is(.hp-background-tags>span,.hp-contact-rows .hp-action):active{scale:.97;transition:scale .18s ease;}
+#hegazy-preview #hp-toolkit .hp-tool-group>.hp-tool-category{display:none;}
+#hegazy-preview #hp-toolkit .hp-tool-toggle{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:0;border:0;background:none;color:var(--hp-ink);font:inherit;text-align:start;cursor:pointer;min-height:44px;}
+#hegazy-preview #hp-toolkit .hp-tool-toggle .hp-tool-category{margin:0;padding:0;border:0;}
+#hegazy-preview .hp-tool-toggle-icon{display:grid;place-items:center;flex:0 0 30px;height:30px;border:1px solid var(--hp-line);border-radius:50%;background:var(--hp-peach,#f2b494);color:#252c26;font-size:22px;line-height:1;transition:rotate .4s cubic-bezier(.22,1,.36,1),background .3s;}
+#hegazy-preview .hp-tool-open .hp-tool-toggle-icon{rotate:45deg;background:#cde58f;}
+#hegazy-preview #hp-toolkit .hp-tool-panel{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1),opacity .3s ease;}
+#hegazy-preview #hp-toolkit .hp-tool-panel-inner{display:block;min-height:0;overflow:hidden;}
+#hegazy-preview #hp-toolkit .hp-tool-open .hp-tool-panel{grid-template-rows:1fr;opacity:1;}
+#hegazy-preview #hp-toolkit .hp-tool-chips{padding-top:20px;padding-bottom:10px;}
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]:active{box-shadow:0 0 0 2px color-mix(in srgb,var(--hp-brand) 35%,transparent),0 0 24px color-mix(in srgb,var(--hp-brand) 38%,transparent);}
+}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-tool-panel,#hegazy-preview .hp-tool-toggle-icon{transition:none!important;}#hegazy-preview :is(.hp-background-story,.hp-background-note,.hp-job,#hp-contact).hp-visible{animation:none!important;}}
+
+#hegazy-preview .hp-profile-note small{font-size:16px;line-height:1.8;font-weight:500;}
 
 #hegazy-preview h1{font-weight:700;}#hegazy-preview h2,#hegazy-preview h3,#hegazy-preview .hp-name{font-weight:700;}
