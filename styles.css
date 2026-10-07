@@ -701,5 +701,46 @@ body.hp-dark{background:#0b0e11;}
 #hegazy-preview.hp-motion #hp-toolkit .hp-tool-group.hp-visible{transform:perspective(1000px) rotateX(var(--hp-rx,0deg)) rotateY(var(--hp-ry,0deg));transition:opacity .8s ease,transform .3s ease,translate .3s ease,box-shadow .3s ease;transition-delay:var(--hp-delay,0ms),0ms,0ms,0ms;}
 @media(hover:hover) and (pointer:fine){#hegazy-preview.hp-motion #hp-toolkit .hp-tool-group.hp-visible:hover{translate:0 -5px;box-shadow:-6px 8px 0 var(--hp-ink);}#hegazy-preview[data-appearance=dark].hp-motion #hp-toolkit .hp-tool-group.hp-visible:hover{box-shadow:-6px 8px 0 #080a0c;}}
 @media(prefers-reduced-motion:reduce){#hegazy-preview #hp-toolkit .hp-tool-group{transform:none!important;translate:none!important;transition:none!important;}}
+#hegazy-preview.hp-motion :is(.hp-background-story,.hp-background-note).hp-visible{transform:perspective(1200px) rotateX(var(--hp-rx,0deg)) rotateY(var(--hp-ry,0deg));transition:opacity .8s ease,transform .35s ease,translate .35s ease,box-shadow .35s ease;transition-delay:var(--hp-delay,0ms),0ms,0ms,0ms;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview.hp-motion :is(.hp-background-story,.hp-background-note).hp-visible:hover{translate:0 -5px;box-shadow:-7px 9px 0 var(--hp-ink);}#hegazy-preview[data-appearance=dark].hp-motion :is(.hp-background-story,.hp-background-note).hp-visible:hover{box-shadow:-7px 9px 0 #080a0c;}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview :is(.hp-background-story,.hp-background-note){transform:none!important;translate:none!important;transition:none!important;}}
+#hegazy-preview .hp-reference-hero .hp-intro{font-size:clamp(17px,1.5vw,20px);line-height:1.95;}
+#hegazy-preview .hp-background-tags>span{--hp-chip-accent:#f2b494;display:inline-flex;transition:translate .25s ease,scale .25s ease,rotate .25s ease,background .25s ease,color .25s ease,box-shadow .25s ease;}
+#hegazy-preview .hp-background-tags>span:nth-child(2){--hp-chip-accent:#a6c8df;}
+#hegazy-preview .hp-background-tags>span:nth-child(3){--hp-chip-accent:#cde58f;}
+#hegazy-preview .hp-background-tags>span:nth-child(4){--hp-chip-accent:#d5b6ed;}
+#hegazy-preview .hp-background-tags>span:nth-child(5){--hp-chip-accent:#b4ead7;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview.hp-motion .hp-background-tags>span:hover{translate:0 -4px;scale:1.06;rotate:-2deg;background:var(--hp-chip-accent);color:#171a17;border-color:#171a1740;box-shadow:0 5px 16px color-mix(in srgb,var(--hp-chip-accent) 28%,transparent);}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-background-tags>span{transition:none;translate:none!important;scale:1!important;rotate:0deg!important;}}
+#hegazy-preview .hp-method-card{--hp-arrow-hover:#d5b6ed;}
+#hegazy-preview .hp-method-card:nth-child(2){--hp-arrow-hover:#a6c8df;}
+#hegazy-preview .hp-method-card:nth-child(3){--hp-arrow-hover:#f2b494;}
+#hegazy-preview .hp-method-card:nth-child(4){--hp-arrow-hover:#cde58f;}
+#hegazy-preview .hp-method-number{transition:scale .22s ease,filter .22s ease;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview .hp-method-card:has(.hp-method-number:hover):after{background:var(--hp-arrow-hover);color:#171a17;scale:1.1;translate:-2px 0;}#hegazy-preview.hp-motion .hp-method-number:hover{scale:1.08;filter:brightness(1.08);animation-play-state:paused;}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-method-number:hover{scale:1!important;}}
+#hegazy-preview.hp-docked .hp-nav{left:calc(100% - 92px);width:76px;height:76px;min-height:76px;}
+#hegazy-preview .hp-dock-toggle{padding:4px;}
+#hegazy-preview .hp-dock-indicator{width:28px;height:28px;display:grid;place-items:center;font-size:23px;line-height:1;bottom:-2px;left:-3px;border:2px solid var(--hp-ink);}
+#hegazy-preview .hp-services{grid-template-columns:repeat(4,minmax(0,1fr));}
+#hegazy-preview .hp-website-service .hp-icon{background:#cde58f;}
+#hegazy-preview .hp-website-service .hp-number b{background:#cde58f;color:#171a17;}
+@media(max-width:1100px){#hegazy-preview .hp-services{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:600px){#hegazy-preview .hp-services{grid-template-columns:1fr;}}
+#hegazy-preview .hp-beta-status{position:relative;width:fit-content;margin:0 0 24px;font-size:12px;}
+#hegazy-preview .hp-beta-status summary{display:flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid var(--hp-line);border-radius:30px;list-style:none;background:var(--hp-surface);cursor:pointer;}
+#hegazy-preview .hp-beta-status summary::-webkit-details-marker{display:none;}
+#hegazy-preview .hp-beta-dot{width:7px;height:7px;border-radius:50%;background:#a4c874;box-shadow:0 0 0 3px #a4c87420;}
+#hegazy-preview.hp-motion .hp-beta-dot{animation:hp-beta-breathe 3s ease-in-out infinite;}
+#hegazy-preview .hp-beta-status>p{position:absolute;z-index:5;inset-inline-start:0;top:100%;width:270px;max-width:calc(100vw - 80px);padding:14px;border:1px solid var(--hp-line);border-radius:14px;background:var(--hp-surface);font-size:13px;line-height:1.8;box-shadow:0 8px 24px #0002;}
+@keyframes hp-beta-breathe{50%{box-shadow:0 0 0 5px #a4c87410,0 0 10px #a4c87425;}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-beta-dot{animation:none!important;}}
+/* Selected motion: stationary badges with a soft brand glow on hover. */
+#hegazy-preview.hp-motion #hp-toolkit .hp-tool-group.hp-visible .hp-tool-chips>span[data-brand]{animation:none;translate:0 0;rotate:0deg;transform:none;scale:1;transition:box-shadow .35s ease,filter .35s ease;}
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]:hover{scale:1;translate:0 0;rotate:0deg;box-shadow:0 0 0 2px color-mix(in srgb,var(--hp-brand) 35%,transparent),0 0 24px color-mix(in srgb,var(--hp-brand) 38%,transparent);}
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand] .hp-brand-icon{transition:filter .35s ease,scale .35s ease;}
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]:hover .hp-brand-icon{filter:drop-shadow(0 0 5px currentColor);scale:1.12;}
+#hegazy-preview [data-brand="Snapchat Ads"] .hp-brand-icon{color:#fff;stroke:#111;stroke-width:1.1;stroke-linejoin:round;overflow:visible;}
+#hegazy-preview #hp-toolkit [data-brand="Snapchat Ads"]{--hp-brand:#fffc00;}
 
 #hegazy-preview h1{font-weight:700;}#hegazy-preview h2,#hegazy-preview h3,#hegazy-preview .hp-name{font-weight:700;}
