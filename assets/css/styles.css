@@ -776,6 +776,13 @@ body.hp-dark{background:#0b0e11;}
 
 #hegazy-preview .hp-hero-story .hp-intro{white-space:pre-line;}
 
+/* Selected portrait motion: restore color with a contained, subtle zoom. */
+#hegazy-preview .hp-portrait-photo{overflow:hidden;border-radius:16px;}
+#hegazy-preview .hp-portrait-photo>img{display:block;width:100%;height:auto;aspect-ratio:1/1.08;object-fit:cover;filter:grayscale(1);transform:scale(1);transition:filter .2s ease,transform .2s cubic-bezier(.22,1,.36,1);}
+@media(hover:hover) and (pointer:fine){#hegazy-preview .hp-portrait-card:hover .hp-portrait-photo>img{filter:grayscale(0);transform:scale(1.035);}}
+#hegazy-preview .hp-portrait-card:focus-within .hp-portrait-photo>img{filter:grayscale(0);transform:scale(1.035);}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-portrait-photo>img{transition:none!important;transform:none!important;}}
+
 #hegazy-preview .hp-reference-hero .hp-highlight{transition:scale .3s cubic-bezier(.22,1,.36,1),rotate .3s ease,box-shadow .3s ease;transform-origin:center;}
 @media(hover:hover) and (pointer:fine){#hegazy-preview.hp-motion .hp-reference-hero .hp-highlight:hover{scale:1.035;rotate:-1deg;box-shadow:-3px 3px 0 var(--hp-ink),0 0 24px #f2b49460;}}
 @media(prefers-reduced-motion:reduce){#hegazy-preview .hp-reference-hero .hp-highlight{transition:none;scale:1!important;rotate:0deg!important;}}
