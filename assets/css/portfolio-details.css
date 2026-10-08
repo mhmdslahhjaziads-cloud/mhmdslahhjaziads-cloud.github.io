@@ -1,6 +1,6 @@
 /* Portfolio content, brand directory and responsive disclosure. */
 body{padding-right:0!important;padding-left:0!important;}
-#hegazy-preview .hp-side-rail,#hegazy-preview .hp-moving-labels,#hegazy-preview .hp-mobile-progress{display:none!important;}
+
 #hegazy-preview{max-width:1440px;margin-inline:auto;}
 #hegazy-preview .hp-scroll-progress{height:3px;}
 #hegazy-preview .hp-reference-hero .hp-intro{font-size:clamp(17px,1.45vw,20px);line-height:1.9;white-space:normal;}
@@ -110,3 +110,32 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 @media(hover:hover) and (pointer:fine){#hegazy-preview #hp-services .hp-services-title:hover{transform:translateY(-2px);box-shadow:-4px 7px 0 var(--hp-ink);}}
 #hegazy-preview #hp-services .hp-services-title:active{transform:translateY(2px);box-shadow:-1px 2px 0 var(--hp-ink);}
 @media(prefers-reduced-motion:reduce){#hegazy-preview #hp-services .hp-services-title{transition:none;transform:none!important;}}
+
+#hegazy-preview .hp-tracking-brands h3{font-size:clamp(28px,3.5vw,44px);line-height:1.6;margin:14px 0 10px;}
+
+#hegazy-preview :is(#hp-background,#hp-toolkit,#hp-tracking-work) .hp-framed-title{display:inline-block;position:relative;max-width:calc(100% - 28px);padding:12px 24px;background:var(--hp-title-color);color:#252c26;border:2px solid var(--hp-ink);border-radius:999px;box-shadow:-4px 5px 0 var(--hp-ink);font-size:clamp(24px,3vw,42px);line-height:1.5;transition:transform 300ms cubic-bezier(.22,1,.36,1),box-shadow 300ms ease;}
+#hegazy-preview :is(#hp-background,#hp-toolkit,#hp-tracking-work) .hp-framed-title:after{display:none;content:none;}
+#hegazy-preview :is(#hp-background,#hp-toolkit,#hp-tracking-work) .hp-framed-title:before{content:'';position:absolute;inset-inline-end:calc(100% + 12px);top:50%;width:13px;height:13px;border:2px solid var(--hp-ink);border-radius:3px;background:var(--hp-peach);transform:translateY(-50%) rotate(15deg);transition:transform 300ms ease;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview :is(#hp-background,#hp-toolkit,#hp-tracking-work) .hp-framed-title:hover{transform:translateY(-3px) rotate(-.5deg);box-shadow:-5px 8px 0 var(--hp-ink);}#hegazy-preview .hp-framed-title:hover:before{transform:translateY(-50%) rotate(40deg);}}
+#hegazy-preview :is(#hp-background,#hp-toolkit,#hp-tracking-work) .hp-framed-title:is(:active,.hp-touch-active){transform:translateY(-3px) rotate(-.5deg);box-shadow:-5px 8px 0 var(--hp-ink);}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-framed-title,#hegazy-preview .hp-framed-title:before{transition:none!important;transform:none!important;}}
+
+#hegazy-preview .hp-title-wrap{position:relative;display:inline-block;max-width:100%;margin-top:18px;padding-top:6px;}
+#hegazy-preview .hp-title-logos{position:absolute;inset-inline-end:12px;top:-19px;display:flex;gap:7px;pointer-events:none;}
+#hegazy-preview .hp-title-logos>span{display:grid;place-items:center;width:32px;height:32px;border:2px solid var(--hp-ink);border-radius:10px;background:var(--hp-mini-color);color:#fff;box-shadow:-2px 3px 0 var(--hp-ink);opacity:0;transform:translateY(14px) scale(.6) rotate(-15deg);transition:opacity 250ms ease,transform 380ms cubic-bezier(.22,1,.36,1);}
+#hegazy-preview .hp-title-logos>span:nth-child(2){transition-delay:55ms;}
+#hegazy-preview .hp-title-logos>span[style*=fffc00]{color:#171a17;}
+#hegazy-preview .hp-title-logos .hp-brand-icon{width:20px;height:20px;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview .hp-title-wrap:hover .hp-title-logos>span{opacity:1;transform:translateY(0) scale(1) rotate(-8deg);}#hegazy-preview .hp-title-wrap:hover .hp-title-logos>span:nth-child(2){transform:translateY(-3px) scale(1) rotate(9deg);}}
+#hegazy-preview .hp-title-wrap:has(.hp-touch-active) .hp-title-logos>span{opacity:1;transform:translateY(0) scale(1) rotate(-8deg);}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-title-logos>span{transition:none;transform:none!important;}}
+
+#hegazy-preview .hp-tracking-brands h3{font-size:clamp(24px,3vw,42px);line-height:1.5;}
+
+/* Restore desktop ruler and section labels; keep touch navigation available. */
+@media(min-width:900px) and (hover:hover) and (pointer:fine){body{padding-right:150px!important;}#hegazy-preview .hp-side-rail{display:block!important;}#hegazy-preview .hp-moving-labels{display:block!important;}}
+@media(max-width:899px){#hegazy-preview .hp-mobile-progress{display:block!important;}#hegazy-preview.hp-docked .hp-dock-toggle:not([hidden]){display:block!important;}#hegazy-preview .hp-dock-panel:not([hidden]){display:block!important;}}
+#hegazy-preview .hp-nav{transition:width 200ms cubic-bezier(.22,1,.36,1),left 200ms cubic-bezier(.22,1,.36,1),top 200ms cubic-bezier(.22,1,.36,1),border-radius 200ms ease,padding 200ms ease,box-shadow 180ms ease;}
+#hegazy-preview .hp-nav>.hp-identity,#hegazy-preview .hp-nav>.hp-links,#hegazy-preview .hp-nav>.hp-controls{transition:opacity 100ms ease,transform 180ms cubic-bezier(.22,1,.36,1);}
+#hegazy-preview .hp-dock-toggle{animation-duration:180ms;}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-nav,#hegazy-preview .hp-nav>*{transition:none!important;animation:none!important;}}
