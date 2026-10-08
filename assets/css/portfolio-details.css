@@ -104,3 +104,9 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 #hegazy-preview .hp-highlight.hp-touch-active{scale:1.035;rotate:-1deg;box-shadow:-3px 3px 0 var(--hp-ink),0 0 24px #f2b49460;}
 #hegazy-preview #hp-method .hp-workflow-title.hp-touch-active{transform:translateY(-3px) rotate(-.5deg);box-shadow:-5px 8px 0 var(--hp-ink);}
 @media(prefers-reduced-motion:reduce){#hegazy-preview .hp-touch-active,#hegazy-preview .hp-touch-active:before,#hegazy-preview .hp-touch-active:after{transform:none!important;scale:1!important;rotate:none!important;transition:none!important;}}
+
+#hegazy-preview #hp-services .hp-services-title{display:inline-block;position:relative;margin:0 0 20px;padding:10px 24px;border:2px solid var(--hp-ink);border-radius:999px;background:#2d493d;color:#fffdf7;font-size:clamp(26px,3vw,42px);line-height:1.55;box-shadow:-4px 5px 0 var(--hp-ink);transition:transform 300ms cubic-bezier(.22,1,.36,1),box-shadow 300ms ease;}
+#hegazy-preview #hp-services .hp-services-title:after{display:none;content:none;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview #hp-services .hp-services-title:hover{transform:translateY(-2px);box-shadow:-4px 7px 0 var(--hp-ink);}}
+#hegazy-preview #hp-services .hp-services-title:active{transform:translateY(2px);box-shadow:-1px 2px 0 var(--hp-ink);}
+@media(prefers-reduced-motion:reduce){#hegazy-preview #hp-services .hp-services-title{transition:none;transform:none!important;}}
