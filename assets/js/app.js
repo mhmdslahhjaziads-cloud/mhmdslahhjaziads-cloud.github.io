@@ -123,7 +123,7 @@
     dockLanguage.setAttribute('aria-label', languageButton.getAttribute('aria-label'));
     dockPanel.setAttribute('aria-label', english ? 'Side navigation' : 'القائمة الجانبية');
     root.querySelector('.hp-side-rail').setAttribute('aria-label', english ? 'Section progress' : 'مؤشر أقسام الموقع');
-    railLinks.forEach(link => {link.setAttribute('aria-label', root.querySelector('.hp-dock-panel a[href="'+link.getAttribute('href')+'"]').textContent);});
+    railLinks.forEach(link => {const menuLink = root.querySelector('.hp-dock-panel a[href="'+link.getAttribute('href')+'"]'); if (menuLink) link.setAttribute('aria-label', menuLink.textContent);});
     navigation.setAttribute('aria-label', english ? 'Site navigation' : 'أقسام الموقع');
     root.setAttribute('aria-label', english ? 'Mohamed Salah Hegazy portfolio' : 'موقع محمد صلاح حجازي');
     root.querySelector('.hp-map')?.setAttribute('aria-label', english ? 'Workflow from advertising to optimization' : 'مسار عمل من الإعلان إلى التحسين');
