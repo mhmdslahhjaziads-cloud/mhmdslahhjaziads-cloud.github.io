@@ -28,18 +28,55 @@
   window.fbq('init', pixelId);
   window.fbq('trackSingle', pixelId, 'PageView');
 
+  const send = (name, parameters = {}, standard = false) => {
+    window.fbq(standard ? 'trackSingle' : 'trackSingleCustom', pixelId, name, parameters);
+  };
+  const milestones = new Set();
+  window.addEventListener('hp:brands-expanded', event => {
+    send('BrandsShowMoreClick', { source: event.detail?.source === 'blur_preview' ? 'blur_preview' : 'button' });
+  });
+  function measureScroll() {
+    const distance = document.documentElement.scrollHeight - innerHeight;
+    if (distance <= 0) return;
+    const percent = Math.min(100, Math.max(0, scrollY / distance * 100));
+    [25, 50, 75, 90].forEach(depth => {
+      if (percent >= depth && !milestones.has(depth)) {
+        milestones.add(depth);
+        send('ScrollDepth', { percent: depth });
+      }
+    });
+  }
+  let scheduled = false;
+  window.addEventListener('scroll', () => {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(() => { scheduled = false; measureScroll(); });
+  }, { passive: true });
+  measureScroll();
+  const contactSection = document.querySelector('#hp-contact');
+  if (contactSection && 'IntersectionObserver' in window) {
+    let contactSeen = false;
+    const observer = new IntersectionObserver(entries => {
+      if (!contactSeen && entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= .2)) {
+        contactSeen = true;
+        send('ContactSectionView');
+        observer.disconnect();
+      }
+    }, { threshold: .2 });
+    observer.observe(contactSection);
+  }
+
   document.addEventListener('click', event => {
     const link = event.target.closest?.('a[href]');
     if (!link || event.defaultPrevented) return;
     let url;
     try { url = new URL(link.href, location.href); } catch { return; }
-    const send = (name, parameters, standard = false) => {
-      window.fbq(standard ? 'trackSingle' : 'trackSingleCustom', pixelId, name, parameters);
-    };
     if (url.hostname === 'wa.me' || url.hostname === 'api.whatsapp.com') {
       send('Contact', { contact_method: 'whatsapp' }, true);
+      send('WhatsAppClick');
     } else if (url.protocol === 'mailto:') {
       send('Contact', { contact_method: 'email' }, true);
+      send('EmailClick');
     } else if (url.hostname === 'linkedin.com' || url.hostname === 'www.linkedin.com') {
       send('LinkedInClick', {});
     } else if (url.hostname === location.hostname && url.pathname.endsWith('/assets/cv.pdf')) {
@@ -49,6 +86,9 @@
         brand: link.closest('[data-brand]')?.dataset.brand || '',
         domain: url.hostname
       });
+    } else if (url.hostname === location.hostname && url.hash === '#hp-contact') {
+      const placement = link.closest('.hp-nav') ? 'header' : link.closest('.hp-dock-panel') ? 'dock' : 'page';
+      send('TalkButtonClick', { placement });
     }
   });
 })();
