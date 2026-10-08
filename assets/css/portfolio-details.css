@@ -1,0 +1,50 @@
+/* Portfolio content, brand directory and responsive disclosure. */
+body{padding-right:0!important;padding-left:0!important;}
+#hegazy-preview .hp-side-rail,#hegazy-preview .hp-moving-labels,#hegazy-preview .hp-mobile-progress{display:none!important;}
+#hegazy-preview{max-width:1440px;margin-inline:auto;}
+#hegazy-preview .hp-scroll-progress{height:3px;}
+#hegazy-preview .hp-reference-hero .hp-intro{font-size:clamp(17px,1.45vw,20px);line-height:1.9;white-space:normal;}
+#hegazy-preview .hp-learning-badge{display:inline-flex;background:#d1b4e7;color:#252c26;padding:6px 12px;border:1px solid var(--hp-ink);border-radius:999px;font-size:12px;margin-top:20px;}
+#hegazy-preview .hp-website-service h3{margin-top:16px;}
+#hegazy-preview .hp-tracking-work{padding-block:56px;}
+#hegazy-preview .hp-tracking-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+#hegazy-preview .hp-tracking-card{position:relative;min-width:0;padding:28px;border:2px solid var(--hp-ink);border-radius:22px;box-shadow:-4px 5px 0 var(--hp-ink);background:var(--hp-surface);transition:transform 200ms ease,box-shadow 200ms ease;}
+#hegazy-preview .hp-tracking-number{display:inline-grid;place-items:center;width:38px;height:38px;background:var(--hp-sage);color:#252c26;border:1.5px solid var(--hp-ink);border-radius:50%;font:600 13px Manrope,sans-serif;}
+#hegazy-preview .hp-tracking-card h3{font-size:20px;line-height:1.65;margin:20px 0 10px;}
+#hegazy-preview .hp-tracking-card p{font-size:15px;line-height:1.9;margin:0;color:var(--hp-muted);}
+#hegazy-preview .hp-tracking-brands{margin-top:34px;padding:28px;border:2px solid var(--hp-ink);border-radius:24px;box-shadow:-4px 5px 0 var(--hp-ink);background:var(--hp-surface);}
+#hegazy-preview .hp-tracking-brands h3{font-size:24px;line-height:1.6;margin:0;}
+#hegazy-preview .hp-brand-context{font-size:15px;color:var(--hp-muted);margin:10px 0 24px;}
+#hegazy-preview .hp-brand-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 0;}
+#hegazy-preview .hp-brand-list li{min-width:0;margin:0;padding:0;border:0;background:transparent;box-shadow:none;}
+#hegazy-preview .hp-brand-list a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;direction:ltr;padding:8px 18px;border:0;border-left:1px solid color-mix(in srgb,var(--hp-ink) 25%,transparent);border-radius:0;background:transparent;color:var(--hp-ink);text-decoration:none;box-shadow:none;min-height:55px;}
+#hegazy-preview .hp-brand-list li:nth-child(3n) a{border-left:0;}
+#hegazy-preview .hp-brand-name{font:700 15px/1.5 Manrope,sans-serif;overflow-wrap:anywhere;transition:color 180ms ease;}
+#hegazy-preview .hp-brand-domain{grid-column:1/-1;grid-row:2;font:400 12px/1.5 Manrope,sans-serif;color:var(--hp-muted);overflow-wrap:anywhere;}
+#hegazy-preview .hp-brand-arrow{font:400 18px/1.5 Manrope,sans-serif;transition:transform 180ms ease;}
+#hegazy-preview .hp-brand-list a:focus-visible{outline:2px solid var(--hp-ink);outline-offset:3px;}
+#hegazy-preview .hp-brand-list a:focus-visible .hp-brand-name,#hegazy-preview .hp-brand-list a:active .hp-brand-name{color:var(--hp-brand-hover);}
+@media(hover:hover) and (pointer:fine){#hegazy-preview .hp-tracking-card:hover{transform:translateY(-3px);box-shadow:-4px 8px 0 var(--hp-ink);}#hegazy-preview .hp-brand-list a:hover .hp-brand-arrow{transform:translate(3px,-3px);}#hegazy-preview .hp-brand-list a:hover .hp-brand-name{color:var(--hp-brand-hover);}}
+@media(max-width:1000px){#hegazy-preview .hp-tracking-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:700px){#hegazy-preview .hp-brand-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 0;}#hegazy-preview .hp-brand-list li:nth-child(3n) a{border-left:1px solid color-mix(in srgb,var(--hp-ink) 25%,transparent);}#hegazy-preview .hp-brand-list li:nth-child(2n) a{border-left:0;}#hegazy-preview .hp-brand-list a{padding:8px 12px;}#hegazy-preview .hp-brand-name{font-size:13px;}}
+@media(max-width:600px){#hegazy-preview .hp-tracking-grid{grid-template-columns:1fr;}#hegazy-preview .hp-tracking-work{padding-block:38px;}#hegazy-preview .hp-tracking-card,#hegazy-preview .hp-tracking-brands{padding:22px;}#hegazy-preview .hp-tracking-brands h3{font-size:21px;}#hegazy-preview .hp-reference-hero .hp-intro{font-size:17px;line-height:1.85;}#hegazy-preview .hp-nav .hp-name{font-size:12px;}#hegazy-preview .hp-nav .hp-avatar{width:36px;height:36px;flex:0 0 36px;}}
+@media(max-width:400px){#hegazy-preview .hp-brand-list{grid-template-columns:1fr;gap:0;}#hegazy-preview .hp-brand-list li a,#hegazy-preview .hp-brand-list li:nth-child(3n) a{border-left:0;border-bottom:1px solid color-mix(in srgb,var(--hp-ink) 20%,transparent);padding:13px 0;}#hegazy-preview .hp-brand-list li:last-child a{border-bottom:0;}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-tracking-card,#hegazy-preview .hp-brand-name,#hegazy-preview .hp-brand-arrow{transition:none;transform:none!important;}}
+
+#hegazy-preview{--hp-brand-hover:#3d6a50;}
+body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
+/* Short brand list with an accessible reveal control. */
+#hegazy-preview .hp-brand-list li[hidden]{display:none!important;}
+#hegazy-preview .hp-brand-preview{filter:blur(2.5px);pointer-events:none;user-select:none;opacity:.55;}
+#hegazy-preview .hp-brands-fold{position:relative;}
+#hegazy-preview .hp-brands-more{position:relative;display:flex;justify-content:center;margin-top:-28px;padding:24px 0 0;background:linear-gradient(transparent,var(--hp-surface) 70%);}
+#hegazy-preview .hp-brands-toggle{position:relative;display:inline-flex;align-items:center;gap:12px;padding:11px 20px;border:2px solid var(--hp-ink);border-radius:999px;background:var(--hp-peach);color:#252c26;font-size:14px;font-family:inherit;font-weight:600;line-height:1.5;box-shadow:-2px 3px 0 var(--hp-ink);cursor:pointer;transition:transform 180ms ease,box-shadow 180ms ease;}
+#hegazy-preview .hp-brands-expanded .hp-brands-more{margin-top:18px;padding-top:0;background:none;}
+#hegazy-preview .hp-brands-expanded .hp-brands-toggle>span:last-child{transform:rotate(180deg);}
+#hegazy-preview .hp-brands-expanded .hp-brand-list{animation:hp-brands-reveal 220ms ease-out;}
+#hegazy-preview .hp-brand-list a:is(:hover,:focus-visible,:active) .hp-brand-name{color:var(--hp-brand-hover)!important;}
+@keyframes hp-brands-reveal{from{opacity:.65;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(hover:hover) and (pointer:fine){#hegazy-preview .hp-brands-toggle:hover{transform:translateY(-2px);box-shadow:-2px 5px 0 var(--hp-ink);}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-brands-expanded .hp-brand-list{animation:none;}#hegazy-preview .hp-brands-toggle{transition:none;transform:none;}}
+#hegazy-preview .hp-brand-preview{pointer-events:auto;cursor:pointer;}
+#hegazy-preview .hp-brand-preview a{pointer-events:none;}
