@@ -19,3 +19,10 @@
 - Applied neon toolkit hover and subtle hover scaling on other cards.
 - Updated LinkedIn and enlarged the floating portrait menu.
 - Refined the charcoal theme, intro font and section accents.
+
+## 2026-10-08 — Tracking portfolio
+
+- Add six tracking work areas and 24 client website links across Egypt, Saudi Arabia and the Gulf.
+- Use a compact three-column directory, six-item phone preview, blurred final row and accessible Show more/Show less control.
+- Add green brand-name hover, preserve reduced-motion preferences and improve portrait/icon sizes.
+- Remove Coffee Town, Adora Pharma, Falah Coffee, A3DA Underground and Solimanya from the client directory.
