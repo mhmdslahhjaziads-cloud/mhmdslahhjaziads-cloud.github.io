@@ -9,11 +9,12 @@
   let expanded = false;
 
   function render() {
-    const limit = compact.matches ? 6 : 9;
     const columns = getComputedStyle(list).gridTemplateColumns.split(' ').length;
+    const limit = compact.matches ? 6 : columns === 5 ? 10 : 9;
+    const previewStart = !compact.matches && columns >= 5 ? columns : limit - columns;
     items.forEach((item, index) => {
       const hidden = !expanded && index >= limit;
-      const preview = !expanded && index >= limit - columns;
+      const preview = !expanded && index >= previewStart;
       item.hidden = hidden;
       item.classList.toggle('hp-brand-preview', preview && !hidden);
       if (preview || hidden) item.setAttribute('aria-hidden', 'true');
@@ -44,5 +45,10 @@
     }
   });
   compact.addEventListener('change', render);
+  let resizeFrame;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(render);
+  }, { passive: true });
   render();
 })();
