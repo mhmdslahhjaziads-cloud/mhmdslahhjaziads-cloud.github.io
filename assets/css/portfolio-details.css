@@ -149,3 +149,5 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 #hegazy-preview .hp-dock-indicator{width:22px;height:22px;font-size:18px;line-height:20px;}
 #hegazy-preview .hp-title-logos>span{width:24px;height:24px;border-radius:7px;}
 #hegazy-preview .hp-title-logos .hp-brand-icon{width:16px;height:16px;}
+
+@media(min-width:900px) and (hover:hover) and (pointer:fine){body{padding-right:44px!important;}#hegazy-preview{max-width:none;}#hegazy-preview.hp-docked .hp-moving-labels{opacity:0;}#hegazy-preview.hp-docked:has(.hp-side-rail:hover,.hp-nav:hover) .hp-moving-labels{opacity:1;}#hegazy-preview .hp-moving-labels>span{background:var(--hp-surface);border-radius:5px;padding:2px 6px;}}
