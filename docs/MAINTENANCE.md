@@ -75,3 +75,5 @@ Keep credentials, private client data and drafts outside this public repository.
 - Service and toolkit chips use centered wrapping rows.
 - Career-title stickers use the shared title wrapper; the translated text stays on the heading, outside the SVGs.
 - GA4 `contact` is marked as a key event. Saved report: “نية التواصل ومصدرها | Portfolio”; event-count scorecard and session source/medium/campaign table, filtered to contact. A prepared draft is an intent event, not proof of a sent message or customer.
+
+Search Console ownership was verified using the HTML tag on 2026-10-11. Root live inspection passed; indexing requests for `/` and `/en/` were accepted. Sitemap submission initially reported “Couldn't fetch” despite a public 200 XML response; see the delivery report for current processing status.

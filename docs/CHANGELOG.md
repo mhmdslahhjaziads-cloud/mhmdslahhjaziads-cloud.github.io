@@ -12,6 +12,9 @@
 - Remove the journey twist card and move availability/markets below the hero portrait.
 - Add contextual career stickers and contact-title hover motion with reduced-motion support.
 - Configure contact intent as a GA4 key event and save a source/campaign report.
+- Fix inherited dark-theme hover shadows on all four transparent toolkit wrappers while keeping their panel shadows.
+- Verify Search Console ownership and request indexing for both language pages.
+- Measure final Lighthouse performance: mobile 92, desktop 100; accessibility, best practices and SEO 100.
 - Refresh repository structure, build instructions and measurement documentation.
 
 ## 2026-10-10 · Search, measurement and current layout
