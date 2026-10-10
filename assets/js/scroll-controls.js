@@ -27,7 +27,7 @@
     const percent = Math.round(fraction() * 100);
     rail.setAttribute('aria-valuenow', String(percent));
     rail.setAttribute('aria-valuetext', percent + '%');
-    backTop.hidden = range() < 200 || fraction() < .85;
+    backTop.hidden = scrollY <= 0;
   }
   function queue() {
     if (frame === null) frame = requestAnimationFrame(render);
