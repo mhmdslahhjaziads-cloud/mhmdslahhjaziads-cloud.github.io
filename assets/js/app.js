@@ -23,13 +23,19 @@
   let letterFrame = null;
   let letterGroups = [];
 
+  function labelAnimationBounds(targets, index) {
+    const target = targets[index];
+    const lower = Math.max(target - 4, index ? (targets[index - 1] + target) / 2 + 14 : target - 4);
+    const upper = Math.min(target + 4, index < targets.length - 1 ? (target + targets[index + 1]) / 2 - 14 : target + 4);
+    return lower <= upper ? [lower, upper] : [target, target];
+  }
+
   function animateLetters() {
     let moving = false;
     const targets = letterGroups.map(group => parseFloat(group.label.style.getPropertyValue('--hp-label-y')) || 0);
     letterGroups.forEach((group, groupIndex) => {
       const target = parseFloat(group.label.style.getPropertyValue('--hp-label-y')) || 0;
-      const lower = groupIndex ? (targets[groupIndex - 1] + target) / 2 + 14 : target - 12;
-      const upper = groupIndex < targets.length - 1 ? (target + targets[groupIndex + 1]) / 2 - 14 : target + 12;
+      const [lower, upper] = labelAnimationBounds(targets, groupIndex);
       let leader = target;
       group.letters.forEach((letter, index) => {
         const previous = letter.y;
