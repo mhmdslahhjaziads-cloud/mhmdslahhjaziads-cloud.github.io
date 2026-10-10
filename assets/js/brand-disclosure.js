@@ -10,15 +10,17 @@
 
   function render() {
     const columns = getComputedStyle(list).gridTemplateColumns.split(' ').length;
-    const limit = compact.matches ? 6 : columns >= 5 ? columns : columns * 2;
+    const limit = columns * 2;
     items.forEach((item, index) => {
-      const hidden = !expanded && index >= limit;
+      const preview = !expanded && index >= limit && index < limit + columns;
+      const hidden = !expanded && index >= limit + columns;
       item.hidden = hidden;
-      item.classList.remove('hp-brand-preview');
-      if (hidden) item.setAttribute('aria-hidden', 'true');
+      item.classList.toggle('hp-brand-preview', preview);
+      item.inert = hidden || preview;
+      if (hidden || preview) item.setAttribute('aria-hidden', 'true');
       else item.removeAttribute('aria-hidden');
       const link = item.querySelector('a');
-      if (hidden) link.setAttribute('tabindex', '-1');
+      if (hidden || preview) link.setAttribute('tabindex', '-1');
       else link.removeAttribute('tabindex');
     });
     panel.classList.toggle('hp-brands-expanded', expanded);
