@@ -50,5 +50,10 @@
     cancelAnimationFrame(resizeFrame);
     resizeFrame = requestAnimationFrame(render);
   }, { passive: true });
+  // The full stylesheet may arrive after this deferred script.
+  document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+    link.addEventListener('load', () => requestAnimationFrame(render), { once: true });
+  });
+  window.addEventListener('load', render, { once: true });
   render();
 })();

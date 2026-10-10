@@ -12,5 +12,5 @@
   script.dataset.clarityState = 'loading';
   script.onload = () => { script.dataset.clarityState = 'loaded'; };
   script.onerror = () => { script.dataset.clarityState = 'blocked'; };
-  document.head.appendChild(script);
+  (window.hpAfterFirstPaint || (callback => callback()))(() => document.head.appendChild(script));
 })();

@@ -19,14 +19,17 @@
   let storage;
   try {storage = window.localStorage;} catch (_) {storage = null;}
   const preferences = window.HegazyPreferences.readPreferences(storage);
+  preferences.language = /^\/en(?:\/|$)/.test(location.pathname) ? 'en' : 'ar';
+  const assetPrefix = preferences.language === 'en' ? '../' : '';
   let scrollQueued = false;
   let letterFrame = null;
   let letterGroups = [];
 
   function labelAnimationBounds(targets, index) {
     const target = targets[index];
-    const lower = Math.max(target - 4, index ? (targets[index - 1] + target) / 2 + 14 : target - 4);
-    const upper = Math.min(target + 4, index < targets.length - 1 ? (target + targets[index + 1]) / 2 - 14 : target + 4);
+    if ((index && targets[index - 1] === target) || (index < targets.length - 1 && targets[index + 1] === target)) return [target, target];
+    const lower = Math.max(target - 24, index ? (targets[index - 1] + target) / 2 + 14 : target - 24);
+    const upper = Math.min(target + 24, index < targets.length - 1 ? (target + targets[index + 1]) / 2 - 14 : target + 24);
     return lower <= upper ? [lower, upper] : [target, target];
   }
 
@@ -43,7 +46,7 @@
         if (Math.abs(target - letter.y) > .15) moving = true;
         letter.element.style.setProperty('--hp-letter-y', letter.y.toFixed(2)+'px');
         const bend = motion.matches ? 0 : Math.max(-1,Math.min(1,(letter.y-target)/75));
-        const width = group.label.offsetWidth;
+        const width = group.width || 80;
         const center = (index + .5) / group.letters.length * width;
         const horizontal = preferences.language === 'en' ? (width - center) * Math.abs(bend) : center * Math.abs(bend);
         letter.element.style.setProperty('--hp-letter-x',horizontal.toFixed(2)+'px');
@@ -63,6 +66,7 @@
     if (letterFrame !== null) cancelAnimationFrame(letterFrame);
     letterFrame = null;
     letterGroups = [];
+    if (!finePointer.matches || document.documentElement.clientWidth < 900) return;
     root.querySelectorAll('.hp-moving-labels > span').forEach(label => {
       const text = label.textContent;
       const count = Array.from(text).length;
@@ -91,7 +95,8 @@
   function measureLetterColumn() {
     if (!finePointer.matches || document.documentElement.clientWidth < 900) return;
     // Reserve only the space the section names need, including the active font.
-    const columnWidth = Math.ceil(Math.max(0, ...letterGroups.map(group => group.label.offsetWidth)) * 1.1 + 4);
+    letterGroups.forEach(group => {group.width = group.label.offsetWidth;});
+    const columnWidth = Math.ceil(Math.max(0, ...letterGroups.map(group => group.width)) * 1.1 + 4);
     document.documentElement.style.setProperty('--hp-letter-column-width', columnWidth + 'px');
   }
 
@@ -111,7 +116,7 @@
         svg.setAttribute('viewBox','0 0 24 24');
         svg.setAttribute('aria-hidden','true');
         const use = document.createElementNS('http://www.w3.org/2000/svg','use');
-        use.setAttribute('href','assets/brand-icons.svg#brand-'+platformLogos[match[0]]);
+        use.setAttribute('href',assetPrefix+'assets/brand-icons.svg#brand-'+platformLogos[match[0]]);
         svg.append(use);
         mention.append(svg,document.createTextNode(match[0]));
         fragment.append(mention);
@@ -142,9 +147,9 @@
     root.setAttribute('aria-label', english ? 'Mohamed Salah Hegazy portfolio' : 'موقع محمد صلاح حجازي');
     root.querySelector('.hp-map')?.setAttribute('aria-label', english ? 'Workflow from advertising to optimization' : 'مسار عمل من الإعلان إلى التحسين');
     const campaignCTA = root.querySelector('#hp-campaign-cta');
-    campaignCTA.href = 'https://wa.me/201558272805?text=' + encodeURIComponent(campaignCTA.getAttribute('data-message-' + language));
+    if (campaignCTA) campaignCTA.href = 'https://wa.me/201558272805?text=' + encodeURIComponent(campaignCTA.getAttribute('data-message-' + language));
     const emailCTA = root.querySelector('.hp-email-cta');
-    emailCTA.href = 'mailto:mhmdslahhjazi.ads@gmail.com?subject=' + encodeURIComponent(emailCTA.getAttribute('data-subject-' + language)) + '&body=' + encodeURIComponent(emailCTA.getAttribute('data-body-' + language));
+    if (emailCTA) emailCTA.href = 'mailto:mhmdslahhjazi.ads@gmail.com?subject=' + encodeURIComponent(emailCTA.getAttribute('data-subject-' + language)) + '&body=' + encodeURIComponent(emailCTA.getAttribute('data-body-' + language));
     document.title = english ? 'Mohamed Salah Hegazy | Performance Marketing & Tracking' : 'محمد صلاح حجازي | Performance Marketing & Tracking';
     document.querySelector('meta[name="description"]').content = english
       ? 'Mohamed Salah Hegazy — performance marketing, account management, tracking and data accuracy for e-commerce. Explore my experience and get in touch.'
@@ -157,6 +162,7 @@
 
   function applyTheme() {
     const dark = preferences.theme === 'dark';
+    document.documentElement.dataset.appearance = preferences.theme;
     root.dataset.appearance = preferences.theme;
     document.body.classList.toggle('hp-dark', dark);
     themeButton.setAttribute('aria-pressed', String(dark));
@@ -194,8 +200,8 @@
 
   languageButton.addEventListener('click', function () {
     preferences.language = preferences.language === 'ar' ? 'en' : 'ar';
-    applyLanguage();
     window.HegazyPreferences.savePreferences(storage, preferences);
+    location.href = (preferences.language === 'en' ? '/en/' : '/') + location.search + location.hash;
   });
   themeButton.addEventListener('click', function () {
     preferences.theme = preferences.theme === 'light' ? 'dark' : 'light';
@@ -248,7 +254,15 @@
   }
 
   function updateScroll() {
+    // All geometry reads precede style writes. Hidden phone labels need no layout work.
     const range = document.documentElement.scrollHeight - window.innerHeight;
+    const showLetters = finePointer.matches && document.documentElement.clientWidth >= 900;
+    const sectionTops = new Map();
+    railLinks.forEach(link => {const id=link.dataset.section;if(!sectionTops.has(id))sectionTops.set(id,document.getElementById(id).getBoundingClientRect().top);});
+    const labels = root.querySelector('.hp-moving-labels');
+    const labelBounds = showLetters ? labels.getBoundingClientRect() : null;
+    const labelItems = showLetters ? [...labels.querySelectorAll(':scope > span')] : [];
+    labelItems.forEach(label=>{const id=label.dataset.labelSection;if(!sectionTops.has(id))sectionTops.set(id,document.getElementById(id).getBoundingClientRect().top);});
     const progress = range > 0 ? Math.max(0, Math.min(1, window.scrollY / range)) : 0;
     root.style.setProperty('--hp-progress', progress.toFixed(4));
     const percent = String(Math.round(progress * 100)).padStart(3, '0') + '%';
@@ -269,22 +283,19 @@
       if (!docked && motion.matches) requestAnimationFrame(measureHeader);
     }
     let active = 'hp-home';
-    railLinks.forEach(link=>{if(document.getElementById(link.dataset.section).getBoundingClientRect().top < window.innerHeight * .4)active=link.dataset.section;});
+    railLinks.forEach(link=>{if(sectionTops.get(link.dataset.section) < window.innerHeight * .4)active=link.dataset.section;});
     if (progress >= .995) active = 'hp-contact';
     railLinks.forEach(link=>{const selected=link.dataset.section===active;link.classList.toggle('hp-rail-active',selected);if(selected)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});
-    const labels = root.querySelector('.hp-moving-labels');
-    const labelBounds = labels.getBoundingClientRect();
     let previousLabelY = -40;
-    const labelItems = labels.querySelectorAll(':scope > span');
     labelItems.forEach((label,index)=>{
       const selected = label.dataset.labelSection === active;
       label.classList.toggle('hp-label-current',selected);
-      const sectionTop = document.getElementById(label.dataset.labelSection).getBoundingClientRect().top;
+      const sectionTop = sectionTops.get(label.dataset.labelSection);
       const y = Math.max(index * 40,previousLabelY + 40,Math.min(labelBounds.height - (labelItems.length-index)*40,sectionTop-labelBounds.top));
       previousLabelY = y;
       label.style.setProperty('--hp-label-y',y+'px');
     });
-    queueLetters();
+    if (showLetters) queueLetters();
     updateRouteMenu(active);
     scrollQueued = false;
   }
@@ -292,6 +303,7 @@
     if (!scrollQueued) {scrollQueued = true;requestAnimationFrame(updateScroll);}
   }, {passive:true});
   function measureHeader() {
+    if (finePointer.matches && document.documentElement.clientWidth >= 900 && !letterGroups.length) prepareLetterMotion();
     measureLetterColumn();
     const bounds = slot.getBoundingClientRect();
     root.style.setProperty('--hp-nav-left', bounds.left + 'px');

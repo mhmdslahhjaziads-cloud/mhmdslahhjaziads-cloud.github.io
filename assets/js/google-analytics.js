@@ -14,13 +14,23 @@
   script.dataset.ga4State = 'loading';
   script.onload = () => { script.dataset.ga4State = 'loaded'; };
   script.onerror = () => { script.dataset.ga4State = 'blocked'; };
-  document.head.appendChild(script);
+  (window.hpAfterFirstPaint || (callback => callback()))(() => document.head.appendChild(script));
 
   const send = (name, parameters = {}) => {
     window.gtag('event', name, { ...parameters, send_to: measurementId });
   };
   window.addEventListener('hp:brands-expanded', () => {
     send('brands_show_more_click', { source: 'button' });
+  });
+
+
+  window.addEventListener('hp:contact-composed', event => {
+    const method = event.detail?.method;
+    const requestType = event.detail?.request_type;
+    if (!['whatsapp','email'].includes(method) || !['ads','tracking','site'].includes(requestType)) return;
+    send('contact', {contact_method:method, request_type:requestType});
+    send(method === 'whatsapp' ? 'whatsapp_click' : 'email_click');
+    send('contact_message_prepare', {contact_method:method,request_type:requestType});
   });
 
   const milestones = new Set();

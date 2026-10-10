@@ -22,7 +22,7 @@
     script.dataset.metaPixelState = 'loading';
     script.onload = () => { script.dataset.metaPixelState = 'loaded'; };
     script.onerror = () => { script.dataset.metaPixelState = 'blocked'; };
-    document.head.appendChild(script);
+    (window.hpAfterFirstPaint || (callback => callback()))(() => document.head.appendChild(script));
   }
   window.fbq('set', 'autoConfig', false, pixelId);
   window.fbq('init', pixelId);
@@ -31,6 +31,16 @@
   const send = (name, parameters = {}, standard = false) => {
     window.fbq(standard ? 'trackSingle' : 'trackSingleCustom', pixelId, name, parameters);
   };
+
+  window.addEventListener('hp:contact-composed', event => {
+    const method = event.detail?.method;
+    const requestType = event.detail?.request_type;
+    if (!['whatsapp','email'].includes(method) || !['ads','tracking','site'].includes(requestType)) return;
+    send('Contact', {contact_method:method,request_type:requestType}, true);
+    send(method === 'whatsapp' ? 'WhatsAppClick' : 'EmailClick');
+    send('ContactMessagePrepare', {contact_method:method,request_type:requestType});
+  });
+
   const milestones = new Set();
   window.addEventListener('hp:brands-expanded', event => {
     send('BrandsShowMoreClick', { source: event.detail?.source === 'blur_preview' ? 'blur_preview' : 'button' });
