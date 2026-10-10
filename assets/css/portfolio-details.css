@@ -153,7 +153,7 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 /* Keep the scrolling letters visible in a compact column beside the ruler. */
 @media(min-width:900px) and (hover:hover) and (pointer:fine){
   body{padding-right:calc(46px + var(--hp-letter-column-width,72px))!important;}
-  #hegazy-preview{max-width:none;padding-right:4px;}
+  #hegazy-preview{max-width:none;padding-right:10px;}
   #hegazy-preview .hp-moving-labels{right:46px;width:var(--hp-letter-column-width,72px);}
   #hegazy-preview.hp-docked .hp-moving-labels{opacity:1;}
   #hegazy-preview.hp-dock-open .hp-moving-labels{opacity:0;}
@@ -195,3 +195,21 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 }
 @media(max-width:700px){#hegazy-preview .hp-brand-name{font-size:13px;}}
 @media(max-width:400px){#hegazy-preview .hp-brand-list{gap:0;}}
+
+/* Four toolkit groups, with equal cells and a fixed space for every logo. */
+@media(min-width:1100px){#hegazy-preview .hp-tool-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}}
+#hegazy-preview #hp-toolkit .hp-tool-chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;min-width:0;min-height:56px;box-sizing:border-box;padding:8px;font-size:12px;line-height:1.35;text-align:center;white-space:normal;}
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand] .hp-brand-icon{width:20px;height:20px;flex:0 0 20px;}
+
+html.hp-scroll-dragging{scroll-behavior:auto!important;user-select:none;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview .hp-side-rail{cursor:grab;touch-action:none;}html.hp-scroll-dragging #hegazy-preview .hp-side-rail{cursor:grabbing;}}
+#hegazy-preview .hp-side-rail:focus-visible{outline:2px solid var(--hp-peach);outline-offset:3px;}
+#hegazy-preview .hp-back-top{position:fixed;left:18px;bottom:18px;z-index:22;display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--hp-ink);border-radius:50%;background:var(--hp-lime,#cee591);color:#252c26;box-shadow:-2px 3px 0 var(--hp-ink);cursor:pointer;transition:transform 180ms ease,box-shadow 180ms ease;}
+#hegazy-preview .hp-back-top[hidden]{display:none!important;}
+#hegazy-preview .hp-back-top svg{width:22px;height:22px;}
+#hegazy-preview .hp-back-top:is(:hover,:focus-visible){transform:translateY(-2px);box-shadow:-2px 5px 0 var(--hp-ink);}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-back-top{transition:none;transform:none;}}
+
+#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]{overflow-wrap:anywhere;}
+@media(min-width:1100px){#hegazy-preview #hp-toolkit .hp-tool-chips{grid-template-columns:minmax(0,1fr);}#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]{height:48px;min-height:48px;}}
