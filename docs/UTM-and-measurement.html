@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Portfolio campaign links and measurement</title><style>body{max-width:850px;margin:40px auto;padding:0 24px;font:17px/1.65 system-ui,sans-serif;color:#243027;background:#f6f3ec}h1,h2{line-height:1.2}h2{margin-top:2em}table{border-collapse:collapse;width:100%}th,td{text-align:left;border-bottom:1px solid #c5d6b7;padding:10px}code{font-size:.9em;overflow-wrap:anywhere}a{color:#245d3d}.note{padding:16px;background:#e1e8d9;border-radius:12px}</style></head><body>
+<h1>Campaign links and contact measurement</h1>
+<p>Use the same naming rules for each portfolio campaign so GA4 acquisition reports can compare sources clearly. Keep all values lowercase and use underscores inside a value.</p>
+<table><thead><tr><th>Parameter</th><th>Meaning</th><th>Examples</th></tr></thead><tbody>
+<tr><td><code>utm_source</code></td><td>The platform sending the visitor</td><td><code>linkedin</code>, <code>facebook</code>, <code>instagram</code>, <code>whatsapp</code></td></tr>
+<tr><td><code>utm_medium</code></td><td>The distribution method</td><td><code>social</code> for organic social; <code>paid_social</code> for paid social; <code>referral</code> for a direct shared link</td></tr>
+<tr><td><code>utm_campaign</code></td><td>The stable campaign name</td><td><code>portfolio_launch_2026_10</code>, <code>tracking_services_2026_10</code></td></tr>
+<tr><td><code>utm_content</code></td><td>Optional creative or placement</td><td><code>profile_bio</code>, <code>intro_post</code>, <code>story_a</code></td></tr>
+</tbody></table>
+<p>Organic LinkedIn example: <a href="https://mhmdslahhjaziads-cloud.github.io/?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=portfolio_launch_2026_10&amp;utm_content=intro_post">open the Arabic campaign link</a>.</p>
+<p>English Instagram example: <a href="https://mhmdslahhjaziads-cloud.github.io/en/?utm_source=instagram&amp;utm_medium=paid_social&amp;utm_campaign=tracking_services_2026_10&amp;utm_content=story_a#hp-contact">open the English campaign link</a>.</p>
+<p class="note">Never put names, email addresses, phone numbers, message text, client identities or other personal data in UTM parameters. Do not tag internal links: it can distort acquisition attribution. Preserve the existing query when switching languages.</p>
+<h2>What success means</h2>
+<p>The primary website outcome is a <strong>contact intent</strong>: a visitor clicks WhatsApp or email. The existing GA4 <code>contact</code> event has <code>contact_method</code> set to <code>whatsapp</code> or <code>email</code>. A click does not establish that the visitor sent a message or became a lead. Confirm qualified inquiries separately using actual conversations.</p>
+<table><thead><tr><th>Event</th><th>Use</th></tr></thead><tbody>
+<tr><td><code>contact</code></td><td>Primary contact intent; mark this event as a GA4 key event after verifying receipt in the property.</td></tr>
+<tr><td><code>whatsapp_click</code>, <code>email_click</code></td><td>Channel diagnostics. These accompany the contact event; do not count them again as separate conversions.</td></tr>
+<tr><td><code>cv_download_click</code></td><td>Secondary engagement: a click to request the CV, not confirmation of download completion.</td></tr>
+<tr><td><code>contact_section_view</code>, <code>talk_button_click</code>, <code>scroll_depth</code></td><td>Funnel context; avoid treating each as a lead.</td></tr>
+<tr><td><code>linkedin_click</code>, <code>brand_website_click</code>, <code>brands_show_more_click</code></td><td>Other engagement and navigation diagnostics.</td></tr>
+</tbody></table>
+<h2>Simple reporting view</h2>
+<p>In GA4, use session source/medium and session campaign as the acquisition dimensions. Compare sessions, engaged sessions, users who trigger <code>contact</code>, and contact key events. Keep CV clicks in a separate engagement column. Break contact down by <code>contact_method</code> after registering that event-scoped custom dimension. Show device category and Arabic/English page path as secondary breakdowns. If calculating a contact session rate, divide sessions containing contact intent by total sessions for the same period and segment.</p>
+<h2>Account checks before relying on the report</h2>
+<ol><li>Confirm the production GA4 property and web stream for measurement ID <code>G-5E9BPGNJJH</code>; verify event receipt in Realtime or DebugView.</li><li>Check that <code>contact</code> is marked as a key event, choose an appropriate counting method, and confirm any custom definitions used by the report.</li><li>Check the intended Clarity project <code>yvk9p3430s</code> for recorded production sessions. Localhost previews are excluded by the loaders.</li><li>Verify ownership of the production site in Search Console and submit <code>https://mhmdslahhjaziads-cloud.github.io/sitemap.xml</code>. Review URL inspection for both language pages.</li></ol>
+<p>These steps describe the required setup. They do not claim that a dashboard, key event or Search Console submission has been configured, that events always reach the service, or that the pages are already indexed.</p>
+<p><a href="../">Back to portfolio</a></p></body></html>

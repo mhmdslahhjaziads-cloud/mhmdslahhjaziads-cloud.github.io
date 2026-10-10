@@ -1,0 +1,30 @@
+<!-- Insert inside #hp-contact after the remaining LinkedIn row. -->
+<div class="hp-message-composer" id="hp-contact-composer" data-clarity-mask="true">
+  <h3 class="hp-message-heading" data-ar="رتب فكرتك فى رسالة" data-en="Put your idea into a message">رتب فكرتك فى رسالة</h3>
+  <form class="hp-message-form" id="hp-message-form" novalidate data-clarity-mask="true" aria-describedby="hp-message-note">
+    <div class="hp-message-field">
+      <label for="hp-message-kind" data-ar="نوع الشغل" data-en="Request type">نوع الشغل</label>
+      <select id="hp-message-kind" name="request_type" aria-describedby="hp-message-error">
+        <option value="ads" data-ar="إعلانات" data-en="Advertising">إعلانات</option>
+        <option value="tracking" data-ar="تتبّع وقياس" data-en="Tracking and measurement">تتبّع وقياس</option>
+        <option value="site" data-ar="موقع أو متجر" data-en="Website or store">موقع أو متجر</option>
+      </select>
+    </div>
+    <div class="hp-message-field">
+      <label for="hp-message-url" data-ar="لينك المشروع (اختياري)" data-en="Project URL (optional)">لينك المشروع (اختياري)</label>
+      <input id="hp-message-url" type="url" inputmode="url" autocomplete="off" dir="ltr" placeholder="https://example.com" aria-describedby="hp-message-error" data-clarity-mask="true">
+    </div>
+    <div class="hp-message-field hp-message-wide">
+      <label for="hp-message-details" data-ar="محتاج نشتغل على إيه؟" data-en="What would you like to work on?">محتاج نشتغل على إيه؟</label>
+      <textarea id="hp-message-details" rows="3" maxlength="800" required autocomplete="off" aria-describedby="hp-message-note hp-message-count hp-message-error" data-clarity-mask="true" placeholder="قولي السياق، التحدّي، وإيه اللي حابب توصله."></textarea>
+      <span class="hp-message-count" id="hp-message-count">0 / 800</span>
+    </div>
+    <p class="hp-message-note hp-message-wide" id="hp-message-note" data-ar="التفاصيل مطلوبة. هتفتح رسالة جاهزة في واتساب أو الإيميل، وتراجعها وتبعتها بنفسك." data-en="Details are required. Open a prepared message in WhatsApp or email, then review and send it yourself.">التفاصيل مطلوبة. هتفتح رسالة جاهزة في واتساب أو الإيميل، وتراجعها وتبعتها بنفسك.</p>
+    <p class="hp-message-error hp-message-wide" id="hp-message-error" role="alert" aria-atomic="true" hidden></p>
+    <div class="hp-message-destinations hp-message-wide">
+      <button id="hp-message-whatsapp" type="button"><span class="hp-message-button-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="assets/brand-icons.svg#brand-whatsapp"></use></svg></span><span data-ar="جهّزها في واتساب ↗" data-en="Prepare in WhatsApp ↗">جهّزها في واتساب ↗</span></button>
+      <button id="hp-message-email" type="button"><span class="hp-message-button-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg></span><span data-ar="جهّزها في الإيميل ↗" data-en="Prepare in email ↗">جهّزها في الإيميل ↗</span></button>
+      <a class="hp-composer-linkedin hp-linkedin-cta" href="https://www.linkedin.com/in/mhmdslahhjazi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/brand-icons.svg#brand-linkedin"></use></svg></a>
+    </div>
+  </form>
+</div>
