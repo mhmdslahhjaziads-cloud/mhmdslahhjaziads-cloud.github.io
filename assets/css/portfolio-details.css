@@ -51,7 +51,7 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 
 #hegazy-preview .hp-tracking-brands>.hp-reference-label{margin-bottom:18px;}
 
-#hegazy-preview #hp-method .hp-workflow-title{display:inline-block;position:relative;max-width:calc(100% - 28px);padding:12px 24px;background:var(--hp-peach);color:#252c26;border:2px solid var(--hp-ink);border-radius:999px;box-shadow:-4px 5px 0 var(--hp-ink);font-size:clamp(24px,3vw,42px);line-height:1.5;transition:transform 220ms ease,box-shadow 220ms ease;}
+#hegazy-preview #hp-method .hp-workflow-title{display:inline-block;position:relative;max-width:calc(100% - 28px);padding:12px 24px;background:var(--hp-peach);color:#252c26;border:2px solid var(--hp-ink);border-radius:999px;box-shadow:-4px 5px 0 var(--hp-ink);line-height:1.5;transition:transform 220ms ease,box-shadow 220ms ease;}
 #hegazy-preview #hp-method .hp-workflow-title:before{content:'';position:absolute;inset-inline-end:calc(100% + 12px);top:50%;width:13px;height:13px;border:2px solid var(--hp-ink);border-radius:3px;background:#a6c8df;transform:translateY(-50%) rotate(15deg);transition:transform 220ms ease;}
 @media(hover:hover) and (pointer:fine){#hegazy-preview #hp-method .hp-workflow-title:hover{transform:translateY(-3px) rotate(-.5deg);box-shadow:-5px 8px 0 var(--hp-ink);}#hegazy-preview #hp-method .hp-workflow-title:hover:before{transform:translateY(-50%) rotate(40deg);}}
 #hegazy-preview #hp-method .hp-workflow-title:active{transform:translateY(2px);box-shadow:-1px 2px 0 var(--hp-ink);}
@@ -105,7 +105,7 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 #hegazy-preview #hp-method .hp-workflow-title.hp-touch-active{transform:translateY(-3px) rotate(-.5deg);box-shadow:-5px 8px 0 var(--hp-ink);}
 @media(prefers-reduced-motion:reduce){#hegazy-preview .hp-touch-active,#hegazy-preview .hp-touch-active:before,#hegazy-preview .hp-touch-active:after{transform:none!important;scale:1!important;rotate:none!important;transition:none!important;}}
 
-#hegazy-preview #hp-services .hp-services-title{display:inline-block;position:relative;margin:0 0 20px;padding:10px 24px;border:2px solid var(--hp-ink);border-radius:999px;background:#2d493d;color:#fffdf7;font-size:clamp(26px,3vw,42px);line-height:1.55;box-shadow:-4px 5px 0 var(--hp-ink);transition:transform 300ms cubic-bezier(.22,1,.36,1),box-shadow 300ms ease;}
+#hegazy-preview #hp-services .hp-services-title{display:inline-block;position:relative;margin:0 0 20px;padding:10px 24px;border:2px solid var(--hp-ink);border-radius:999px;background:#2d493d;color:#fffdf7;line-height:1.55;box-shadow:-4px 5px 0 var(--hp-ink);transition:transform 300ms cubic-bezier(.22,1,.36,1),box-shadow 300ms ease;}
 #hegazy-preview #hp-services .hp-services-title:after{display:none;content:none;}
 @media(hover:hover) and (pointer:fine){#hegazy-preview #hp-services .hp-services-title:hover{transform:translateY(-2px);box-shadow:-4px 7px 0 var(--hp-ink);}}
 #hegazy-preview #hp-services .hp-services-title:active{transform:translateY(2px);box-shadow:-1px 2px 0 var(--hp-ink);}
@@ -113,7 +113,7 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 
 #hegazy-preview .hp-tracking-brands h3{font-size:clamp(28px,3.5vw,44px);line-height:1.6;margin:14px 0 10px;}
 
-#hegazy-preview :is(#hp-background,#hp-toolkit,#hp-tracking-work) .hp-framed-title{display:inline-block;position:relative;max-width:calc(100% - 28px);padding:12px 24px;background:var(--hp-title-color);color:#252c26;border:2px solid var(--hp-ink);border-radius:999px;box-shadow:-4px 5px 0 var(--hp-ink);font-size:clamp(24px,3vw,42px);line-height:1.5;transition:transform 300ms cubic-bezier(.22,1,.36,1),box-shadow 300ms ease;}
+#hegazy-preview :is(#hp-background,#hp-toolkit,#hp-tracking-work) .hp-framed-title{display:inline-block;position:relative;max-width:calc(100% - 28px);padding:12px 24px;background:var(--hp-title-color);color:#252c26;border:2px solid var(--hp-ink);border-radius:999px;box-shadow:-4px 5px 0 var(--hp-ink);line-height:1.5;transition:transform 300ms cubic-bezier(.22,1,.36,1),box-shadow 300ms ease;}
 #hegazy-preview :is(#hp-background,#hp-toolkit,#hp-tracking-work) .hp-framed-title:after{display:none;content:none;}
 #hegazy-preview :is(#hp-background,#hp-toolkit,#hp-tracking-work) .hp-framed-title:before{content:'';position:absolute;inset-inline-end:calc(100% + 12px);top:50%;width:13px;height:13px;border:2px solid var(--hp-ink);border-radius:3px;background:var(--hp-peach);transform:translateY(-50%) rotate(15deg);transition:transform 300ms ease;}
 @media(hover:hover) and (pointer:fine){#hegazy-preview :is(#hp-background,#hp-toolkit,#hp-tracking-work) .hp-framed-title:hover{transform:translateY(-3px) rotate(-.5deg);box-shadow:-5px 8px 0 var(--hp-ink);}#hegazy-preview .hp-framed-title:hover:before{transform:translateY(-50%) rotate(40deg);}}
@@ -130,7 +130,7 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 #hegazy-preview .hp-title-wrap:has(.hp-touch-active) .hp-title-logos>span{opacity:1;transform:translateY(0) scale(1) rotate(-8deg);}
 @media(prefers-reduced-motion:reduce){#hegazy-preview .hp-title-logos>span{transition:none;transform:none!important;}}
 
-#hegazy-preview .hp-tracking-brands h3{font-size:clamp(24px,3vw,42px);line-height:1.5;}
+#hegazy-preview .hp-tracking-brands h3{line-height:1.5;}
 
 /* Restore desktop ruler and section labels; keep touch navigation available. */
 @media(min-width:900px) and (hover:hover) and (pointer:fine){body{padding-right:150px!important;}#hegazy-preview .hp-side-rail{display:block!important;}#hegazy-preview .hp-moving-labels{display:block!important;}}
@@ -141,7 +141,7 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 @media(prefers-reduced-motion:reduce){#hegazy-preview .hp-nav,#hegazy-preview .hp-nav>*{transition:none!important;animation:none!important;}}
 
 #hegazy-preview #hp-toolkit .hp-title-wrap{display:block;width:max-content;max-width:100%;}
-#hegazy-preview #hp-toolkit .hp-framed-title{font-size:clamp(22px,2.5vw,34px);line-height:1.45;padding:8px 18px;}
+
 #hegazy-preview #hp-toolkit .hp-label{display:inline-block;margin-bottom:4px;}
 #hegazy-preview #hp-services .hp-services-title.hp-touch-active{transform:translateY(-2px);box-shadow:-4px 7px 0 var(--hp-ink);}
 
@@ -151,3 +151,18 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 #hegazy-preview .hp-title-logos .hp-brand-icon{width:16px;height:16px;}
 
 @media(min-width:900px) and (hover:hover) and (pointer:fine){body{padding-right:44px!important;}#hegazy-preview{max-width:none;}#hegazy-preview.hp-docked .hp-moving-labels{opacity:0;}#hegazy-preview.hp-docked:has(.hp-side-rail:hover,.hp-nav:hover) .hp-moving-labels{opacity:1;}#hegazy-preview .hp-moving-labels>span{background:var(--hp-surface);border-radius:5px;padding:2px 6px;}}
+
+
+/* One compact heading scale in both languages; frames hug a single line. */
+#hegazy-preview{--hp-section-title-size:28px;}
+#hegazy-preview :is(.hp-section-heading h2,.hp-reference-heading h2,#hp-experience>h2,#hp-contact>h2,.hp-tracking-brands h3){font-size:var(--hp-section-title-size)!important;font-weight:700!important;line-height:1.35!important;white-space:nowrap;letter-spacing:normal;}
+#hegazy-preview .hp-title-wrap{display:block;width:max-content;max-width:100%;margin:0;padding-top:0;}
+#hegazy-preview :is(#hp-services .hp-services-title,#hp-method .hp-workflow-title,#hp-background .hp-framed-title,#hp-toolkit .hp-framed-title,#hp-tracking-work .hp-framed-title){width:max-content;max-width:100%;margin:0;padding:10px 18px;box-sizing:border-box;box-shadow:-3px 4px 0 var(--hp-ink);}
+#hegazy-preview .hp-framed-title:before,#hegazy-preview .hp-workflow-title:before{display:none;}
+#hegazy-preview .hp-reference-heading{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:26px;}
+#hegazy-preview .hp-reference-heading>p{margin:0!important;font-size:16px!important;line-height:1.8;}
+#hegazy-preview .hp-title-logos{top:-17px;gap:6px;}
+#hegazy-preview .hp-title-logos>span:nth-child(3){transition-delay:90ms;}
+@media(max-width:900px){#hegazy-preview{--hp-section-title-size:24px;}}
+@media(max-width:700px){#hegazy-preview{--hp-section-title-size:18px;}#hegazy-preview :is(.hp-services-title,.hp-workflow-title,.hp-framed-title){padding:9px 13px!important;}#hegazy-preview .hp-reference-heading>p{font-size:15px!important;}}
+@media(max-width:380px){#hegazy-preview{--hp-section-title-size:16px;}}
