@@ -152,9 +152,9 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 
 /* Keep the scrolling letters visible in a compact column beside the ruler. */
 @media(min-width:900px) and (hover:hover) and (pointer:fine){
-  body{padding-right:118px!important;}
-  #hegazy-preview{max-width:none;padding-right:6px;}
-  #hegazy-preview .hp-moving-labels{right:46px;width:72px;}
+  body{padding-right:calc(46px + var(--hp-letter-column-width,72px))!important;}
+  #hegazy-preview{max-width:none;padding-right:4px;}
+  #hegazy-preview .hp-moving-labels{right:46px;width:var(--hp-letter-column-width,72px);}
   #hegazy-preview.hp-docked .hp-moving-labels{opacity:1;}
   #hegazy-preview.hp-dock-open .hp-moving-labels{opacity:0;}
   #hegazy-preview .hp-moving-labels>span{font-size:10px;line-height:20px;padding:0;}
@@ -176,3 +176,22 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 @media(max-width:900px){#hegazy-preview{--hp-section-title-size:24px;}}
 @media(max-width:700px){#hegazy-preview{--hp-section-title-size:18px;}#hegazy-preview :is(.hp-services-title,.hp-workflow-title,.hp-framed-title){padding:9px 13px!important;}#hegazy-preview .hp-reference-heading>p{font-size:15px!important;}}
 @media(max-width:380px){#hegazy-preview{--hp-section-title-size:16px;}}
+
+/* Compact client rows: six on wide screens, five on medium desktops. */
+#hegazy-preview .hp-method-card:after{content:none;display:none;}
+#hegazy-preview .hp-brand-list{gap:14px 0;}
+#hegazy-preview .hp-brand-list a{padding:8px 12px;gap:5px;}
+#hegazy-preview .hp-brand-name{font-size:14px;}
+#hegazy-preview .hp-brand-domain{font-size:11px;}
+@media(min-width:1100px){
+  #hegazy-preview .hp-brand-list{grid-template-columns:repeat(5,minmax(0,1fr));}
+  #hegazy-preview .hp-brand-list li:nth-child(n) a{border-left:1px solid color-mix(in srgb,var(--hp-ink) 25%,transparent);}
+  #hegazy-preview .hp-brand-list li:nth-child(5n) a{border-left:0;}
+}
+@media(min-width:1450px){
+  #hegazy-preview .hp-brand-list{grid-template-columns:repeat(6,minmax(0,1fr));}
+  #hegazy-preview .hp-brand-list li:nth-child(n) a{border-left:1px solid color-mix(in srgb,var(--hp-ink) 25%,transparent);}
+  #hegazy-preview .hp-brand-list li:nth-child(6n) a{border-left:0;}
+}
+@media(max-width:700px){#hegazy-preview .hp-brand-name{font-size:13px;}}
+@media(max-width:400px){#hegazy-preview .hp-brand-list{gap:0;}}
