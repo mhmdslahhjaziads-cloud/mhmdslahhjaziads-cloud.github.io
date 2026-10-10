@@ -32,6 +32,7 @@
   button.addEventListener('click', () => {
     expanded = !expanded;
     render();
+    if (expanded) window.dispatchEvent(new CustomEvent('hp:brands-expanded', { detail: { source: 'button' } }));
     if (!expanded) panel.scrollIntoView({block: 'nearest', behavior: window.matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth'});
   });
   list.addEventListener('click', (event) => {
@@ -39,6 +40,7 @@
       event.preventDefault();
       expanded = true;
       render();
+      window.dispatchEvent(new CustomEvent('hp:brands-expanded', { detail: { source: 'blur_preview' } }));
     }
   });
   compact.addEventListener('change', render);
