@@ -223,7 +223,7 @@
     root.style.setProperty('--hp-view-size', (visibleFraction * 100) + '%');
     root.style.setProperty('--hp-view-start', (progress * (1 - visibleFraction) * 100) + '%');
     header.classList.toggle('hp-scrolled', window.scrollY > 20);
-    const nextDocked = window.matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)').matches && window.scrollY > (docked ? 70 : 150);
+    const nextDocked = window.scrollY > (docked ? 70 : 150);
     if (nextDocked !== docked) {
       docked = nextDocked;
       if (!docked) setDock(false);
