@@ -2,7 +2,7 @@
 
 **Media Buying · Tracking · Learning Website Design**
 
-[العربية · Live](https://mhmdslahhjaziads-cloud.github.io/) · [English](https://mhmdslahhjaziads-cloud.github.io/en/) · [LinkedIn](https://www.linkedin.com/in/mhmdslahhjazi/) · [Deployment](docs/DEPLOYMENT.md) · [Maintenance](docs/MAINTENANCE.md)
+[العربية · Live](https://mhmdslahhjaziads-cloud.github.io/) · [English](https://mhmdslahhjaziads-cloud.github.io/en/) · [LinkedIn](https://www.linkedin.com/in/mhmdslahhjazi/) · [Deployment](docs/DEPLOYMENT.md) · [Maintenance](docs/MAINTENANCE.md) · [تقرير المشروع](docs/PROJECT-REPORT.html)
 
 موقع محمد صلاح حجازي الشخصي، بالعربية والإنجليزية، لعرض الخدمات والأدوات وطريقة العمل والخلفية المهنية والتواصل.
 
