@@ -234,3 +234,6 @@ html.hp-scroll-dragging{scroll-behavior:auto!important;user-select:none;}
 #hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand="Snapchat Ads"] .hp-brand-icon{color:#171a17;}
 #hegazy-preview.hp-motion #hp-toolkit .hp-tool-group.hp-visible:hover{box-shadow:none;scale:1.008;}
 @media(max-width:700px){#hegazy-preview #hp-toolkit .hp-tool-group>.hp-tool-category{display:none;}#hegazy-preview #hp-toolkit .hp-tool-toggle{position:absolute;inset-inline-start:0;top:0;z-index:1;display:flex;width:max-content;max-width:100%;gap:10px;min-height:38px;padding:7px 12px;border:1.5px solid var(--hp-ink);border-radius:14px 14px 0 0;background:var(--hp-folder-color);color:#252c26;}#hegazy-preview #hp-toolkit .hp-tool-panel{display:grid;min-height:0;padding:0 12px;border-top:0;}#hegazy-preview #hp-toolkit .hp-tool-open .hp-tool-panel{padding-block:14px;border-top:1.5px solid var(--hp-ink);}#hegazy-preview #hp-toolkit .hp-tool-toggle-icon{flex-basis:22px;width:22px;height:22px;font-size:17px;background:transparent;}#hegazy-preview #hp-toolkit .hp-tool-toggle .hp-tool-category{font-size:12px;}}
+
+/* Keep the active label inside the same compact line as its neighbors. */
+#hegazy-preview .hp-moving-labels>.hp-label-current{padding:0;line-height:20px;}
