@@ -213,3 +213,10 @@ html.hp-scroll-dragging{scroll-behavior:auto!important;user-select:none;}
 
 #hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]{overflow-wrap:anywhere;}
 @media(min-width:1100px){#hegazy-preview #hp-toolkit .hp-tool-chips{grid-template-columns:minmax(0,1fr);}#hegazy-preview #hp-toolkit .hp-tool-chips>span[data-brand]{height:48px;min-height:48px;}}
+
+/* Decorative icons enter above the background cards without changing layout. */
+#hegazy-preview :is(.hp-background-story,.hp-background-note){position:relative;}
+#hegazy-preview .hp-background-icons{inset-inline-end:22px;top:-15px;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview :is(.hp-background-story,.hp-background-note):hover .hp-background-icons>span{opacity:1;transform:translateY(0) scale(1) rotate(-8deg);}#hegazy-preview :is(.hp-background-story,.hp-background-note):hover .hp-background-icons>span:nth-child(2){transform:translateY(-3px) scale(1) rotate(9deg);}}
+#hegazy-preview :is(.hp-background-story,.hp-background-note).hp-touch-active .hp-background-icons>span{opacity:1;transform:translateY(0) scale(1) rotate(-8deg);}
+#hegazy-preview.hp-motion .hp-background-icons>span{transition:opacity 180ms ease,transform 220ms cubic-bezier(.22,1,.36,1);}
