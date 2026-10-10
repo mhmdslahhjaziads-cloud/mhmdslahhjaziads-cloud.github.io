@@ -163,6 +163,7 @@ body.hp-dark #hegazy-preview{--hp-brand-hover:#c8dbb8;}
 #hegazy-preview .hp-reference-heading>p{margin:0!important;font-size:16px!important;line-height:1.8;}
 #hegazy-preview .hp-title-logos{top:-17px;gap:6px;}
 #hegazy-preview .hp-title-logos>span:nth-child(3){transition-delay:90ms;}
+#hegazy-preview .hp-title-logos svg[fill="none"]{fill:none;stroke-linecap:round;stroke-linejoin:round;}
 @media(max-width:900px){#hegazy-preview{--hp-section-title-size:24px;}}
 @media(max-width:700px){#hegazy-preview{--hp-section-title-size:18px;}#hegazy-preview :is(.hp-services-title,.hp-workflow-title,.hp-framed-title){padding:9px 13px!important;}#hegazy-preview .hp-reference-heading>p{font-size:15px!important;}}
 @media(max-width:380px){#hegazy-preview{--hp-section-title-size:16px;}}
