@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mhmdslahhjaziads-cloud.github.io/sitemap.xml
