@@ -334,7 +334,7 @@
     panel.append(inner);
   });
 
-  const revealElements = root.querySelectorAll('.hp-section-heading,.hp-service,.hp-tool-group,.hp-job,.hp-education,.hp-callout,.hp-reference-heading,.hp-method-card,.hp-background-story,.hp-background-note,#hp-contact');
+  const revealElements = root.querySelectorAll('.hp-section-heading,.hp-service,.hp-tool-group,.hp-job,.hp-education,.hp-callout,.hp-reference-heading,.hp-method-card,.hp-background-story,.hp-background-note,.hp-experience-heading,#hp-contact');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
