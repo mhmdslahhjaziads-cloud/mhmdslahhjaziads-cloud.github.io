@@ -322,3 +322,13 @@ html.hp-scroll-dragging{scroll-behavior:auto!important;user-select:none;}
 #hegazy-preview[dir=ltr] #hp-background.hp-background-timeline .hp-background-story p:nth-child(2):before{content:'02 · Into accounts and tracking';}
 #hegazy-preview[dir=ltr] #hp-background.hp-background-timeline .hp-background-story p:nth-child(3):before{content:'03 · The same way of thinking';}
 @media(max-width:700px){#hegazy-preview #hp-background.hp-background-timeline .hp-background-grid{grid-template-columns:minmax(0,1fr);gap:14px;}#hegazy-preview #hp-background.hp-background-timeline .hp-background-story p{font-size:14px;}#hegazy-preview #hp-background.hp-background-timeline .hp-background-note{padding:22px;}}
+
+/* Soft preview dissolves into the surface instead of a heavy blur. */
+#hegazy-preview .hp-brand-preview{filter:blur(.55px);opacity:.75;mask-image:linear-gradient(to bottom,#000 0%,#0009 42%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#0009 42%,transparent 100%);}
+#hegazy-preview .hp-background-tags>span{position:relative;gap:7px;background:color-mix(in srgb,var(--hp-chip-accent) 30%,var(--hp-surface));border-color:color-mix(in srgb,var(--hp-ink) 28%,transparent);padding:7px 11px;line-height:1.5;}
+#hegazy-preview .hp-background-tags>span:before{content:'';width:6px;height:6px;flex:0 0 6px;border:1px solid #252c26;border-radius:50%;background:var(--hp-chip-accent);transition:transform .3s ease;}
+#hegazy-preview .hp-background-tags>span.hp-touch-active{background:var(--hp-chip-accent);box-shadow:-2px 3px 0 var(--hp-ink);}
+#hegazy-preview .hp-background-tags>span.hp-touch-active:before{animation:hp-step-dot 650ms ease-out both;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview .hp-background-tags>span:hover{background:var(--hp-chip-accent);box-shadow:-2px 3px 0 var(--hp-ink);}#hegazy-preview .hp-background-tags>span:hover:before{animation:hp-step-dot 650ms ease-out both;}}
+@keyframes hp-step-dot{0%{transform:scale(.7)}45%{transform:scale(1.5)}75%{transform:scale(.9)}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-background-tags>span:before{animation:none!important;transition:none!important;}}
