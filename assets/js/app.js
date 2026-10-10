@@ -288,21 +288,8 @@
     if (event.target === header && event.propertyName === 'width' && !docked) measureHeader();
   });
 
-  // Phone-only toolkit accordion. Desktop keeps the complete toolkit visible.
-  const phoneLayout = window.matchMedia('(max-width: 600px)');
-  const toolkitGroups = [...root.querySelectorAll('#hp-toolkit .hp-tool-group')];
-  toolkitGroups.forEach((group, index) => {
-    const title = group.querySelector('.hp-tool-category');
-    const toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.className = 'hp-tool-toggle';
-    toggle.append(title.cloneNode(true));
-    const indicator = document.createElement('span');
-    indicator.className = 'hp-tool-toggle-icon';
-    indicator.setAttribute('aria-hidden', 'true');
-    indicator.textContent = '+';
-    toggle.append(indicator);
-    title.after(toggle);
+  // Keep every toolkit visible at every breakpoint; folders stack on phones.
+  root.querySelectorAll('#hp-toolkit .hp-tool-group').forEach((group, index) => {
     const panel = document.createElement('div');
     panel.className = 'hp-tool-panel';
     panel.id = 'hp-tool-panel-' + index;
@@ -312,25 +299,7 @@
     chips.before(panel);
     inner.append(chips);
     panel.append(inner);
-    toggle.setAttribute('aria-controls', panel.id);
-    toggle.addEventListener('click', () => {
-      if (!phoneLayout.matches) return;
-      const open = !group.classList.contains('hp-tool-open');
-      toolkitGroups.forEach(other => setToolkitOpen(other, other === group && open));
-    });
   });
-  function setToolkitOpen(group, open) {
-    group.classList.toggle('hp-tool-open', open);
-    group.querySelector('.hp-tool-toggle').setAttribute('aria-expanded', String(open));
-    const panel = group.querySelector('.hp-tool-panel');
-    panel.inert = phoneLayout.matches && !open;
-    panel.setAttribute('aria-hidden', String(phoneLayout.matches && !open));
-  }
-  function updateToolkitLayout() {
-    toolkitGroups.forEach(group => setToolkitOpen(group, false));
-  }
-  phoneLayout.addEventListener('change', updateToolkitLayout);
-  updateToolkitLayout();
 
   const revealElements = root.querySelectorAll('.hp-section-heading,.hp-service,.hp-tool-group,.hp-job,.hp-education,.hp-callout,.hp-reference-heading,.hp-method-card,.hp-background-story,.hp-background-note,#hp-contact');
   if ('IntersectionObserver' in window) {
