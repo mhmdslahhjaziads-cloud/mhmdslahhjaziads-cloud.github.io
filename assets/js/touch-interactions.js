@@ -3,7 +3,7 @@
   const root = document.querySelector('#hegazy-preview');
   if (!root) return;
   const touch = matchMedia('(hover: none), (pointer: coarse), (max-width: 700px)');
-  const targets = '.hp-portrait-card,.hp-tracking-card,.hp-method-card,.hp-service,.hp-background-story,.hp-background-note,.hp-job,.hp-profile-note,.hp-background-tags>span,.hp-tool-chips>span[data-brand],.hp-highlight,.hp-workflow-title';
+  const targets = '.hp-portrait-card,.hp-tracking-card,.hp-method-card,.hp-service,.hp-background-story,.hp-background-note,.hp-job,.hp-profile-note,.hp-background-tags>span,.hp-tool-chips>span[data-brand],.hp-highlight,.hp-workflow-title,.hp-framed-title';
   const photo = root.querySelector('.hp-portrait-photo');
   function configurePhoto() {
     if (!photo) return;
