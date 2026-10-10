@@ -151,6 +151,7 @@
       : 'محمد صلاح حجازي — التسويق بالأداء، إدارة الحسابات، ومتابعة التتبّع ودقة البيانات للتجارة الإلكترونية. اكتشف خبرتي وأدواتي وتواصل معي.';
     decoratePlatformMentions();
     prepareLetterMotion();
+    updateRouteMenu();
     updateControlLabels();
   }
 
@@ -179,6 +180,7 @@
   }
 
   function setMenu(open) {
+    if (window.matchMedia('(max-width: 1300px), (hover: none) and (pointer: coarse)').matches) {setDock(open);return;}
     navigation.classList.toggle('hp-open', open);
     menuButton.setAttribute('aria-expanded', String(open));
     syncMenuAccess();
@@ -202,10 +204,13 @@
   });
   menuButton.addEventListener('click', function () {setMenu(menuButton.getAttribute('aria-expanded') !== 'true');});
   function setDock(open) {
-    dockOpen = open && docked;
+    dockOpen = open;
     dockPanel.hidden = !dockOpen;
     root.classList.toggle('hp-dock-open', dockOpen);
     dockButton.setAttribute('aria-expanded', String(dockOpen));
+    menuButton.setAttribute('aria-expanded', String(dockOpen));
+    syncMenuAccess();
+    if (dockOpen) updateRouteMenu();
     updateControlLabels();
   }
   dockButton.addEventListener('click', () => setDock(!dockOpen));
@@ -216,7 +221,7 @@
     if (event.target.closest('a')) setMenu(false);
   });
   document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && dockOpen) {setDock(false);dockButton.focus();}
+    if (event.key === 'Escape' && dockOpen) {setDock(false);(docked?dockButton:menuButton).focus();}
     if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
       setMenu(false);
       menuButton.focus();
@@ -224,9 +229,23 @@
   });
   document.addEventListener('click', function (event) {
     const path = event.composedPath();
-    if (!path.includes(dockPanel) && !path.includes(dockButton) && !path.includes(languageButton) && !path.includes(themeButton)) setDock(false);
-    if (!event.target.closest('.hp-nav')) setMenu(false);
+    if (!path.includes(dockPanel) && !path.includes(dockButton) && !path.includes(languageButton) && !path.includes(themeButton) && !path.includes(menuButton)) setDock(false);
+    if (!event.target.closest('.hp-nav') && !path.includes(dockPanel)) setMenu(false);
   });
+
+  let routeActive = 'hp-home';
+  function updateRouteMenu(section) {
+    if (section) routeActive = section === 'hp-background' ? 'hp-experience' : section;
+    const links = [...dockPanel.querySelectorAll('.hp-route-link')];
+    if (!links.length) return;
+    const chosen = links.find(link => link.getAttribute('href') === '#'+routeActive) || links[0];
+    links.forEach(link => {
+      const selected = link === chosen;
+      link.classList.toggle('hp-route-selected',selected);
+      if (selected) link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
+    });
+    dockPanel.querySelector('.hp-route-current').textContent = chosen.querySelector('small').textContent+' / '+chosen.querySelector('span').textContent;
+  }
 
   function updateScroll() {
     const range = document.documentElement.scrollHeight - window.innerHeight;
@@ -238,7 +257,7 @@
     root.style.setProperty('--hp-view-size', (visibleFraction * 100) + '%');
     root.style.setProperty('--hp-view-start', (progress * (1 - visibleFraction) * 100) + '%');
     header.classList.toggle('hp-scrolled', window.scrollY > 20);
-    const nextDocked = window.scrollY > (docked ? 70 : 150);
+    const nextDocked = window.scrollY > (docked ? 16 : 48);
     if (nextDocked !== docked) {
       docked = nextDocked;
       if (!docked) setDock(false);
@@ -246,7 +265,7 @@
       header.querySelectorAll('.hp-identity,.hp-links,.hp-controls,.hp-contact').forEach(el=>{el.inert=docked;});
       dockButton.hidden = !docked;
       dockButton.tabIndex = docked ? 0 : -1;
-      setMenu(false);
+      if (!dockOpen) setMenu(false);
       if (!docked && motion.matches) requestAnimationFrame(measureHeader);
     }
     let active = 'hp-home';
@@ -265,6 +284,7 @@
       label.style.setProperty('--hp-label-y',y+'px');
     });
     queueLetters();
+    updateRouteMenu(active);
     scrollQueued = false;
   }
   window.addEventListener('scroll', function () {
