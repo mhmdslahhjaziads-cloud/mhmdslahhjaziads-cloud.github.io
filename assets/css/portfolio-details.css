@@ -450,3 +450,6 @@ html[data-appearance=dark] #hegazy-preview{--hp-bg:#171c19;--hp-surface:#242b26;
  #hegazy-preview .hp-experience-heading.hp-visible .hp-title-logos>span:nth-child(2){transform:translateY(-3px) scale(1) rotate(9deg);}
 }
 @media(prefers-reduced-motion:reduce){#hegazy-preview .hp-experience-title,#hegazy-preview #hp-contact .hp-contact-top h2{transition:none;transform:none!important;}}
+
+/* Folder shadows belong to the bordered panel, never its transparent wrapper. */
+#hegazy-preview #hp-toolkit .hp-tool-group{box-shadow:none!important;}
