@@ -244,25 +244,25 @@ html.hp-scroll-dragging{scroll-behavior:auto!important;user-select:none;}
 #hegazy-preview .hp-card-scene>svg{display:block;width:100%;height:100%;overflow:visible;}
 #hegazy-preview .hp-scene-paper{fill:var(--hp-surface);}
 #hegazy-preview .hp-scene-accent{fill:var(--hp-card-color);}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-card-scene{opacity:1;transform:none;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-card-scene{opacity:1;transform:none;}
 #hegazy-preview .hp-tracking-card:focus-visible{outline:2px dashed var(--hp-ink);outline-offset:7px;}
 #hegazy-preview .hp-card-scene *{animation-duration:1100ms;animation-fill-mode:both;animation-timing-function:cubic-bezier(.22,1,.36,1);transform-box:fill-box;transform-origin:center;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-route{animation-name:hp-scene-draw;stroke-dasharray:140;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) :is(.hp-scene-event,.hp-scene-hub){animation-name:hp-scene-pop;animation-delay:220ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-ticket{animation-name:hp-scene-stamp;animation-delay:400ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-product-a{animation-name:hp-scene-fan-left;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-product-b{animation-name:hp-scene-lift;animation-delay:100ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-product-c{animation-name:hp-scene-fan-right;animation-delay:180ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-pixel{animation-name:hp-scene-pixel-build;animation-delay:calc(var(--hp-step)*65ms);animation-duration:420ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) :is(.hp-scene-spark,.hp-scene-bracket){animation-name:hp-scene-pop;animation-delay:600ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-bars rect{animation-name:hp-scene-grow;transform-origin:center bottom;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-bars rect:nth-child(2){animation-delay:130ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-bars rect:nth-child(3){animation-delay:260ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-heat{animation-name:hp-scene-heat-reveal;animation-delay:360ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-cursor{animation-name:hp-scene-cursor-follow;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-scan{animation-name:hp-scene-scan;animation-duration:950ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-node-a{animation-name:hp-scene-connect-up;animation-delay:180ms;}
-#hegazy-preview .hp-tracking-card:is(:hover,:focus-visible,.hp-touch-active) .hp-scene-node-b{animation-name:hp-scene-connect-down;animation-delay:330ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-route{animation-name:hp-scene-draw;stroke-dasharray:140;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) :is(.hp-scene-event,.hp-scene-hub){animation-name:hp-scene-pop;animation-delay:220ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-ticket{animation-name:hp-scene-stamp;animation-delay:400ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-product-a{animation-name:hp-scene-fan-left;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-product-b{animation-name:hp-scene-lift;animation-delay:100ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-product-c{animation-name:hp-scene-fan-right;animation-delay:180ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-pixel{animation-name:hp-scene-pixel-build;animation-delay:calc(var(--hp-step)*65ms);animation-duration:420ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) :is(.hp-scene-spark,.hp-scene-bracket){animation-name:hp-scene-pop;animation-delay:600ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-bars rect{animation-name:hp-scene-grow;transform-origin:center bottom;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-bars rect:nth-child(2){animation-delay:130ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-bars rect:nth-child(3){animation-delay:260ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-heat{animation-name:hp-scene-heat-reveal;animation-delay:360ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-cursor{animation-name:hp-scene-cursor-follow;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-scan{animation-name:hp-scene-scan;animation-duration:950ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-node-a{animation-name:hp-scene-connect-up;animation-delay:180ms;}
+#hegazy-preview :is(.hp-tracking-card,.hp-method-card,.hp-service,.hp-tool-group):is(:hover,:focus-visible,.hp-touch-active) .hp-scene-node-b{animation-name:hp-scene-connect-down;animation-delay:330ms;}
 @keyframes hp-scene-draw{from{stroke-dashoffset:140}to{stroke-dashoffset:0}}
 @keyframes hp-scene-pop{0%{opacity:0;transform:scale(.25)}65%{opacity:1;transform:scale(1.18)}100%{transform:scale(1)}}
 @keyframes hp-scene-stamp{0%{opacity:0;transform:translateY(-12px) rotate(12deg) scale(1.3)}65%{opacity:1;transform:translateY(2px) rotate(-3deg) scale(.95)}100%{transform:none}}
@@ -292,3 +292,33 @@ html.hp-scroll-dragging{scroll-behavior:auto!important;user-select:none;}
 }
 #hegazy-preview .hp-tracking-brands .hp-brands-title{font-size:clamp(18px,2.1vw,28px);margin:0;line-height:1.65;max-width:100%;box-sizing:border-box;}
 @media(max-width:700px){#hegazy-preview .hp-tracking-brands .hp-brands-title{font-size:18px;text-wrap:balance;padding:9px 13px!important;}}
+
+/* Scene positions follow the available space in each card family. */
+#hegazy-preview .hp-method-card{--hp-card-color:var(--hp-step-color);}
+#hegazy-preview .hp-service{--hp-card-color:var(--hp-peach);}
+#hegazy-preview .hp-service:nth-child(2){--hp-card-color:var(--hp-sage);}
+#hegazy-preview .hp-service:nth-child(3){--hp-card-color:#a6c8df;}
+#hegazy-preview .hp-service-top>.hp-card-scene{position:relative;inset:auto;top:auto;width:76px;height:58px;flex:0 0 76px;}
+#hegazy-preview .hp-service-top{min-height:58px;}
+#hegazy-preview .hp-tool-group{--hp-card-color:var(--hp-folder-color);}
+#hegazy-preview #hp-toolkit .hp-tool-group>.hp-card-scene{top:auto;bottom:12px;width:60px;height:44px;}
+#hegazy-preview #hp-toolkit .hp-tool-panel{padding-bottom:62px;}
+#hegazy-preview .hp-tool-group:has(.hp-touch-active)>.hp-card-scene{opacity:1;transform:none;}
+#hegazy-preview :is(.hp-method-card,.hp-service,.hp-tool-group):focus-visible{outline:2px dashed var(--hp-ink);outline-offset:6px;}
+@media(max-width:700px){#hegazy-preview #hp-toolkit .hp-tool-panel{padding-bottom:60px;}}
+
+/* Approved background: a connected journey alongside the working note. */
+#hegazy-preview #hp-background.hp-background-timeline .hp-background-grid{grid-template-columns:1.8fr 1fr;gap:28px;align-items:start;}
+#hegazy-preview #hp-background.hp-background-timeline .hp-background-story{padding:0;padding-inline-start:28px;border:0;border-inline-start:2px dashed var(--hp-line);border-radius:0;box-shadow:none;background:none;}
+#hegazy-preview #hp-background.hp-background-timeline .hp-background-story p{position:relative;margin:0;padding:0 0 26px;}
+#hegazy-preview #hp-background.hp-background-timeline .hp-background-story p:before{display:block;font-weight:800;font-size:18px;color:var(--hp-ink);margin-bottom:9px;}
+#hegazy-preview #hp-background.hp-background-timeline .hp-background-story p:nth-child(1):before{content:'01 · من المساحة';}
+#hegazy-preview #hp-background.hp-background-timeline .hp-background-story p:nth-child(2):before{content:'02 · للحسابات والتراكنج';}
+#hegazy-preview #hp-background.hp-background-timeline .hp-background-story p:nth-child(3):before{content:'03 · نفس طريقة التفكير';}
+#hegazy-preview #hp-background.hp-background-timeline .hp-background-story p:after{content:'';position:absolute;inset-inline-start:-37px;top:6px;width:14px;height:14px;border:2px solid var(--hp-ink);border-radius:50%;background:var(--hp-peach);box-shadow:-2px 2px 0 var(--hp-ink);}
+#hegazy-preview #hp-background.hp-background-timeline .hp-background-story p:nth-child(2):after{background:#a6c8df;}
+#hegazy-preview #hp-background.hp-background-timeline .hp-background-story p:nth-child(3):after{background:var(--hp-sage);}
+#hegazy-preview[dir=ltr] #hp-background.hp-background-timeline .hp-background-story p:nth-child(1):before{content:'01 · From surveying';}
+#hegazy-preview[dir=ltr] #hp-background.hp-background-timeline .hp-background-story p:nth-child(2):before{content:'02 · Into accounts and tracking';}
+#hegazy-preview[dir=ltr] #hp-background.hp-background-timeline .hp-background-story p:nth-child(3):before{content:'03 · The same way of thinking';}
+@media(max-width:700px){#hegazy-preview #hp-background.hp-background-timeline .hp-background-grid{grid-template-columns:minmax(0,1fr);gap:14px;}#hegazy-preview #hp-background.hp-background-timeline .hp-background-story p{font-size:14px;}#hegazy-preview #hp-background.hp-background-timeline .hp-background-note{padding:22px;}}
