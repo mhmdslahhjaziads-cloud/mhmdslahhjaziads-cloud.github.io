@@ -270,6 +270,7 @@
     }
     let active = 'hp-home';
     railLinks.forEach(link=>{if(document.getElementById(link.dataset.section).getBoundingClientRect().top < window.innerHeight * .4)active=link.dataset.section;});
+    if (progress >= .995) active = 'hp-contact';
     railLinks.forEach(link=>{const selected=link.dataset.section===active;link.classList.toggle('hp-rail-active',selected);if(selected)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});
     const labels = root.querySelector('.hp-moving-labels');
     const labelBounds = labels.getBoundingClientRect();
