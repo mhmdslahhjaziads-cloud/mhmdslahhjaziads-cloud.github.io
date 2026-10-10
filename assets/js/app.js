@@ -143,7 +143,8 @@
     root.querySelector('.hp-map')?.setAttribute('aria-label', english ? 'Workflow from advertising to optimization' : 'مسار عمل من الإعلان إلى التحسين');
     const campaignCTA = root.querySelector('#hp-campaign-cta');
     campaignCTA.href = 'https://wa.me/201558272805?text=' + encodeURIComponent(campaignCTA.getAttribute('data-message-' + language));
-    root.querySelector('.hp-email-cta').href = 'mailto:mhmdslahhjazi.ads@gmail.com?subject=' + encodeURIComponent(english ? 'Collaboration with Mohamed Salah Hegazy' : 'تعاون مع محمد صلاح حجازي');
+    const emailCTA = root.querySelector('.hp-email-cta');
+    emailCTA.href = 'mailto:mhmdslahhjazi.ads@gmail.com?subject=' + encodeURIComponent(emailCTA.getAttribute('data-subject-' + language)) + '&body=' + encodeURIComponent(emailCTA.getAttribute('data-body-' + language));
     document.title = english ? 'Mohamed Salah Hegazy | Performance Marketing & Tracking' : 'محمد صلاح حجازي | Performance Marketing & Tracking';
     document.querySelector('meta[name="description"]').content = english
       ? 'Mohamed Salah Hegazy — performance marketing, account management, tracking and data accuracy for e-commerce. Explore my experience and get in touch.'
