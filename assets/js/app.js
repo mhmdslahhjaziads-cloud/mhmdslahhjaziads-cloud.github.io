@@ -78,7 +78,15 @@
       });
       letterGroups.push(group);
     });
+    measureLetterColumn();
     queueLetters();
+  }
+
+  function measureLetterColumn() {
+    if (!finePointer.matches || document.documentElement.clientWidth < 900) return;
+    // Reserve only the space the section names need, including the active font.
+    const columnWidth = Math.ceil(Math.max(0, ...letterGroups.map(group => group.label.offsetWidth)) * 1.1 + 4);
+    document.documentElement.style.setProperty('--hp-letter-column-width', columnWidth + 'px');
   }
 
   const platformLogos = {'Meta':'meta','Google Ads':'googleads','Google Tag Manager':'googletagmanager','GTM':'googletagmanager','GA4':'googleanalytics','Google Analytics 4':'googleanalytics','TikTok':'tiktok','Snapchat':'snapchat','YouTube':'youtube','Shopify':'shopify','WooCommerce':'woocommerce','WordPress':'wordpress','Salla':'salla','Zid':'zid','Excel':'excel','Google Sheets':'googlesheets','Notion':'notion','ChatGPT':'openai','Claude':'claude'};
@@ -256,6 +264,7 @@
     if (!scrollQueued) {scrollQueued = true;requestAnimationFrame(updateScroll);}
   }, {passive:true});
   function measureHeader() {
+    measureLetterColumn();
     const bounds = slot.getBoundingClientRect();
     root.style.setProperty('--hp-nav-left', bounds.left + 'px');
     root.style.setProperty('--hp-nav-width', bounds.width + 'px');
