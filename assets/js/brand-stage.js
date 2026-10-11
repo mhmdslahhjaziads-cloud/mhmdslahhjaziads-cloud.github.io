@@ -3,6 +3,21 @@
   if (!stage) return;
   const rows = [...stage.querySelectorAll('.hp-brand-row')].map((element, row) => ({element, cards:[...element.querySelectorAll('.hp-ref-brand-card')], index:row ? 2 : 0}));
   const counter=stage.querySelector('.hp-brand-stage-counter');
+  const reduced=matchMedia('(prefers-reduced-motion:reduce)');
+  let paused=false,inside=false,visible=false,timer;
+  const pause=document.createElement('button');
+  pause.type='button';pause.className='hp-brand-pause';pause.setAttribute('aria-pressed','false');
+  stage.querySelector('.hp-brand-stage-controls').append(pause);
+  function labelPause(){pause.textContent=document.documentElement.lang==='en'?(paused?'Resume':'Pause'):(paused?'تشغيل':'إيقاف');}
+  function auto(){clearInterval(timer);if(paused||inside||!visible||document.hidden||reduced.matches)return;timer=setInterval(()=>{rows.forEach((row,i)=>{row.index=(row.index+(i?-1:1)+row.cards.length)%row.cards.length;render(row);});},3400);}
+  pause.addEventListener('click',()=>{paused=!paused;pause.setAttribute('aria-pressed',String(paused));labelPause();auto();});
+  stage.addEventListener('pointerenter',()=>{inside=true;auto();});
+  stage.addEventListener('pointerleave',()=>{inside=false;auto();});
+  stage.addEventListener('focusin',()=>{inside=true;auto();});
+  stage.addEventListener('focusout',event=>{if(!stage.contains(event.relatedTarget)){inside=false;auto();}});
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;auto();},{threshold:.15}).observe(stage);
+  document.addEventListener('visibilitychange',auto);reduced.addEventListener('change',auto);
+  new MutationObserver(labelPause).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});labelPause();
   if(/^\/en(?:\/|$)/.test(location.pathname)){rows.forEach((row,i)=>row.element.setAttribute('aria-label',`Brand row ${i+1}`));stage.querySelectorAll('.hp-ref-brand-visit').forEach(a=>a.setAttribute('aria-label',`Visit ${a.closest('li').querySelector('strong').textContent} website`));stage.querySelector('[data-move="-1"]').setAttribute('aria-label','Previous brands');stage.querySelector('[data-move="1"]').setAttribute('aria-label','Next brands');}
   function render(row) {
     const width=parseFloat(getComputedStyle(row.cards[0]).width);

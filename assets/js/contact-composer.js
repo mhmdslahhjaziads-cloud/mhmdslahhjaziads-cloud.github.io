@@ -9,6 +9,7 @@
   const details = document.getElementById('hp-message-details');
   const error = document.getElementById('hp-message-error');
   const counter = document.getElementById('hp-message-count');
+  const preview = document.getElementById('hp-message-preview');
   const fields = [kind, project, details];
   const requestTypes = {
     ads: { ar: 'إعلانات', en: 'Advertising' },
@@ -73,10 +74,24 @@
     });
     details.setAttribute('placeholder', copy[lang].placeholder);
     if (activeError) showError(validate());
+    renderPreview();
+  }
+  function messageLines() {
+    const lang = language();
+    const words = copy[lang];
+    const request = requestTypes[kind.value]?.[lang] || '';
+    const lines = [words.hello, '', words.request + request];
+    if (project.value.trim()) lines.push(words.project + project.value.trim());
+    lines.push('', words.body, details.value.trim() || words.placeholder);
+    return lines;
+  }
+  function renderPreview() {
+    if (preview) preview.textContent = messageLines().join('\n');
   }
   function update() {
     counter.textContent = details.value.length + ' / 800';
     if (activeError) showError(validate());
+    renderPreview();
   }
   function compose(method, event) {
     event.preventDefault();
@@ -86,10 +101,7 @@
     const lang = language();
     const words = copy[lang];
     const request = requestTypes[kind.value][lang];
-    const lines = [words.hello, '', words.request + request];
-    if (project.value.trim()) lines.push(words.project + project.value.trim());
-    lines.push('', words.body, details.value.trim());
-    const message = lines.join('\n');
+    const message = messageLines().join('\n');
     if (method === 'whatsapp') {
       window.open('https://wa.me/201558272805?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
     } else {
@@ -104,6 +116,11 @@
   form.addEventListener('submit', event => event.preventDefault());
   form.addEventListener('input', update);
   form.addEventListener('change', update);
+  kind.addEventListener('change', () => {
+    if (preview && !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+      preview.animate([{opacity:.5,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}], {duration:220,easing:'cubic-bezier(.16,1,.3,1)'});
+    }
+  });
   document.getElementById('hp-message-whatsapp').addEventListener('click', event => compose('whatsapp', event));
   document.getElementById('hp-message-email').addEventListener('click', event => compose('email', event));
   new MutationObserver(localize).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
