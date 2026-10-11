@@ -11,7 +11,7 @@
 #hegazy-preview .hp-message-field [aria-invalid=true]{border:2px solid #a72c35;}
 #hegazy-preview .hp-message-wide{grid-column:1/-1;}
 #hegazy-preview .hp-message-form .hp-message-note{margin:0;font-size:12px;line-height:1.8;color:var(--hp-muted);}
-#hegazy-preview .hp-message-count{font:400 11px/1.5 Manrope,sans-serif;color:var(--hp-muted);direction:ltr;align-self:end;}
+#hegazy-preview .hp-message-count{font:400 11px/1.5 Tajawal,sans-serif;color:var(--hp-muted);direction:ltr;align-self:end;}
 #hegazy-preview .hp-message-form .hp-message-error{margin:0;padding:10px 12px;border-inline-start:3px solid #a72c35;color:var(--hp-ink);font-size:13px;line-height:1.8;}
 #hegazy-preview .hp-message-destinations{display:flex;flex-wrap:wrap;gap:10px;}
 #hegazy-preview .hp-message-destinations button{--hp-message-slide:-38px;position:relative;isolation:isolate;overflow:hidden;min-height:44px;padding:10px 16px;padding-inline-start:42px;border:1.5px solid var(--hp-line);border-radius:9px;background:var(--hp-surface);color:var(--hp-ink);font:inherit;font-size:13px;font-weight:600;line-height:1.7;cursor:pointer;transition:background-color 180ms ease,box-shadow 180ms ease;}
