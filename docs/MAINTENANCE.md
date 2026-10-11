@@ -77,3 +77,12 @@ Keep credentials, private client data and drafts outside this public repository.
 - GA4 `contact` is marked as a key event. Saved report: “نية التواصل ومصدرها | Portfolio”; event-count scorecard and session source/medium/campaign table, filtered to contact. A prepared draft is an intent event, not proof of a sent message or customer.
 
 Search Console ownership was verified using the HTML tag on 2026-10-11. Root live inspection passed; indexing requests for `/` and `/en/` were accepted. Sitemap submission initially reported “Couldn't fetch” despite a public 200 XML response; see the delivery report for current processing status.
+
+
+## Compact interface and motion (2026-10-11)
+
+`assets/css/interface-refinements.css` is the final accepted interface cascade; the CSS generator includes it after the existing sources and keeps initial hero styles in critical CSS. Rebuild CSS before running the SEO generator. Do not edit generated hashed CSS or `en/index.html` directly.
+
+`hero-tabs.js` owns service content and keyboard selection; `hero-motion.js` owns portrait and contextual SVG motion; `hero-tab-indicator.js` owns the sliding pill and neon orbit. `brand-stage.js` keeps both 12-brand rows interactive without automatically opening external sites. `section-navigation.js` keeps phone dots synchronized; `section-connectors.js` adds decorative separators, with visibility-based animation.
+
+The breakpoint is 700px: phone dots below it, original ruler and letter choreography above it. The experience/contact connector appears only when those sections stack. Reduced-motion disables transitions and repeating animation. Keep the 24 brand names/URLs and the SVG sprite identities unchanged. Verify both languages at 320px, around 700px and on desktop after changing any layout rule.

@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-11 · Approved compact interface and motion
+
+- Adopt the selected borderless hero with a clear right-side desktop portrait, smooth mobile collapse and pointer-follow zoom.
+- Add sliding service-tab selection, contextual SVG/card transitions and a restrained neon orbit around the tab frame.
+- Render all 24 tracking brands in two interactive rows; preserve names, links and original platform SVG logos.
+- Reduce the monochrome platform strip height, center section headings and remove the redundant clear-work card.
+- Keep the original ruler and scattered-letter animation on desktop; switch smoothly to phone navigation dots.
+- Add animated dotted connectors between sections, paused outside the viewport and respecting reduced motion.
+- Compact workflow cards on all sizes with titles beside the numbers and original SVG scenes intact.
+- Correct contact-title/sticker motion and prevent the phone header name from stacking across lines.
+- Bundle interface overrides into fingerprinted CSS and statically translate the new hero for the English search entry point.
+- Previous performance scores remain historical; this batch requires its own measurement.
+
 ## 2026-10-11 · Performance, contact and final refinements
 
 - Add five responsive WebP portraits and Arabic/Latin font subsets without changing font weights or crop.
