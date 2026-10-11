@@ -86,3 +86,12 @@ Search Console ownership was verified using the HTML tag on 2026-10-11. Root liv
 `hero-tabs.js` owns service content and keyboard selection; `hero-motion.js` owns portrait and contextual SVG motion; `hero-tab-indicator.js` owns the sliding pill and neon orbit. `brand-stage.js` keeps both 12-brand rows interactive without automatically opening external sites. `section-navigation.js` keeps phone dots synchronized; `section-connectors.js` adds decorative separators, with visibility-based animation.
 
 The breakpoint is 700px: phone dots below it, original ruler and letter choreography above it. The experience/contact connector appears only when those sections stack. Reduced-motion disables transitions and repeating animation. Keep the 24 brand names/URLs and the SVG sprite identities unchanged. Verify both languages at 320px, around 700px and on desktop after changing any layout rule.
+
+
+## Current selected interface · 2026-10-11
+
+The contact form uses three connected steps and native radio choices. The constellation preview comes before destination buttons in document order and on phones. Message text is generated only by `contact-composer.js`; decoration must never be added to `messageLines()`.
+
+Company hover colors and layout are in `interface-refinements.css` and `critical-source.css`. Update both, rebuild CSS, then run `build-seo.mjs`. Golden House requires its light logo backing to keep the black lettering visible. The supplied company logos retain their owners' rights and are separate from the platform sprite license.
+
+`brand-stage.js` controls both horizontal rows and pauses autoplay for hover, focus, hidden documents and reduced motion. `letter-train.js` controls following letters; `ruler-layout.js` controls numerical scroll progress. `platform-disclosure.js` manages the availability popover. `request-type-picker.js` synchronizes visible radio choices with the composer request type.

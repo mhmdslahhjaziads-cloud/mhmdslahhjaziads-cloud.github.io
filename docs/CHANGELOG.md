@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-11 · Final selected contact and company refinements
+
+- Adopt form option 2: three connected steps with equal request choices.
+- Place the approved constellation preview before compact WhatsApp, email and LinkedIn controls; ornaments stay outside the generated message.
+- Preserve supplied transparent company logos; navy DOKKAN, blue MINDSINC and orange Golden House hover backgrounds.
+- Autoplay two horizontal brand rows with visible, lightly blurred neighboring cards, manual navigation and pause controls.
+- Restore grayscale portrait at rest and color on hover; enlarge and move the desktop portrait right.
+- Reduce toolkit whitespace and move original contextual animation beside category titles.
+- Add a platform-logo disclosure beside availability, and restore flowing letter-follow motion on the ruler.
+
+
 ## 2026-10-11 · Approved compact interface and motion
 
 - Adopt the selected borderless hero with a clear right-side desktop portrait, smooth mobile collapse and pointer-follow zoom.
