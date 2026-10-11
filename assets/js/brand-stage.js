@@ -75,10 +75,12 @@
         render(row);
       }
     });
-    row.element.addEventListener('pointerup',event=>{
+    function finishDrag(event){
       if(!down)return;down=null;row.dragging=false;
       if(event.pointerType!=='mouse')row.hovered=false;auto();
-    });
+    }
+    row.element.addEventListener('pointerup',finishDrag);
+    document.addEventListener('pointerup',finishDrag);
     row.element.addEventListener('pointercancel',()=>{down=null;row.dragging=false;row.hovered=false;auto();});
     row.element.addEventListener('click',event=>{if(dragged){event.preventDefault();event.stopPropagation();dragged=false;}},true);
   });
