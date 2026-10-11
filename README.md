@@ -2,7 +2,7 @@
 
 **Media Buying · Tracking · Learning Website Design**
 
-[العربية · Live](https://mhmdslahhjaziads-cloud.github.io/) · [English](https://mhmdslahhjaziads-cloud.github.io/en/) · [LinkedIn](https://www.linkedin.com/in/mhmdslahhjazi/) · [Deployment](docs/DEPLOYMENT.md) · [Maintenance](docs/MAINTENANCE.md) · [تقرير المشروع](docs/PROJECT-REPORT.html)
+[العربية · Live](https://mhmdslahhjaziads-cloud.github.io/) · [English](https://mhmdslahhjaziads-cloud.github.io/en/) · [LinkedIn](https://www.linkedin.com/in/mhmdslahhjazi/) · [Deployment](docs/DEPLOYMENT.md) · [Maintenance](docs/MAINTENANCE.md) · [تقرير المشروع](docs/PROJECT-REPORT.html) · [تحديث الواجهة بالصور](docs/INTERFACE-UPDATE-2026-10-11.html)
 
 موقع محمد صلاح حجازي الشخصي، بالعربية والإنجليزية، لعرض الخدمات والأدوات وطريقة العمل والخلفية المهنية والتواصل.
 
@@ -15,10 +15,12 @@
 - Responsive navigation, three work and learning cards and a downloadable CV.
 - Soft neon hover on toolkit logos and subtle hover scaling on other cards.
 - All 19 toolkit items stay visible on phones; there is no toolkit accordion.
-- 24 tracking brands, 17 small SVG scenes, and a floating menu with three groups and five phone rows.
+- 24 tracking brands in two sliding rows; select with clicks, arrows, dragging or the keyboard. Existing destinations and platform logos are preserved.
+- A compact borderless hero with a clear desktop portrait on the right, three service tabs, contextual SVG motion and a subtle orbiting neon border.
+- The original ruler and scattered letters on larger screens; a phone dot indicator with smooth responsive transitions. Animated dot connectors separate the sections.
 - Always-visible contact composer: request type, optional project link and required details; prepare a WhatsApp or email draft without sending automatically. LinkedIn stays beside the two buttons as a compact icon.
-- Compact phone workflow cards, centered wrapping platform chips, and contextual hover illustrations.
-- Availability and markets below the portrait.
+- Compact workflow cards with titles beside their numbers, centered wrapping platform chips, and contextual hover illustrations.
+- Availability and markets below the hero controls; the hero portrait collapses smoothly on phones.
 - Reduced-motion support and locally hosted fonts and icons.
 - A 1200 × 630 social preview image, `robots.txt` and a two-language sitemap.
 - Production-only GA4 (`G-5E9BPGNJJH`), Clarity (`yvk9p3430s`) and Meta Pixel loading.
@@ -32,6 +34,12 @@
 │   ├── css/                   # Theme, details, composer, critical source and hashed bundle
 │   ├── js/
 │   │   ├── app.js             # Navigation, language and motion
+│   │   ├── hero-tabs.js       # Three services and keyboard controls
+│   │   ├── hero-motion.js     # Portrait and contextual SVG animation
+│   │   ├── hero-tab-indicator.js # Sliding selection and orbiting neon
+│   │   ├── brand-stage.js     # Two interactive brand rows
+│   │   ├── section-navigation.js # Responsive ruler/dot navigation
+│   │   ├── section-connectors.js # Animated dots between sections
 │   │   ├── contact-composer.js # Validated draft preparation
 │   │   ├── tracking-schedule.js# First-paint tracking scheduler
 │   │   └── preferences.js     # Preference helper; initial setup is inline
@@ -45,6 +53,7 @@
 ├── docs/
 │   ├── DEPLOYMENT.md
 │   ├── MAINTENANCE.md
+│   ├── INTERFACE-UPDATE-2026-10-11.html # Illustrated interface report
 │   └── CHANGELOG.md
 ├── en/index.html              # Generated English entry point; do not edit directly
 ├── robots.txt
