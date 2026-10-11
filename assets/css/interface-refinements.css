@@ -628,3 +628,36 @@ html[data-appearance=dark] #hegazy-preview .hp-company-black{fill:#f6f3ec;}
 #hegazy-preview .hp-route-selected small{background:#fffaf3;border-color:#354637;color:#1c2922;box-shadow:none;}
 #hegazy-preview .hp-route-menu>.hp-route-link{--hp-group:#e99c72;background:#e99c72;color:#1c2922;}
 @media(hover:hover) and (pointer:fine){#hegazy-preview .hp-route-menu .hp-route-link:hover{background:color-mix(in srgb,var(--hp-group) 65%,var(--hp-surface));}#hegazy-preview .hp-route-menu>.hp-route-link:hover{background:#df8c60;color:#1c2922;}}
+
+/* Selected service layout: three compact cards, with hover-only platform marks. */
+#hegazy-preview #hp-services .hp-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:1000px;margin-inline:auto;}
+#hegazy-preview #hp-services .hp-service-compact{--hp-service-color:#176799;position:relative;isolation:isolate;min-width:0;min-height:190px;padding:16px 14px;background:var(--hp-surface);border:1px solid color-mix(in srgb,var(--hp-ink) 25%,transparent);border-top:3px solid var(--hp-service-color);border-radius:12px;box-shadow:none;transition:translate .35s ease,box-shadow .35s ease;}
+#hegazy-preview #hp-services .hp-service-compact:nth-child(2){--hp-service-color:#b95532;}
+#hegazy-preview #hp-services .hp-service-compact:nth-child(3){--hp-service-color:#486735;}
+html[data-appearance=dark] #hegazy-preview #hp-services .hp-service-compact{--hp-service-color:#91bedc;}
+html[data-appearance=dark] #hegazy-preview #hp-services .hp-service-compact:nth-child(2){--hp-service-color:#f0aa82;}
+html[data-appearance=dark] #hegazy-preview #hp-services .hp-service-compact:nth-child(3){--hp-service-color:#b6ce9f;}
+#hegazy-preview #hp-services .hp-service-compact.hp-visible:is(:hover,:focus-visible,.hp-touch-active){translate:0 -5px;scale:1;transform:none;box-shadow:0 5px 0 color-mix(in srgb,var(--hp-service-color) 22%,transparent);}
+#hegazy-preview #hp-services .hp-service-compact:focus-visible{outline:2px dashed var(--hp-ink);outline-offset:6px;}
+#hegazy-preview #hp-services .hp-service-top{min-height:27px;display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;color:var(--hp-service-color);}
+#hegazy-preview #hp-services .hp-service-id{font:700 12px/1.4 Manrope,sans-serif;}
+#hegazy-preview #hp-services .hp-service-symbol{display:grid;place-items:center;width:27px;height:27px;transition:opacity .2s;}
+#hegazy-preview #hp-services .hp-service-symbol svg{width:24px;height:24px;}
+#hegazy-preview #hp-main #hp-services .hp-service-compact h3{font-size:17px!important;line-height:1.45!important;text-align:start!important;}
+#hegazy-preview #hp-services .hp-service-compact p{font-size:12px;line-height:1.8;margin-top:5px;color:var(--hp-muted);}
+#hegazy-preview #hp-services .hp-service-platforms{display:block;margin-top:10px;font:500 11px/1.9 Manrope,sans-serif;direction:ltr;text-align:start;color:var(--hp-muted);}
+#hegazy-preview #hp-services .hp-service-orbit{position:absolute;inset:0;pointer-events:none;z-index:2;}
+#hegazy-preview #hp-services .hp-service-mark{--hp-mark-turn:-9deg;position:absolute;display:grid;place-items:center;width:32px;height:32px;border:1px solid color-mix(in srgb,var(--hp-ink) 55%,transparent);border-radius:11px;background:var(--hp-surface);color:var(--hp-mark-color);box-shadow:0 2px 6px #00000012;opacity:0;transform:translateY(10px) rotate(calc(var(--hp-mark-turn) - 16deg)) scale(.68);transition:opacity .18s ease,transform .55s cubic-bezier(.16,1.35,.3,1);}
+#hegazy-preview #hp-services .hp-service-mark:nth-child(1){top:-15px;left:25%;}
+#hegazy-preview #hp-services .hp-service-mark:nth-child(2){top:-14px;right:23%;--hp-mark-turn:9deg;}
+#hegazy-preview #hp-services .hp-service-mark:nth-child(3){bottom:-13px;left:12%;--hp-mark-turn:7deg;}
+#hegazy-preview #hp-services .hp-service-mark:nth-child(4){bottom:-14px;left:calc(50% - 16px);--hp-mark-turn:-7deg;}
+#hegazy-preview #hp-services .hp-service-mark:nth-child(5){bottom:-12px;right:12%;--hp-mark-turn:11deg;}
+#hegazy-preview #hp-services .hp-service-mark-icon{display:grid;place-items:center;}
+#hegazy-preview #hp-services .hp-service-mark svg{width:21px;height:21px;fill:currentColor;stroke:none;}
+#hegazy-preview #hp-services .hp-service-mark svg.hp-pixel-icon{fill:none;stroke:currentColor;stroke-width:1.7;}
+#hegazy-preview #hp-services .hp-service-compact:is(:hover,:focus-visible,.hp-touch-active) .hp-service-mark{opacity:1;transform:translateY(0) rotate(var(--hp-mark-turn)) scale(1);transition-delay:calc(var(--hp-mark-index)*55ms);}
+#hegazy-preview #hp-services .hp-service-compact:is(:hover,:focus-visible,.hp-touch-active) .hp-service-mark-icon{animation:hp-service-float 3.8s ease-in-out infinite;animation-delay:calc(var(--hp-mark-index)*-.6s);}
+@keyframes hp-service-float{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-4px) rotate(6deg);}}
+@media(max-width:700px){#hegazy-preview #hp-services .hp-services{grid-template-columns:1fr;gap:26px;}#hegazy-preview #hp-services .hp-service-compact{min-height:126px;padding:12px;display:grid;grid-template-columns:30px minmax(0,1fr);column-gap:12px;align-items:start;}#hegazy-preview #hp-services .hp-service-top{margin:0;flex-direction:column;gap:8px;}#hegazy-preview #hp-services .hp-service-platforms{margin-top:4px;}#hegazy-preview #hp-services .hp-service-mark{width:30px;height:30px;}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview #hp-services .hp-service-compact,#hegazy-preview #hp-services .hp-service-mark{transition:none!important;translate:none!important;}#hegazy-preview #hp-services .hp-service-mark-icon{animation:none!important;}}
