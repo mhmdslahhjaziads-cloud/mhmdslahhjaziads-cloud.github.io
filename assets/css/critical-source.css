@@ -693,3 +693,11 @@ body{padding-right:calc(46px + var(--hp-letter-column-width,72px))!important;tra
 #hegazy-preview #hp-home .hp-platform-logo{display:flex;flex-direction:column;gap:5px;min-width:0;padding:0;border:0;background:none;box-shadow:none;border-radius:0;animation:none!important;scale:none;translate:none;}
 #hegazy-preview #hp-home .hp-platform-logo>span{display:block;padding:0;min-height:0;font:10px/1.4 Manrope,sans-serif;border:0;background:none;box-shadow:none;border-radius:0;color:var(--hp-ink);animation:none!important;scale:none;}
 #hegazy-preview #hp-home .hp-platform-disclosure{animation:none!important;scale:none;translate:none;}
+
+#hegazy-preview .hp-brand-row:nth-child(3){--hp-row-accent:var(--hp-journey-blue,#a6c8df);}
+#hegazy-preview .hp-brand-stage.is-brand-gliding .hp-ref-brand-card{transition:opacity .3s,filter .3s;}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-ref-brand-card{filter:none;}}
+
+#hegazy-preview #hp-home .hp-platform-popover[hidden]{display:none;}
+
+#hegazy-preview .hp-journey-stop .hp-survey-icon{width:48px;height:32px;}
