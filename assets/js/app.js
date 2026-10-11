@@ -339,7 +339,7 @@
     motion.addEventListener('change', function () {root.classList.toggle('hp-motion', !motion.matches);});
   }
 
-  root.querySelectorAll('.hp-map,.hp-service,.hp-method-card,.hp-tool-group,.hp-background-story,.hp-background-note').forEach(function (element) {
+  root.querySelectorAll('.hp-map,.hp-service:not(.hp-service-compact),.hp-method-card,.hp-tool-group,.hp-background-story,.hp-background-note').forEach(function (element) {
     let frame = null;
     element.addEventListener('pointermove', function (event) {
       if (motion.matches || !finePointer.matches) return;
