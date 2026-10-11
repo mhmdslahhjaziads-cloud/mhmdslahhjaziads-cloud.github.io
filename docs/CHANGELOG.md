@@ -100,3 +100,12 @@
 - Added maintenance instructions and UTM guide. Account verification/deployment results are recorded separately after confirmation.
 
 The three horizontal brand rows share the complete 24-brand sequence with staggered starting positions and continuous wrapping. Side-card visibility follows the viewport width; pointer hover pauses, dragging moves freely, and pointer exit resumes. The surveying card uses an inline color total-station and helmet icon so sprite caching cannot hide it.
+
+### Approved typography and content refinements — 2026-10-12
+
+- Use locally hosted Beiruti headings and Tajawal body/control text.
+- Preserve the existing colored folder navigation; replace generic arrows with section icons.
+- Keep platform icons in their own colors in both themes and distinguish the strip backgrounds.
+- Add WordPress website design beneath the DOKKAN Tracking Specialist role and in its bilingual details.
+- Separate Part-time from the country flag reveal; preserve the flags above their labels.
+- Give Catalogs its own product-card icon while retaining the tracking section width.
