@@ -569,3 +569,5 @@ body{padding-right:calc(46px + var(--hp-letter-column-width,72px))!important;tra
 #hegazy-preview .hp-survey-brand-head{display:flex;align-items:center;justify-content:center;gap:12px;}
 #hegazy-preview .hp-petrojet-mark{display:flex;align-items:center;justify-content:center;width:112px;height:64px;padding:0;overflow:hidden;border-radius:10px;background:#fff;border:1px solid #d8ded5;}
 #hegazy-preview .hp-petrojet-mark img{display:block;flex:0 0 128px;width:128px;height:128px;max-width:none;object-fit:contain;}
+
+@media(max-width:700px){#hegazy-preview .hp-survey-brand-head{max-width:100%;gap:8px;}#hegazy-preview .hp-petrojet-mark{width:76px;height:46px;flex:0 0 76px;}#hegazy-preview .hp-petrojet-mark img{width:88px;height:88px;flex-basis:88px;}#hegazy-preview .hp-journey-stop .hp-survey-icon{width:36px;height:27px;flex:0 0 36px;}}
