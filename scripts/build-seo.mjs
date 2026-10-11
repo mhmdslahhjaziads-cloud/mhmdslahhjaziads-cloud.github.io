@@ -65,7 +65,7 @@ function translate(html) {
   const outer = replacements.filter(item => !replacements.some(other => other !== item && other.start <= item.start && other.end >= item.end));
   for (const item of outer.sort((a, b) => b.start - a.start)) html = html.slice(0, item.start) + item.value + html.slice(item.end);
   html = html.replace(/<html\b[^>]*>/, '<html lang="en" dir="ltr">');
-  html = html.replace(/(<link rel="preload"[^>]*href="[^"]*)ibm-plex-arabic-arabic-400-site\.woff2/, '$1ibm-plex-arabic-latin-400-site.woff2');
+  html = html.replace(/(<link rel="preload"[^>]*href="[^"]*)(tajawal|beiruti)-arabic-([^"/]+\.woff2)/g, '$1$2-latin-$3');
   html = html.replace(/(<div\b[^>]*\bid="hegazy-preview"[^>]*>)/, tag => tag.replace(/dir="rtl"/, 'dir="ltr"').replace(/lang="ar"/, 'lang="en"'));
   html = html.replace(/\b(src|href|poster)="(assets\/[^"<>]*)"/g, '$1="../$2"');
   html = html.replace(/\bsrcset="([^"]*)"/g, (_, value) => 'srcset="'+value.replace(/(^|,\s*)assets\//g,'$1../assets/')+'"');
