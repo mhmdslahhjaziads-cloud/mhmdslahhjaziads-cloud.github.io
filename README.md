@@ -1,132 +1,87 @@
-# Mohamed Salah Hegazy · Portfolio
+# Mohamed Salah Hegazy
 
-**Media Buying · Tracking · Learning Website Design**
+**Media Buying · Tracking · E-commerce**
 
-[العربية · Live](https://mhmdslahhjaziads-cloud.github.io/) · [English](https://mhmdslahhjaziads-cloud.github.io/en/) · [LinkedIn](https://www.linkedin.com/in/mhmdslahhjazi/) · [Deployment](docs/DEPLOYMENT.md) · [Maintenance](docs/MAINTENANCE.md) · [تقرير المشروع](docs/PROJECT-REPORT.html) · [تحديث الواجهة بالصور](docs/INTERFACE-UPDATE-2026-10-11.html)
+[العربية — Live portfolio](https://mhmdslahhjaziads-cloud.github.io/) · [English](https://mhmdslahhjaziads-cloud.github.io/en/) · [LinkedIn](https://www.linkedin.com/in/mhmdslahhjazi/)
 
-موقع محمد صلاح حجازي الشخصي، بالعربية والإنجليزية، لعرض الخدمات والأدوات وطريقة العمل والخلفية المهنية والتواصل.
+موقع محمد صلاح حجازي لعرض الخدمات والأدوات والخبرة المهنية، بتجربة عربية وإنجليزية وتواصل برسالة جاهزة. الموقع في مرحلة تجريبية.
 
-> **Beta / نسخة تجريبية:** الموقع في مرحلة الاختبار والتطوير؛ بيانات وأعمال إضافية ستُنشر لاحقًا.
+![Portfolio preview](assets/social-preview.png)
 
-## Features
+## Experience
 
-- Arabic at `/` and a generated, independently indexable English page at `/en/`, with RTL / LTR layouts and reciprocal `hreflang`.
-- Light and charcoal dark themes with saved browser preferences.
-- Responsive navigation, three work and learning cards and a downloadable CV.
-- Soft neon hover on toolkit logos and subtle hover scaling on other cards.
-- All 19 toolkit items stay visible on phones; there is no toolkit accordion.
-- 24 tracking brands in three continuously sliding rows with hover/focus pause and lightly blurred neighboring cards; select with clicks, arrows, dragging or the keyboard. Existing destinations and platform logos are preserved.
-- A compact borderless hero with a clear desktop portrait on the right, three service tabs, contextual SVG motion and a subtle orbiting neon border.
-- The original ruler and scattered letters on larger screens; a phone dot indicator with smooth responsive transitions. Animated dot connectors separate the sections.
-- Always-visible contact composer: request type, optional project link and required details; prepare a WhatsApp or email draft without sending automatically. LinkedIn stays beside the two buttons as a compact icon.
-- Compact workflow cards with titles beside their numbers, centered wrapping platform chips, and contextual hover illustrations.
-- Availability and markets below the hero controls; the hero portrait collapses smoothly on phones.
-- Reduced-motion support and locally hosted fonts and icons.
-- A 1200 × 630 social preview image, `robots.txt` and a two-language sitemap.
-- Production-only GA4 (`G-5E9BPGNJJH`), Clarity (`yvk9p3430s`) and Meta Pixel loading.
+- Arabic/English entry points, RTL/LTR layouts, saved light/dark preferences and responsive navigation.
+- Automatically rotating service tabs, centered Freelance / Part-time availability and animated country flags on interaction.
+- Twenty toolkit items, including Microsoft Clarity, in equal panels with two rows of icons.
+- Compact career cards with transparent company and freelance logos; centered final card on phones.
+- Contextual matte headings, reduced-motion support and a desktop-only beta badge above the portrait.
+- Twenty-four tracking brands in three interactive rows, with manual navigation and pause during interaction.
+- Validated WhatsApp/email draft preparation: the visitor reviews and sends the message themselves.
 
-- Three connected contact steps, equal-height request choices and an animated message preview before compact destination buttons. Decorative logos never enter the outgoing message.
-- Original transparent company logos with gold reflections; DOKKAN hover is navy, MINDSINC blue and Golden House orange.
-- Availability platform disclosure, compact toolkit cards and a letter-following ruler animation.
+## Latest verification
 
-## Project structure
+The approved interface is live. Asset/anchor/JavaScript, SEO and CSS-scope checks passed, along with sixteen contact/ruler/letter tests and tracking scheduling, privacy and duplicate-event checks.
 
-```text
-.
-├── index.html                 # Page content, navigation and SEO
-├── assets/
-│   ├── css/                   # Theme, details, composer, critical source and hashed bundle
-│   ├── js/
-│   │   ├── app.js             # Navigation, language and motion
-│   │   ├── hero-tabs.js       # Three services and keyboard controls
-│   │   ├── hero-motion.js     # Portrait and contextual SVG animation
-│   │   ├── hero-tab-indicator.js # Sliding selection and orbiting neon
-│   │   ├── brand-stage.js     # Three continuous brand rows
-│   │   ├── section-navigation.js # Responsive ruler/dot navigation
-│   │   ├── section-connectors.js # Animated dots between sections
-│   │   ├── contact-composer.js # Validated draft preparation
-│   │   ├── tracking-schedule.js# First-paint tracking scheduler
-│   │   └── preferences.js     # Preference helper; initial setup is inline
-│   ├── fonts/                 # Local IBM Plex Sans Arabic + license
-│   ├── brand-icons.svg        # Platform logo sprite
-│   ├── brand-icons-LICENSE.txt
-│   ├── mohamed-avatar-*.webp   # Responsive portrait variants
-│   ├── social-preview.png      # Open Graph / social sharing card
-│   ├── favicon.svg
-│   └── cv.pdf
-├── docs/
-│   ├── DEPLOYMENT.md
-│   ├── MAINTENANCE.md
-│   ├── INTERFACE-UPDATE-2026-10-11.html # Illustrated interface report
-│   └── CHANGELOG.md
-├── en/index.html              # Generated English entry point; do not edit directly
-├── robots.txt
-├── sitemap.xml
-├── scripts/build-seo.mjs       # Rebuild metadata and English HTML
-├── scripts/verify-site.mjs     # Dependency-free validation
-├── package.json
-├── .editorconfig
-├── .gitattributes
-├── .gitignore
-├── .nojekyll
-├── netlify.toml
-└── vercel.json
-```
+PageSpeed Insights on **12 October 2026** measured **87 mobile / 90 desktop** performance. These are single lab results, not a real-user Core Web Vitals certification. Production GA4, Clarity and Meta libraries loaded successfully in the browser.
 
-## Run locally
+See [the release verification report](docs/RELEASE-CHECK-2026-10-12.md) for metrics and limitations.
 
-From the repository directory:
+## Project map
+
+| Area | Source |
+| --- | --- |
+| Content, translations and section structure | `index.html` |
+| Generated English page | `en/index.html` |
+| CSS sources and current fingerprinted bundle | `assets/css/` |
+| Service tabs and contextual motion | `assets/js/hero-tabs.js`, `hero-motion.js` |
+| Availability and country interaction | `assets/js/availability.js`, `assets/flags/` |
+| Company/platform logos and responsive portrait | `assets/` |
+| Contact draft preparation | `assets/js/contact-composer.js` |
+| Tracking loaders and first-paint scheduler | `assets/js/google-analytics.js`, `clarity.js`, `meta-pixel.js`, `tracking-schedule.js` |
+| Build and verification commands | `scripts/` |
+| Deployment, maintenance and release history | `docs/` |
+
+## Local development
+
+The committed site is static and needs no package installation to serve:
 
 ```sh
 python -m http.server 8080
 ```
 
-Open [localhost:8080](http://localhost:8080) or [localhost:8080/en/](http://localhost:8080/en/). Serving the committed static output needs no installation.
+Open `http://localhost:8080/` or `/en/`. Edit Arabic content and its `data-en` translation in `index.html`; regenerate English instead of editing its output directly.
 
-## Check changes
+After changing CSS sources, rebuild using Python with `scripts/performance-requirements.txt` installed:
 
-With Node.js installed:
+```sh
+python scripts/build-performance-css.py
+node scripts/build-seo.mjs
+```
+
+Keep the five source stylesheets and the one bundle referenced by both HTML entry points. Remove superseded bundles after checking their references.
+
+## Verification
 
 ```sh
 node scripts/verify-site.mjs
 node scripts/test-seo.mjs
-node scripts/test-contact-composer.mjs
-node --test scripts/test-letter-train.mjs scripts/test-ruler-layout.mjs
+python scripts/test-css-scopes.py
+node --test scripts/test-contact-composer.mjs scripts/test-letter-train.mjs scripts/test-ruler-layout.mjs
 node scripts/test-tracking-schedule.mjs
 node scripts/test-tracking-queues.mjs
 node scripts/test-brand-stylesheet.mjs
 ```
 
-After changing source content or page metadata, regenerate English and search files before checking:
+Browser checks cover phones, desktop, both themes, language changes and interaction. Automated checks complement visual review.
 
-```sh
-node scripts/build-seo.mjs
-```
+## Measurement and publishing
 
-Checks cover local assets, section anchors, logo references, structured data and JavaScript syntax. Browser checks remain necessary for layout, interaction and accessibility.
+GitHub Pages publishes `main` from the repository root. [Deployment](docs/DEPLOYMENT.md), [maintenance](docs/MAINTENANCE.md) and [changelog](docs/CHANGELOG.md) describe the workflow.
 
-## Performance build
+GA4 `G-5E9BPGNJJH`, Clarity `yvk9p3430s` and Meta Pixel `1166315572519798` load only on the production hostname. Local previews stay out of production reports. Contact fields are masked for Clarity; outgoing analytics classifications exclude draft text and the project URL.
 
-The committed site remains static. Rebuilding CSS requires Python and `scripts/performance-requirements.txt`:
+The `contact` event measures prepared-contact intent, not a sent message or sale. Dashboard configuration and event receipt require separate provider-account verification. See the [UTM and measurement guide](docs/UTM-and-measurement.html).
 
-```sh
-python -m pip install -r scripts/performance-requirements.txt
-python scripts/build-performance-css.py
-node scripts/build-seo.mjs
-```
+## Ownership and credits
 
-Responsive portraits and font subsets retain the existing design. Full CSS loads asynchronously after critical styles; provider queues are created before their libraries load. Asset fingerprints prevent old CSS reuse. GitHub Pages cache headers and third-party library sizes remain provider controlled. See [measured asset sizes](docs/performance-sizes.json).
-
-## Publish and maintain
-
-GitHub Pages publishes `main` from `/ (root)` at [mhmdslahhjaziads-cloud.github.io](https://mhmdslahhjaziads-cloud.github.io/).
-
-See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for hosting, [MAINTENANCE.md](docs/MAINTENANCE.md) for edits and [CHANGELOG.md](docs/CHANGELOG.md) for recent changes.
-
-Use [the UTM and measurement guide](docs/UTM-and-measurement.html) for campaign links and contact-intent measurement. GA4 `contact` is configured as the primary key event, with a saved contact-intent/source/campaign report. This measures prepared-contact intent, not a completed sale. Search Console verification and indexing status are recorded separately in the delivery report.
-
-## Credits and ownership
-
-Portfolio content, portrait and CV belong to Mohamed Salah Hegazy. No open-source license is granted for the portfolio itself. Third-party notices are retained in [assets/fonts/OFL.txt](assets/fonts/OFL.txt) and [assets/brand-icons-LICENSE.txt](assets/brand-icons-LICENSE.txt).
-
-The three horizontal brand rows share the complete 24-brand sequence with staggered starting positions and continuous wrapping. Side-card visibility follows the viewport width; pointer hover pauses, dragging moves freely, and pointer exit resumes. The surveying card uses an inline color total-station and helmet icon so sprite caching cannot hide it.
+Portfolio content, portrait and CV belong to Mohamed Salah Hegazy; no open-source license is granted for the portfolio itself. Brand marks belong to their respective owners. Font/icon notices remain in [OFL.txt](assets/fonts/OFL.txt) and [brand-icons-LICENSE.txt](assets/brand-icons-LICENSE.txt). New artwork provenance is recorded in [ASSET-SOURCES.md](docs/ASSET-SOURCES.md).
