@@ -23,9 +23,9 @@ try {
   assert.match(english, /href="\.\.\/assets\/cv\.pdf"/);
   assert.match(english, /href="#hp-contact"/);
   assert.doesNotMatch(english, /<base\b/i);
-  assert.match(english, />Put your idea into a message<\/h3>/);
-  assert.match(english, />Prepare in WhatsApp ↗<\/span>/);
-  assert.match(english, />Prepare in email ↗<\/span>/);
+assert.match(english, />Message preview<\/h3>/);
+  assert.match(english, />WhatsApp draft<\/span>/);
+  assert.match(english, />Email draft<\/span>/);
   const origin = 'https://mhmdslahhjaziads-cloud.github.io/';
   for (const [html, suffix] of [[arabic, ''], [english, 'en/']]) {
     assert.ok(html.includes(`<link rel="canonical" href="${origin}${suffix}">`));

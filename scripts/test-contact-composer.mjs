@@ -39,6 +39,7 @@ function fixture(language = 'en') {
   const whatsapp = element('hp-message-whatsapp');
   const email = element('hp-message-email');
   const counter = element('hp-message-count');
+  const preview = element('hp-message-preview');
   const label = element('fixture-label');
   label.setAttribute('data-ar', 'نوع الشغل');
   label.setAttribute('data-en', 'Request type');
@@ -54,11 +55,11 @@ function fixture(language = 'en') {
     dispatchEvent: event => events.push(event)
   };
   vm.runInNewContext(source, {
-    document, window: { open: (...args) => opened.push(args), location }, URL,
+    document, window: { open: (...args) => opened.push(args), location, matchMedia: () => ({matches:true}) }, URL,
     CustomEvent: class { constructor(name, opts) { this.type = name; this.detail = opts.detail; this.bubbles = opts.bubbles === true; } },
     MutationObserver: class { constructor(fn) { observer = fn; } observe() {} }
   });
-  return { composer, form, type, url, details, error, whatsapp, email, counter, label, events, opened, location,
+  return { composer, form, type, url, details, error, whatsapp, email, counter, preview, label, events, opened, location,
     changeLanguage(lang) { root.lang = lang; observer?.(); } };
 }
 
@@ -66,6 +67,24 @@ test('composer becomes available with localized labels without a disclosure step
   const f = fixture();
   assert.equal(f.composer.hidden, false);
   assert.equal(f.label.textContent, 'Request type');
+});
+
+test('local message preview matches the prepared draft and updates language without opening a destination', () => {
+  const f = fixture();
+  f.type.value = 'tracking';
+  f.url.value = 'https://shop.example/product?item=1&ref=2';
+  f.details.value = 'Review event accuracy & reporting\nمراجعة القياس';
+  f.form.fire('input');
+  assert.equal(f.opened.length, 0);
+  assert.equal(f.events.length, 0);
+  assert.match(f.preview.textContent, /Tracking and measurement/);
+  assert.ok(f.preview.textContent.endsWith(f.details.value));
+  f.whatsapp.fire('click');
+  assert.equal(new URL(f.opened[0][0]).searchParams.get('text'), f.preview.textContent);
+  f.changeLanguage('ar');
+  assert.match(f.preview.textContent, /تتبّع وقياس/);
+  assert.equal(f.details.value, 'Review event accuracy & reporting\nمراجعة القياس');
+  assert.equal(f.opened.length, 1);
 });
 
 test('blank details block both destinations and focus the required field', () => {
