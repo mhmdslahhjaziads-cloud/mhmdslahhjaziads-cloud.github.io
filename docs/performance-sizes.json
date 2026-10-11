@@ -1,8 +1,8 @@
 {
-  "before_bytes": 259246,
-  "bundle_bytes": 252879,
-  "bundle_gzip": 39092,
-  "critical_bytes": 160012,
-  "critical_gzip": 25968,
-  "filename": "site.5f24c73041fa.css"
+  "before_bytes": 261144,
+  "bundle_bytes": 254767,
+  "bundle_gzip": 39398,
+  "critical_bytes": 164992,
+  "critical_gzip": 26674,
+  "filename": "site.b143a0a3a9dd.css"
 }
