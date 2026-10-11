@@ -10,7 +10,6 @@
   if(english){hero.querySelector('[role="tablist"]').setAttribute('aria-label','Request type');hero.querySelector('.hp-choice-profile img').alt='Mohamed Salah Hegazy';}
   const names=english?['Ads','Tracking','Website']:['إعلانات','تراكنج','موقع'];
   hero.querySelector('h1').textContent=english?'Mohamed Salah Hegazy — Media Buyer & Tracking Specialist':'محمد صلاح حجازي — ميديا باير وتراكنج';
-  hero.querySelector('.hp-choice-badge').textContent=english?'Media Buying · Tracking':'ميديا باينج · تراكنج';
   const actions=hero.querySelectorAll('.hp-choice-actions a');
   actions[0].firstChild.textContent=english?'Let’s talk ':'ابدأ كلام معايا ';
   actions[1].firstChild.textContent=english?'Download CV ':'حمّل الـCV ';
