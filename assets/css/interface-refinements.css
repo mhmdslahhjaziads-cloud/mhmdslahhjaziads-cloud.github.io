@@ -374,6 +374,10 @@ body{padding-right:calc(46px + var(--hp-letter-column-width,72px))!important;tra
 #hegazy-preview #hp-tracking-work .hp-tracking-marks{display:flex;align-items:center;gap:8px;}
 #hegazy-preview #hp-tracking-work .hp-tracking-brand{display:grid;place-items:center;width:26px;height:28px;flex:0 0 26px;}
 #hegazy-preview #hp-tracking-work .hp-tracking-brand :is(svg,img){display:block;width:24px;height:24px;object-fit:contain;}
+#hegazy-preview #hp-tracking-work .hp-tracking-brand{opacity:0;transform:translateY(7px) rotate(-22deg) scale(.8);transition:opacity 220ms ease,transform 480ms cubic-bezier(.16,1.3,.3,1);}
+#hegazy-preview #hp-tracking-work .hp-tracking-card:is(:hover,:focus-visible,:focus-within,.hp-touch-active) .hp-tracking-brand{opacity:1;transform:rotate(-10deg);animation:hp-tracking-mark-reveal 1100ms cubic-bezier(.22,1,.36,1) both;}
+@keyframes hp-tracking-mark-reveal{0%{opacity:0;transform:translateY(7px) rotate(-22deg) scale(.8);}50%{opacity:1;transform:translateY(-3px) rotate(-14deg) scale(1.08);}100%{opacity:1;transform:rotate(-10deg);}}
+@media(prefers-reduced-motion:reduce){#hegazy-preview #hp-tracking-work .hp-tracking-brand{animation:none!important;transition:none!important;transform:none!important;}}
 #hegazy-preview #hp-tracking-work .hp-tracking-head .hp-card-scene{position:relative;inset:auto;top:auto;width:44px;height:34px;flex:0 0 44px;}
 #hegazy-preview #hp-tracking-work .hp-tracking-card p{font-size:14px;line-height:1.75;}
 @media(max-width:1050px){#hegazy-preview #hp-tracking-work .hp-tracking-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
@@ -507,8 +511,8 @@ body{padding-right:calc(46px + var(--hp-letter-column-width,72px))!important;tra
 #hegazy-preview .hp-chat-contact .hp-message-button-icon{position:static;display:block;flex:0 0 24px;width:24px;height:24px;transform:none;}
 #hegazy-preview .hp-chat-contact .hp-composer-linkedin{width:48px;height:48px;box-sizing:border-box;border-radius:15px;}
 #hegazy-preview .hp-chat-contact .hp-message-destinations button:is(:hover,:focus-visible) .hp-message-button-icon{transform:none;}
-#hegazy-preview .hp-journey-stop:nth-child(1){--hp-company-hover:#d8dfc5;--hp-company-ink:#252c26;}
-#hegazy-preview .hp-journey-stop:nth-child(2){--hp-company-hover:#f1ae70;--hp-company-ink:#252c26;}
+#hegazy-preview .hp-journey-stop:nth-child(1){--hp-company-hover:#eee8e2;--hp-company-ink:#252c26;}
+#hegazy-preview .hp-journey-stop:nth-child(2){--hp-company-hover:#dceaf0;--hp-company-ink:#252c26;}
 #hegazy-preview .hp-journey-stop:nth-child(4),#hegazy-preview .hp-journey-stop:nth-child(6){--hp-company-hover:#243a58;--hp-company-ink:#fffaf3;}
 #hegazy-preview .hp-journey-stop:nth-child(5){--hp-company-hover:#d8bde5;--hp-company-ink:#35263c;}
 #hegazy-preview .hp-journey-stop:nth-child(3){--hp-company-hover:#91bedc;--hp-company-ink:#172b40;}
