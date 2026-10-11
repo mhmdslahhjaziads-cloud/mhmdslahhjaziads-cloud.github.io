@@ -34,7 +34,7 @@
       replay(card);
     });
   }
-  tabs.forEach(tab=>{tab.addEventListener('click',change);tab.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key))change();});});
+  hero.addEventListener('hp:hero-service-change',change);
   cards.forEach(card=>{card.addEventListener('pointerenter',()=>{if(fine.matches)replay(card);});card.addEventListener('pointerleave',()=>card.classList.remove('is-icon-active'));});
   const photo=hero.querySelector('.hp-choice-profile img,.photo');
   const photoFrame=photo.closest('.hp-portrait-frame')||photo;

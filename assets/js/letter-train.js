@@ -15,7 +15,7 @@
         const preceding=above?above[Math.round(phase*(above.length-1))]+gap:0;
         const upper=Math.max(0,end-(previous.length-groupIndex-1)*gap);
         const lower=Math.min(upper,Math.max(0,preceding));
-        const y=Math.max(lower,Math.min(upper,value+(leader-value)*.18));
+        const y=Math.max(lower,Math.min(upper,value+(leader-value)*.38));
         leader=value;
         return y;
       });
