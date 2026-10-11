@@ -712,3 +712,52 @@ body{padding-right:calc(46px + var(--hp-letter-column-width,72px))!important;tra
 @media(max-width:700px){#hegazy-preview .hp-survey-brand-head{max-width:100%;gap:8px;}#hegazy-preview .hp-petrojet-mark{width:76px;height:46px;flex:0 0 76px;}#hegazy-preview .hp-petrojet-mark img{width:88px;height:88px;flex-basis:88px;}#hegazy-preview .hp-journey-stop .hp-survey-icon{width:36px;height:27px;flex:0 0 36px;}}
 
 @media(max-width:390px){#hegazy-preview .hp-survey-brand-head{gap:6px;}#hegazy-preview .hp-petrojet-mark{width:64px;height:38px;flex-basis:64px;}#hegazy-preview .hp-petrojet-mark img{width:72px;height:72px;flex-basis:72px;}#hegazy-preview .hp-journey-stop .hp-survey-icon{width:24px;height:18px;flex-basis:24px;}}
+
+/* Company logos sit directly on the main card. Original PNGs remain unchanged. */
+#hegazy-preview .hp-journey-stop .hp-company-mark{display:flex;align-items:center;justify-content:center;width:136px;max-width:100%;padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;flex:0 1 136px;}
+#hegazy-preview .hp-journey-stop .hp-company-logo{display:block;width:136px;height:74px;max-width:100%;flex:0 1 auto;transform:none;transition:none;animation:none;overflow:visible;}
+#hegazy-preview .hp-company-original{opacity:1;}
+#hegazy-preview .hp-company-contrast{opacity:0;}
+#hegazy-preview :is(.hp-company-dokkan,.hp-company-mindsinc) .hp-company-original{opacity:0;}
+#hegazy-preview :is(.hp-company-dokkan,.hp-company-mindsinc) .hp-company-contrast{opacity:1;}
+html[data-appearance=dark] #hegazy-preview .hp-company-original{opacity:0;}
+html[data-appearance=dark] #hegazy-preview .hp-company-contrast{opacity:1;}
+html[data-appearance=dark] #hegazy-preview :is(.hp-company-dokkan,.hp-company-mindsinc) .hp-company-original{opacity:1;}
+html[data-appearance=dark] #hegazy-preview :is(.hp-company-dokkan,.hp-company-mindsinc) .hp-company-contrast{opacity:0;}
+#hegazy-preview .hp-journey-stop:is(:hover,:focus-visible) .hp-company-original{opacity:1;}
+#hegazy-preview .hp-journey-stop:is(:hover,:focus-visible) .hp-company-contrast{opacity:0;}
+#hegazy-preview .hp-journey-stop:is(:hover,:focus-visible) .hp-company-mindsinc .hp-company-original{opacity:0;}
+#hegazy-preview .hp-journey-stop:is(:hover,:focus-visible) .hp-company-mindsinc .hp-company-contrast{opacity:1;}
+@media(hover:hover) and (pointer:fine){
+#hegazy-preview .hp-journey-stop:hover .hp-company-logo{animation:hp-company-hover-lift 1.2s ease-in-out infinite;}
+#hegazy-preview .hp-journey-stop:hover .hp-survey-icon{animation:hp-company-device-lift 1.2s ease-in-out infinite;}
+}
+#hegazy-preview .hp-journey-stop:focus-visible .hp-company-logo{animation:hp-company-hover-lift 1.2s ease-in-out infinite;}
+@keyframes hp-company-hover-lift{0%,100%{transform:translateY(0) rotate(0);}40%{transform:translateY(-5px) rotate(-2deg);}75%{transform:translateY(-2px) rotate(1.3deg);}}
+@keyframes hp-company-device-lift{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-4px) rotate(3deg);}}
+@media(max-width:700px){
+#hegazy-preview .hp-journey-stop :is(.hp-dokkan-brand-head,.hp-survey-brand-head){flex-direction:column;gap:6px;max-width:100%;}
+#hegazy-preview .hp-journey-stop .hp-company-mark{width:110px;flex:0 1 auto;}
+#hegazy-preview .hp-journey-stop .hp-company-logo{width:110px;height:64px;}
+}
+@media(max-width:390px){
+#hegazy-preview .hp-journey-stop .hp-company-mark,#hegazy-preview .hp-journey-stop .hp-company-logo{width:94px;max-width:100%;}
+#hegazy-preview .hp-journey-stop .hp-company-logo{height:56px;}
+}
+@media(prefers-reduced-motion:reduce){#hegazy-preview .hp-journey-stop .hp-company-logo,#hegazy-preview .hp-journey-stop .hp-survey-icon{animation:none!important;transform:none!important;}}
+
+#hegazy-preview .hp-company-black{fill:#20201f;}
+html[data-appearance=dark] #hegazy-preview .hp-company-black{fill:#f6f3ec;}
+#hegazy-preview .hp-journey-stop:is(:hover,:focus-visible) .hp-company-black{fill:#20201f;}
+/* Richer folder colors keep the approved structure and readable labels. */
+#hegazy-preview .hp-route-group{--hp-group:#81b7d8;background:color-mix(in srgb,var(--hp-group) 28%,var(--hp-surface));border-color:color-mix(in srgb,var(--hp-group) 85%,var(--hp-ink));}
+#hegazy-preview .hp-route-purple{--hp-group:#b68ed1;}
+#hegazy-preview .hp-route-sage{--hp-group:#a0b87d;}
+#hegazy-preview .hp-folder-label{font-weight:700;color:#1c2922;border-color:color-mix(in srgb,var(--hp-group) 50%,#252c26);}
+#hegazy-preview .hp-route-menu .hp-route-link{font-weight:600;color:var(--hp-ink);}
+#hegazy-preview .hp-route-link b{color:var(--hp-ink);opacity:.8;}
+#hegazy-preview .hp-route-menu .hp-route-selected{background:var(--hp-group);color:#1c2922;}
+#hegazy-preview .hp-route-selected b{color:#1c2922;opacity:1;}
+#hegazy-preview .hp-route-selected small{background:#fffaf3;border-color:#354637;color:#1c2922;box-shadow:none;}
+#hegazy-preview .hp-route-menu>.hp-route-link{--hp-group:#e99c72;background:#e99c72;color:#1c2922;}
+@media(hover:hover) and (pointer:fine){#hegazy-preview .hp-route-menu .hp-route-link:hover{background:color-mix(in srgb,var(--hp-group) 65%,var(--hp-surface));}#hegazy-preview .hp-route-menu>.hp-route-link:hover{background:#df8c60;color:#1c2922;}}
