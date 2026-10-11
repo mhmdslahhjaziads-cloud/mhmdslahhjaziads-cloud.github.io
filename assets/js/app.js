@@ -66,7 +66,7 @@
     if (letterFrame !== null) cancelAnimationFrame(letterFrame);
     letterFrame = null;
     letterGroups = [];
-    if (!finePointer.matches || document.documentElement.clientWidth < 900) return;
+    if (window.innerWidth <= 700) return;
     root.querySelectorAll('.hp-moving-labels > span').forEach(label => {
       const text = label.textContent;
       const count = Array.from(text).length;
@@ -93,7 +93,7 @@
   }
 
   function measureLetterColumn() {
-    if (!finePointer.matches || document.documentElement.clientWidth < 900) return;
+    if (window.innerWidth <= 700) return;
     // Reserve only the space the section names need, including the active font.
     letterGroups.forEach(group => {group.width = group.label.offsetWidth;});
     const columnWidth = Math.ceil(Math.max(0, ...letterGroups.map(group => group.width)) * 1.1 + 4);
@@ -256,7 +256,7 @@
   function updateScroll() {
     // All geometry reads precede style writes. Hidden phone labels need no layout work.
     const range = document.documentElement.scrollHeight - window.innerHeight;
-    const showLetters = finePointer.matches && document.documentElement.clientWidth >= 900;
+    const showLetters = window.innerWidth > 700;
     const sectionTops = new Map();
     railLinks.forEach(link => {const id=link.dataset.section;if(!sectionTops.has(id))sectionTops.set(id,document.getElementById(id).getBoundingClientRect().top);});
     const labels = root.querySelector('.hp-moving-labels');
@@ -303,7 +303,7 @@
     if (!scrollQueued) {scrollQueued = true;requestAnimationFrame(updateScroll);}
   }, {passive:true});
   function measureHeader() {
-    if (finePointer.matches && document.documentElement.clientWidth >= 900 && !letterGroups.length) prepareLetterMotion();
+    if (window.innerWidth > 700 && !letterGroups.length) prepareLetterMotion();
     measureLetterColumn();
     const bounds = slot.getBoundingClientRect();
     root.style.setProperty('--hp-nav-left', bounds.left + 'px');
