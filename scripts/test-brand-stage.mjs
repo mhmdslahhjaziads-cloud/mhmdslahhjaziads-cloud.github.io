@@ -16,7 +16,7 @@ const rows=Array.from({length:3},()=>{
 });
 const stage=node(),counter={textContent:''};stage.clientWidth=1536;stage.contains=()=>false;
 stage.querySelectorAll=s=>s==='.hp-brand-row'?rows:[];stage.querySelector=()=>counter;
-const document={hidden:false,querySelector:()=>stage,addEventListener:(k,f)=>handlers.set(k,f),fonts:{ready:{then(){}}}};
+const document={hidden:false,querySelector:()=>stage,addEventListener:(k,f)=>{const previous=handlers.get(k);handlers.set(k,previous?event=>{previous(event);f(event);}:f);},fonts:{ready:{then(){}}}};
 vm.runInNewContext(fs.readFileSync(new URL('../assets/js/brand-stage.js',import.meta.url),'utf8'),{
  document,location:{pathname:'/'},matchMedia:()=>({matches:false,addEventListener(){}}),
  IntersectionObserver:class{constructor(f){intersect=f;}observe(){}},ResizeObserver:class{observe(){}},
@@ -62,6 +62,12 @@ assert.equal(offsets()[1],focused[1],'Keyboard focus must pause only its row');
 assert.notEqual(offsets()[0],focused[0],'Other rows must continue during keyboard focus');
 rows[1].events.get('focusout')({relatedTarget:null});frame();frame();
 assert.notEqual(offsets()[1],focused[1],'Focus exit must resume its row');
+rows[0].events.get('pointerenter')({pointerType:'mouse'});
+rows[0].events.get('pointerdown')({target:{closest:()=>null},clientX:200,clientY:40});
+rows[0].events.get('pointerleave')();
+handlers.get('pointerup')?.({pointerType:'mouse'});
+const releasedOutside=offsets();frame();frame();
+assert.notEqual(offsets()[0],releasedOutside[0],'Releasing outside a row before horizontal capture must resume that row');
 document.hidden=true;handlers.get('visibilitychange')();assert.equal(frames.size,0,'Hidden tabs must stop animation work');
 document.hidden=false;handlers.get('visibilitychange')();assert.equal(frames.size,1);
 intersect([{isIntersecting:false}]);assert.equal(frames.size,0,'Offscreen stages must stop animation work');
