@@ -15,8 +15,8 @@ def compact(text):
     r.content=tinycss2.parse_component_value_list(walk(tinycss2.parse_rule_list(r.content,skip_comments=True,skip_whitespace=True)))
    out.append(r)
   return tinycss2.serialize(reversed(out))
- return walk(rules)
-sources=['styles.css','portfolio-details.css','contact-composer.css']
+ return '\n'.join(line.rstrip() for line in walk(rules).splitlines())
+sources=['styles.css','portfolio-details.css','contact-composer.css','interface-refinements.css']
 full='\n'.join((root/'assets/css'/p).read_text(encoding='utf-8') for p in sources)
 bundle=compact(full)
 fingerprint=hashlib.sha256(bundle.encode()).hexdigest()[:12]

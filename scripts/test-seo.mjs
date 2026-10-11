@@ -16,8 +16,10 @@ try {
   assert.deepEqual(files.map(file => fs.readFileSync(path.join(fixture, file), 'utf8')), first, 'Generation must be idempotent');
   const [arabic, english, robots, sitemap] = first;
   assert.match(english, /<html lang="en" dir="ltr">/);
-  assert.match(english, /Welcome! I’m Mohamed Salah Hegazy/);
-  assert.match(english, /Connecting advertising/);
+  assert.match(english, /Mohamed Salah Hegazy — Media Buyer & Tracking Specialist/);
+  assert.match(english, /Goal &amp; audience/);
+  assert.match(english, /Budget &amp; creative/);
+  assert.match(english, /Read the results/);
   assert.match(english, /href="\.\.\/assets\/cv\.pdf"/);
   assert.match(english, /href="#hp-contact"/);
   assert.doesNotMatch(english, /<base\b/i);
@@ -37,7 +39,7 @@ try {
     if (ref.startsWith('../assets/')) assert.ok(fs.existsSync(path.join(root, ref.slice(3).split(/[?#]/)[0])), `Missing English asset: ${ref}`);
     assert.ok(!ref.startsWith('assets/'), `Asset must resolve from /en/: ${ref}`);
   }
-  const visible = english.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, '');
+  const visible = english.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/g, '').replace(/<[^>]+>/g, '');
   assert.doesNotMatch(visible.replaceAll('العربية', ''), /[\u0600-\u06ff]/, 'English visible content must be translated');
   assert.ok(robots.includes(`Sitemap: ${origin}sitemap.xml`));
   assert.equal([...sitemap.matchAll(/<loc>/g)].length, 2);
