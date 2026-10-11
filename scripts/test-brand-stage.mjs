@@ -2,16 +2,16 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const handlers=new Map(),frames=new Map();
-let nextId=0,intersect,offsetWrites=0;
+let nextId=0,intersect,offsetWrites=0,cardQueries=0;
 function node(){
  const events=new Map(),classes=new Set(),styles=new Map(),attrs=new Map();
  return {events,classes,styles,attrs,tabIndex:-1,
   classList:{toggle:(k,v)=>v?classes.add(k):classes.delete(k),add:k=>classes.add(k),remove:k=>classes.delete(k)},
-  style:{setProperty:(k,v)=>{styles.set(k,v);offsetWrites++;}},
+  style:{setProperty:(k,v)=>{styles.set(k,v);offsetWrites++;},set transform(v){styles.set('transform',v);offsetWrites++;}},
   setAttribute:(k,v)=>attrs.set(k,v),addEventListener:(k,f)=>events.set(k,f),focus(){},setPointerCapture(){}};
 }
 const rows=Array.from({length:3},()=>{
- const row=node();row.cards=Array.from({length:24},()=>{const c=node(),button=node(),link=node();c.querySelector=s=>s==='button'?button:link;return c;});
+ const row=node();row.cards=Array.from({length:24},()=>{const c=node(),button=node(),link=node();c.querySelector=s=>{cardQueries++;return s==='button'?button:link;};return c;});
  row.querySelectorAll=()=>row.cards;row.contains=target=>row.cards.includes(target);return row;
 });
 const stage=node(),counter={textContent:''};stage.clientWidth=1536;stage.contains=()=>false;
@@ -25,9 +25,11 @@ vm.runInNewContext(fs.readFileSync(new URL('../assets/js/brand-stage.js',import.
 });
 let time=0;
 function frame(){const [id,f]=frames.entries().next().value;frames.delete(id);f(time+=16.667);}
-function offsets(){return rows.map((r,i)=>parseFloat(r.cards[i*8].styles.get('--hp-card-offset')));}
+function offset(card){return card.styles.has('transform')?Number(card.styles.get('transform').match(/\+ ([\d.-]+)px/)[1]):parseFloat(card.styles.get('--hp-card-offset'));}
+function offsets(){return rows.map((r,i)=>offset(r.cards[i*8]));}
 intersect([{isIntersecting:true}]);frame();
-const before=offsets();offsetWrites=0;frame();
+const before=offsets();offsetWrites=0;cardQueries=0;frame();
+assert.equal(cardQueries,0,'Animation frames must reuse cached controls instead of querying every card');
 assert.ok(offsetWrites<=24,`Only visible cards should receive frame updates, got ${offsetWrites}`);
 const measuredOffsetWrites=offsetWrites;
 const after=offsets();assert.ok(after[0]<before[0]&&after[1]>before[1],'Outer and middle rows must move in opposite directions');
@@ -46,10 +48,10 @@ for(let i=0;i<12000;i++)frame();
 assert.ok(rows.every(r=>r.cards.filter(c=>!c.classes.has('is-offstage')).length>=6),'Every row stays filled through a full cycle');
 rows[0].events.get('pointerenter')({pointerType:'mouse'});
 const draggedCard=rows[0].cards.find(c=>c.classes.has('is-active'));
-const dragStart=parseFloat(draggedCard.styles.get('--hp-card-offset'));
+const dragStart=offset(draggedCard);
 rows[0].events.get('pointerdown')({target:{closest:()=>null},clientX:200,clientY:40});
 rows[0].events.get('pointermove')({clientX:350,clientY:40,pointerId:1});
-assert.ok(Math.abs(parseFloat(draggedCard.styles.get('--hp-card-offset'))-dragStart-150)<.01,'Dragging keeps the same visible motion');
+assert.ok(Math.abs(offset(draggedCard)-dragStart-150)<.01,'Dragging keeps the same visible motion');
 const duringDrag=offsets();frame();frame();
 assert.equal(offsets()[0],duringDrag[0],'Dragged row must stay under pointer control');
 assert.notEqual(offsets()[1],duringDrag[1],'Other rows must continue during a drag');
@@ -72,4 +74,4 @@ document.hidden=true;handlers.get('visibilitychange')();assert.equal(frames.size
 document.hidden=false;handlers.get('visibilitychange')();assert.equal(frames.size,1);
 intersect([{isIntersecting:false}]);assert.equal(frames.size,0,'Offscreen stages must stop animation work');
 console.log('PASS: visible-card-only frame work, opposite directions, continuous wrapping, independent row hover/drag/focus and offscreen/hidden pause.');
-console.log(`Measured ${measuredOffsetWrites} transform updates per desktop animation frame; previously 72.`);
+console.log(`Measured ${measuredOffsetWrites} transform updates per desktop animation frame; zero per-frame card lookups.`);

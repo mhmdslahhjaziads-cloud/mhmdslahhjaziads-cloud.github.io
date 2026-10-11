@@ -1,7 +1,7 @@
 (() => {
  const nav=document.querySelector('.hp-section-dots');if(!nav)return;
  const links=[...nav.querySelectorAll('a')];
- if(/^\/en(?:\/|$)/.test(location.pathname)){nav.setAttribute('aria-label','Site sections');const names=['Home','Services','Tracking work','Brands','Tools','Workflow','Journey','Contact'];links.forEach((a,i)=>{a.setAttribute('aria-label',names[i]);a.querySelector('span').textContent=names[i];});}
+ if(/^\/en(?:\/|$)/.test(location.pathname)){nav.setAttribute('aria-label','Site sections');const names=['Home','Services','My work','Tools','Workflow','Journey','Contact'];links.forEach((a,i)=>{a.setAttribute('aria-label',names[i]);a.querySelector('span').textContent=names[i];});}
  const sections=links.map(a=>{const section=document.querySelector(a.getAttribute('href'));return section.id==='brand-preview'?section.closest('.hp-brands-section'):section;});
  const reduced=matchMedia('(prefers-reduced-motion:reduce)');
  const phone=matchMedia('(max-width:700px)');
