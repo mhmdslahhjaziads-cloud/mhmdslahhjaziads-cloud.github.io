@@ -562,3 +562,6 @@ body{padding-right:calc(46px + var(--hp-letter-column-width,72px))!important;tra
 #hegazy-preview #hp-home .hp-platform-popover[hidden]{display:none;}
 
 #hegazy-preview .hp-journey-stop .hp-survey-icon{width:48px;height:32px;}
+
+#hegazy-preview #hp-home .hp-platform-popover{max-height:min(360px,60vh);overflow:auto;transform:translateX(var(--hp-popover-shift,0px));}
+#hegazy-preview #hp-home .hp-platform-popover[data-placement=above]{top:auto;bottom:calc(100% + 8px);}
