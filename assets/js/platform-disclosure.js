@@ -35,6 +35,14 @@
     clearTimeout(closeTimer);
     panel.hidden = !open;
     trigger.setAttribute('aria-expanded',String(open));
+    if(open){
+      panel.style.removeProperty('--hp-popover-shift');
+      const button=trigger.getBoundingClientRect();
+      panel.dataset.placement=innerHeight-button.bottom<panel.offsetHeight+12&&button.top>panel.offsetHeight+12?'above':'below';
+      const bounds=panel.getBoundingClientRect();
+      const shift=Math.max(12-bounds.left,Math.min(0,innerWidth-12-bounds.right));
+      panel.style.setProperty('--hp-popover-shift',shift+'px');
+    }else panel.style.removeProperty('--hp-popover-shift');
   }
   wrapper.addEventListener('pointerenter',event => {if(event.pointerType==='mouse')setOpen(true);});
   wrapper.addEventListener('pointerleave',event => {if(event.pointerType==='mouse')closeTimer=setTimeout(()=>{if(!wrapper.contains(document.activeElement))setOpen(false);},160);});
