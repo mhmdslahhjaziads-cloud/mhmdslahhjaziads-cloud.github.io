@@ -32,13 +32,13 @@
       const shown=Math.abs(offset)<=row.radius;
       const tabbable=Math.abs(offset)<=1;
       let previous=cardStates.get(card);
-      if(!previous){previous={};cardStates.set(card,previous);}
-      if(shown) card.style.setProperty('--hp-card-offset',`${offset*row.stride}px`);
-      const button=card.querySelector('button');
+      if(!previous){previous={button:card.querySelector('button'),link:card.querySelector('a')};cardStates.set(card,previous);}
+      if(shown) card.style.transform=`translate3d(calc(-50% + ${offset*row.stride}px),0,0)`;
+      const button=previous.button;
       if(previous.active!==active){
         card.classList.toggle('is-active',active);
         button.setAttribute('aria-pressed',String(active));
-        card.querySelector('a').tabIndex=active?0:-1;
+        previous.link.tabIndex=active?0:-1;
       }
       if(previous.shown!==shown){
         card.classList.toggle('is-offstage',!shown);
