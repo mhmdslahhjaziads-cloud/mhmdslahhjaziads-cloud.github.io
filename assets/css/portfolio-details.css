@@ -5,7 +5,7 @@ body{padding-right:0!important;padding-left:0!important;}
 #hegazy-preview .hp-scroll-progress{height:3px;}
 #hegazy-preview .hp-reference-hero .hp-intro{font-size:clamp(17px,1.45vw,20px);line-height:1.9;white-space:normal;}
 #hegazy-preview .hp-learning-badge{display:inline-flex;background:#d1b4e7;color:#252c26;padding:6px 12px;border:1px solid var(--hp-ink);border-radius:999px;font-size:12px;margin-top:20px;}
-#hegazy-preview .hp-website-service h3{margin-top:16px;}
+
 #hegazy-preview .hp-tracking-work{padding-block:56px;}
 #hegazy-preview .hp-tracking-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
 #hegazy-preview .hp-tracking-card{position:relative;min-width:0;padding:28px;border:2px solid var(--hp-ink);border-radius:22px;box-shadow:-4px 5px 0 var(--hp-ink);background:var(--hp-surface);transition:transform 200ms ease,box-shadow 200ms ease;}
@@ -295,11 +295,11 @@ html.hp-scroll-dragging{scroll-behavior:auto!important;user-select:none;}
 
 /* Scene positions follow the available space in each card family. */
 #hegazy-preview .hp-method-card{--hp-card-color:var(--hp-step-color);}
-#hegazy-preview .hp-service{--hp-card-color:var(--hp-peach);}
+
 #hegazy-preview .hp-service:nth-child(2){--hp-card-color:var(--hp-sage);}
 #hegazy-preview .hp-service:nth-child(3){--hp-card-color:#a6c8df;}
-#hegazy-preview .hp-service-top>.hp-card-scene{position:relative;inset:auto;top:auto;width:76px;height:58px;flex:0 0 76px;}
-#hegazy-preview .hp-service-top{min-height:58px;}
+
+
 #hegazy-preview .hp-tool-group{--hp-card-color:var(--hp-folder-color);}
 #hegazy-preview #hp-toolkit .hp-tool-group>.hp-card-scene{top:auto;bottom:12px;width:60px;height:44px;}
 #hegazy-preview #hp-toolkit .hp-tool-panel{padding-bottom:62px;}
@@ -412,7 +412,7 @@ html[data-appearance=dark] #hegazy-preview{--hp-bg:#171c19;--hp-surface:#242b26;
 @media(max-width:600px){#hegazy-preview .hp-contact-stickers{width:46px;height:30px;flex-basis:46px;}#hegazy-preview #hp-contact .hp-contact-top h2.hp-reference-label{max-width:calc(100% - 55px);font-size:17px;}#hegazy-preview #hp-experience h2.hp-experience-title{font-size:22px!important;}}
 
 /* The title invites the conversation stickers into the empty space. */
-#hegazy-preview .hp-service .hp-tags{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
+
 @media(max-width:600px){
   #hegazy-preview #hp-method .hp-method-card{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:10px;row-gap:10px;align-items:center;padding:15px 16px;}
   #hegazy-preview #hp-method .hp-method-number{grid-column:1;grid-row:1;width:40px;height:40px;margin:0;font-size:15px;}
