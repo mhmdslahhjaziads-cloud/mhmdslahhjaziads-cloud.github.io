@@ -25,24 +25,14 @@
   let letterFrame = null;
   let letterGroups = [];
 
-  function labelAnimationBounds(targets, index) {
-    const target = targets[index];
-    if ((index && targets[index - 1] === target) || (index < targets.length - 1 && targets[index + 1] === target)) return [target, target];
-    const lower = Math.max(target - 24, index ? (targets[index - 1] + target) / 2 + 14 : target - 24);
-    const upper = Math.min(target + 24, index < targets.length - 1 ? (target + targets[index + 1]) / 2 - 14 : target + 24);
-    return lower <= upper ? [lower, upper] : [target, target];
-  }
-
   function animateLetters() {
     let moving = false;
     const targets = letterGroups.map(group => parseFloat(group.label.style.getPropertyValue('--hp-label-y')) || 0);
+    const next = window.HegazyLetterTrain.step(letterGroups.map(group=>group.letters.map(letter=>letter.y)),targets,root.querySelector('.hp-moving-labels').clientHeight,motion.matches);
     letterGroups.forEach((group, groupIndex) => {
       const target = parseFloat(group.label.style.getPropertyValue('--hp-label-y')) || 0;
-      const [lower, upper] = labelAnimationBounds(targets, groupIndex);
-      let leader = target;
       group.letters.forEach((letter, index) => {
-        const previous = letter.y;
-        letter.y = motion.matches ? target : Math.max(lower, Math.min(upper, letter.y + (leader - letter.y) * .18));
+        letter.y = next[groupIndex][index];
         if (Math.abs(target - letter.y) > .15) moving = true;
         letter.element.style.setProperty('--hp-letter-y', letter.y.toFixed(2)+'px');
         const bend = motion.matches ? 0 : Math.max(-1,Math.min(1,(letter.y-target)/75));
@@ -52,7 +42,6 @@
         letter.element.style.setProperty('--hp-letter-x',horizontal.toFixed(2)+'px');
         letter.element.style.setProperty('--hp-letter-turn',(-75 * bend).toFixed(2)+'deg');
         letter.element.style.setProperty('--hp-letter-origin', (preferences.language === 'en' ? center : width-center).toFixed(2)+'px 50%');
-        leader = previous;
       });
     });
     letterFrame = moving ? requestAnimationFrame(animateLetters) : null;
@@ -67,7 +56,7 @@
     letterFrame = null;
     letterGroups = [];
     if (window.innerWidth <= 700) return;
-    root.querySelectorAll('.hp-moving-labels > span').forEach(label => {
+    root.querySelectorAll('.hp-moving-labels > span').forEach((label, labelIndex) => {
       const text = label.textContent;
       const count = Array.from(text).length;
       const base = document.createElement('b');
@@ -84,7 +73,7 @@
         slice.style.setProperty('--hp-slice-y','inset('+(index/count*100)+'% 0 '+((count-index-1)/count*100)+'% 0)');
         slice.style.setProperty('--hp-letter-delay', index * 18 + 'ms');
         label.appendChild(slice);
-        group.letters.push({element:slice,y:parseFloat(label.style.getPropertyValue('--hp-label-y')) || 0});
+        group.letters.push({element:slice,y:parseFloat(label.style.getPropertyValue('--hp-label-y')) || labelIndex * Math.min(40,root.querySelector('.hp-moving-labels').clientHeight/railLinks.length)});
       });
       letterGroups.push(group);
     });
@@ -241,7 +230,7 @@
 
   let routeActive = 'hp-home';
   function updateRouteMenu(section) {
-    if (section) routeActive = section === 'hp-background' ? 'hp-experience' : section;
+    if (section) routeActive = section === 'hp-background' ? 'hp-experience' : section === 'brand-preview' ? 'hp-tracking-work' : section;
     const links = [...dockPanel.querySelectorAll('.hp-route-link')];
     if (!links.length) return;
     const chosen = links.find(link => link.getAttribute('href') === '#'+routeActive) || links[0];
@@ -255,21 +244,19 @@
 
   function updateScroll() {
     // All geometry reads precede style writes. Hidden phone labels need no layout work.
-    const range = document.documentElement.scrollHeight - window.innerHeight;
     const showLetters = window.innerWidth > 700;
     const sectionTops = new Map();
-    railLinks.forEach(link => {const id=link.dataset.section;if(!sectionTops.has(id))sectionTops.set(id,document.getElementById(id).getBoundingClientRect().top);});
+    railLinks.forEach(link => {const id=link.dataset.section;const target=document.getElementById(id);const section=id==='brand-preview'?target.closest('.hp-brands-section'):target;if(!sectionTops.has(id))sectionTops.set(id,section.getBoundingClientRect().top+window.scrollY);});
     const labels = root.querySelector('.hp-moving-labels');
     const labelBounds = showLetters ? labels.getBoundingClientRect() : null;
     const labelItems = showLetters ? [...labels.querySelectorAll(':scope > span')] : [];
-    labelItems.forEach(label=>{const id=label.dataset.labelSection;if(!sectionTops.has(id))sectionTops.set(id,document.getElementById(id).getBoundingClientRect().top);});
-    const progress = range > 0 ? Math.max(0, Math.min(1, window.scrollY / range)) : 0;
+    const ruler = window.HegazyRuler.layout({documentHeight:document.documentElement.scrollHeight,viewportHeight:window.innerHeight,scrollY:window.scrollY,railHeight:labelBounds?.height || 0,sectionTops:[...railLinks].map(link=>sectionTops.get(link.dataset.section))});
+    const progress = ruler.progress;
     root.style.setProperty('--hp-progress', progress.toFixed(4));
     const percent = String(Math.round(progress * 100)).padStart(3, '0') + '%';
     root.querySelectorAll('.hp-progress-value,.hp-mobile-progress').forEach(value => {value.textContent = percent;});
-    const visibleFraction = Math.min(1, window.innerHeight / document.documentElement.scrollHeight);
-    root.style.setProperty('--hp-view-size', (visibleFraction * 100) + '%');
-    root.style.setProperty('--hp-view-start', (progress * (1 - visibleFraction) * 100) + '%');
+    root.style.setProperty('--hp-view-size', (ruler.bandSize * 100) + '%');
+    root.style.setProperty('--hp-view-start', (ruler.bandStart * 100) + '%');
     header.classList.toggle('hp-scrolled', window.scrollY > 20);
     const nextDocked = window.scrollY > (docked ? 16 : 48);
     if (nextDocked !== docked) {
@@ -282,16 +269,15 @@
       if (!dockOpen) setMenu(false);
       if (!docked && motion.matches) requestAnimationFrame(measureHeader);
     }
-    let active = 'hp-home';
-    railLinks.forEach(link=>{if(sectionTops.get(link.dataset.section) < window.innerHeight * .4)active=link.dataset.section;});
-    if (progress >= .995) active = 'hp-contact';
+    const active = railLinks[ruler.activeIndex].dataset.section;
     railLinks.forEach(link=>{const selected=link.dataset.section===active;link.classList.toggle('hp-rail-active',selected);if(selected)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});
     let previousLabelY = -40;
+    const labelGap = Math.min(40, (labelBounds?.height || 0) / Math.max(1,labelItems.length));
     labelItems.forEach((label,index)=>{
       const selected = label.dataset.labelSection === active;
       label.classList.toggle('hp-label-current',selected);
-      const sectionTop = sectionTops.get(label.dataset.labelSection);
-      const y = Math.max(index * 40,previousLabelY + 40,Math.min(labelBounds.height - (labelItems.length-index)*40,sectionTop-labelBounds.top));
+      const sectionTop = sectionTops.get(label.dataset.labelSection) - window.scrollY;
+      const y = Math.max(index * labelGap, previousLabelY + labelGap, Math.min(labelBounds.height - (labelItems.length-index)*labelGap, sectionTop-labelBounds.top));
       previousLabelY = y;
       label.style.setProperty('--hp-label-y',y+'px');
     });
@@ -317,6 +303,8 @@
     updateScroll();
   }
   window.addEventListener('resize', measureHeader, {passive:true});
+  new ResizeObserver(measureHeader).observe(root.querySelector('main'));
+  document.fonts.ready.then(measureHeader);
   header.addEventListener('transitionend', event => {
     if (event.target === header && event.propertyName === 'width' && !docked) measureHeader();
   });

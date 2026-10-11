@@ -435,7 +435,7 @@ html[data-appearance=dark] #hegazy-preview{--hp-bg:#171c19;--hp-surface:#242b26;
 #hegazy-preview .hp-hero-profile .hp-availability-label{font-size:12px;font-weight:600;margin:0 0 8px;}
 #hegazy-preview .hp-hero-profile .hp-availability-chips,#hegazy-preview .hp-hero-profile .hp-market-chips{gap:8px;justify-content:center;}
 #hegazy-preview .hp-hero-profile .hp-availability>div{text-align:center;}
-#hegazy-preview .hp-hero-profile .hp-availability-chips span,#hegazy-preview .hp-hero-profile .hp-market-chips span{min-height:30px;font-size:11px;padding:5px 12px;}
+#hegazy-preview .hp-hero-profile .hp-availability-chips>span,#hegazy-preview .hp-hero-profile .hp-market-chips>span{min-height:30px;font-size:11px;padding:5px 12px;}
 @media(max-width:760px){#hegazy-preview .hp-hero-profile{gap:16px;}#hegazy-preview .hp-hero-profile .hp-availability{gap:12px;}}
 
 /* Contextual career stickers and a small lift on the contact invitation. */

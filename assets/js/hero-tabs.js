@@ -19,6 +19,6 @@
     const values=content[english?'en':'ar'][tab.dataset.service];
     hero.querySelectorAll('.tab-scene article').forEach((card,i)=>{card.querySelector('.symbol').textContent=values[i][0];card.querySelector('strong').textContent=values[i][1];card.querySelector('p').textContent=values[i][2];});
   }
-  tabs.forEach((tab,i)=>{tab.textContent=names[i];tab.addEventListener('click',()=>select(tab));tab.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const index=event.key==='Home'?0:event.key==='End'?tabs.length-1:(i+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;select(tabs[index]);tabs[index].focus();});});
+  tabs.forEach((tab,i)=>{const label=tab.querySelector('.hp-service-tab-label')||tab;label.textContent=names[i];tab.addEventListener('click',()=>select(tab));tab.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const index=event.key==='Home'?0:event.key==='End'?tabs.length-1:(i+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;select(tabs[index]);tabs[index].focus();});});
   select(tabs[0]);
 })();

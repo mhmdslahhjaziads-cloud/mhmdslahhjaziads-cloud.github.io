@@ -15,7 +15,7 @@
 - Responsive navigation, three work and learning cards and a downloadable CV.
 - Soft neon hover on toolkit logos and subtle hover scaling on other cards.
 - All 19 toolkit items stay visible on phones; there is no toolkit accordion.
-- 24 tracking brands in two sliding rows; select with clicks, arrows, dragging or the keyboard. Existing destinations and platform logos are preserved.
+- 24 tracking brands in three continuously sliding rows with hover/focus pause and lightly blurred neighboring cards; select with clicks, arrows, dragging or the keyboard. Existing destinations and platform logos are preserved.
 - A compact borderless hero with a clear desktop portrait on the right, three service tabs, contextual SVG motion and a subtle orbiting neon border.
 - The original ruler and scattered letters on larger screens; a phone dot indicator with smooth responsive transitions. Animated dot connectors separate the sections.
 - Always-visible contact composer: request type, optional project link and required details; prepare a WhatsApp or email draft without sending automatically. LinkedIn stays beside the two buttons as a compact icon.
@@ -24,6 +24,10 @@
 - Reduced-motion support and locally hosted fonts and icons.
 - A 1200 × 630 social preview image, `robots.txt` and a two-language sitemap.
 - Production-only GA4 (`G-5E9BPGNJJH`), Clarity (`yvk9p3430s`) and Meta Pixel loading.
+
+- Three connected contact steps, equal-height request choices and an animated message preview before compact destination buttons. Decorative logos never enter the outgoing message.
+- Original transparent company logos with gold reflections; DOKKAN hover is navy, MINDSINC blue and Golden House orange.
+- Availability platform disclosure, compact toolkit cards and a letter-following ruler animation.
 
 ## Project structure
 
@@ -37,7 +41,7 @@
 │   │   ├── hero-tabs.js       # Three services and keyboard controls
 │   │   ├── hero-motion.js     # Portrait and contextual SVG animation
 │   │   ├── hero-tab-indicator.js # Sliding selection and orbiting neon
-│   │   ├── brand-stage.js     # Two interactive brand rows
+│   │   ├── brand-stage.js     # Three continuous brand rows
 │   │   ├── section-navigation.js # Responsive ruler/dot navigation
 │   │   ├── section-connectors.js # Animated dots between sections
 │   │   ├── contact-composer.js # Validated draft preparation
@@ -87,6 +91,7 @@ With Node.js installed:
 node scripts/verify-site.mjs
 node scripts/test-seo.mjs
 node scripts/test-contact-composer.mjs
+node --test scripts/test-letter-train.mjs scripts/test-ruler-layout.mjs
 node scripts/test-tracking-schedule.mjs
 node scripts/test-tracking-queues.mjs
 node scripts/test-brand-stylesheet.mjs
@@ -123,3 +128,5 @@ Use [the UTM and measurement guide](docs/UTM-and-measurement.html) for campaign 
 ## Credits and ownership
 
 Portfolio content, portrait and CV belong to Mohamed Salah Hegazy. No open-source license is granted for the portfolio itself. Third-party notices are retained in [assets/fonts/OFL.txt](assets/fonts/OFL.txt) and [assets/brand-icons-LICENSE.txt](assets/brand-icons-LICENSE.txt).
+
+The three horizontal brand rows share the complete 24-brand sequence with staggered starting positions and continuous wrapping. Side-card visibility follows the viewport width; pointer hover pauses, dragging moves freely, and pointer exit resumes. The surveying card uses an inline color total-station and helmet icon so sprite caching cannot hide it.

@@ -10,6 +10,12 @@
     tracking:[['events','<path d="M6 6h12v12H6Z" stroke-dasharray="2 3"/><circle class="icon-detail" cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/>'],['check','<path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6l8-3Z"/><path class="icon-check" d="m8 12 3 3 5-6"/>'],['links','<path class="icon-detail" d="m10 8 3-3a4 4 0 0 1 6 6l-3 3"/><path d="m14 16-3 3a4 4 0 0 1-6-6l3-3M9 15l6-6"/>']],
     site:[['window','<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M6 6.5h.01m3 0h.01"/><path class="icon-detail" d="M7 13h10M7 16h6"/>'],['cursor','<rect x="3" y="4" width="18" height="16" rx="3"/><path class="icon-detail" d="m9 9 8 5-4 1-1 4-3-10Z"/>'],['check','<path d="M3 4h3l2 12h10l3-9H7M10 20h.01M18 20h.01"/><path class="icon-check" d="m10 11 2 2 4-4"/>']]
   };
+  tabs.forEach(tab=>{
+    const type=tab.dataset.service||tab.dataset.kind||'ads';
+    const icon=document.createElement('span');icon.className='hp-service-tab-icon';icon.setAttribute('aria-hidden','true');
+    icon.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${drawings[type][0][1]}</svg>`;
+    tab.append(icon);
+  });
   function icons(){
     const active=tabs.find(t=>t.getAttribute('aria-selected')==='true');
     const type=active?.dataset.service||active?.dataset.kind||'ads';
@@ -31,11 +37,20 @@
   tabs.forEach(tab=>{tab.addEventListener('click',change);tab.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key))change();});});
   cards.forEach(card=>{card.addEventListener('pointerenter',()=>{if(fine.matches)replay(card);});card.addEventListener('pointerleave',()=>card.classList.remove('is-icon-active'));});
   const photo=hero.querySelector('.hp-choice-profile img,.photo');
+  const photoFrame=photo.closest('.hp-portrait-frame')||photo;
+  if(photoFrame!==photo){
+    const ns='http://www.w3.org/2000/svg';
+    const neon=document.createElementNS(ns,'svg');neon.classList.add('hp-portrait-neon');neon.setAttribute('viewBox','0 0 100 100');neon.setAttribute('aria-hidden','true');neon.setAttribute('focusable','false');
+    const ring=document.createElementNS(ns,'rect');
+    for(const [key,value] of Object.entries({x:'1',y:'1',width:'98',height:'98',rx:'23',fill:'none',pathLength:'100'}))ring.setAttribute(key,value);
+    neon.append(ring);photoFrame.append(neon);
+    new IntersectionObserver(entries=>entries.forEach(e=>photoFrame.classList.toggle('is-portrait-visible',e.isIntersecting))).observe(photoFrame);
+  }
   let bounds,frame=0,point;
-  function reset(){cancelAnimationFrame(frame);frame=0;photo.classList.remove('is-photo-active');photo.style.removeProperty('--photo-x');photo.style.removeProperty('--photo-y');}
-  photo.addEventListener('pointerenter',()=>{if(reduced.matches||!fine.matches||innerWidth<=700)return;bounds=photo.getBoundingClientRect();photo.classList.add('is-photo-active');});
-  photo.addEventListener('pointermove',event=>{if(!photo.classList.contains('is-photo-active'))return;point={x:event.clientX,y:event.clientY};if(frame)return;frame=requestAnimationFrame(()=>{frame=0;const x=Math.max(-1,Math.min(1,(point.x-bounds.left)/bounds.width*2-1));const y=Math.max(-1,Math.min(1,(point.y-bounds.top)/bounds.height*2-1));photo.style.setProperty('--photo-x',`${x*4}deg`);photo.style.setProperty('--photo-y',`${-y*4}deg`);});});
-  photo.addEventListener('pointerleave',reset);
+  function reset(){cancelAnimationFrame(frame);frame=0;photo.classList.remove('is-photo-active');photoFrame.classList.remove('is-portrait-active');photoFrame.style.removeProperty('--photo-x');photoFrame.style.removeProperty('--photo-y');}
+  photoFrame.addEventListener('pointerenter',()=>{if(reduced.matches||!fine.matches||innerWidth<=700)return;bounds=photoFrame.getBoundingClientRect();photo.classList.add('is-photo-active');photoFrame.classList.add('is-portrait-active');});
+  photoFrame.addEventListener('pointermove',event=>{if(!photo.classList.contains('is-photo-active'))return;point={x:event.clientX,y:event.clientY};if(frame)return;frame=requestAnimationFrame(()=>{frame=0;const x=Math.max(-1,Math.min(1,(point.x-bounds.left)/bounds.width*2-1));const y=Math.max(-1,Math.min(1,(point.y-bounds.top)/bounds.height*2-1));photoFrame.style.setProperty('--photo-x',`${x*4}deg`);photoFrame.style.setProperty('--photo-y',`${-y*4}deg`);});});
+  photoFrame.addEventListener('pointerleave',reset);
   reduced.addEventListener('change',reset);
   addEventListener('resize',reset,{passive:true});
   icons();
