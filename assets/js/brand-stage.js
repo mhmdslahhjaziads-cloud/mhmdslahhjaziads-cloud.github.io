@@ -8,7 +8,7 @@
   function tick(time){
     const delta=last?Math.min(50,time-last):0;last=time;
     rows.forEach((row,i)=>{
-      row.phase+=delta*42/1000/row.stride;
+      row.phase+=(i%2?-1:1)*delta*42/1000/row.stride;
       if(row.phase>=1){row.index=(row.index+1)%row.cards.length;row.phase-=1;}
       if(row.phase<=-1){row.index=(row.index-1+row.cards.length)%row.cards.length;row.phase+=1;}
       render(row);
@@ -71,7 +71,7 @@
   });
   stage.querySelectorAll('[data-move]').forEach(button=>button.addEventListener('click',()=>{
     const direction=Number(button.dataset.move);
-    rows.forEach((row,index)=>{row.index=(row.index+direction+row.cards.length)%row.cards.length;row.phase=0;render(row);});
+    rows.forEach((row,index)=>{row.index=(row.index+(index%2?-direction:direction)+row.cards.length)%row.cards.length;row.phase=0;render(row);});
   }));
   function measure(){rows.forEach(row=>{row.stride=parseFloat(getComputedStyle(row.cards[0]).width)+parseFloat(getComputedStyle(stage).getPropertyValue('--hp-card-gap'));row.radius=Math.ceil(stage.clientWidth/(2*row.stride))+.5;render(row);});}
   new ResizeObserver(measure).observe(stage);
