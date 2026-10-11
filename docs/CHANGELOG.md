@@ -5,7 +5,7 @@
 - Adopt form option 2: three connected steps with equal request choices.
 - Place the approved constellation preview before compact WhatsApp, email and LinkedIn controls; ornaments stay outside the generated message.
 - Preserve supplied transparent company logos; navy DOKKAN, blue MINDSINC and orange Golden House hover backgrounds.
-- Autoplay two horizontal brand rows with visible, lightly blurred neighboring cards, manual navigation and pause controls.
+- Autoplay three continuously moving horizontal brand rows with visible, lightly blurred neighboring cards, manual navigation and pause on hover or keyboard focus.
 - Restore grayscale portrait at rest and color on hover; enlarge and move the desktop portrait right.
 - Reduce toolkit whitespace and move original contextual animation beside category titles.
 - Add a platform-logo disclosure beside availability, and restore flowing letter-follow motion on the ruler.
@@ -15,7 +15,7 @@
 
 - Adopt the selected borderless hero with a clear right-side desktop portrait, smooth mobile collapse and pointer-follow zoom.
 - Add sliding service-tab selection, contextual SVG/card transitions and a restrained neon orbit around the tab frame.
-- Render all 24 tracking brands in two interactive rows; preserve names, links and original platform SVG logos.
+- Render all 24 tracking brands in three interactive rows; preserve names, links and original platform SVG logos.
 - Reduce the monochrome platform strip height, center section headings and remove the redundant clear-work card.
 - Keep the original ruler and scattered-letter animation on desktop; switch smoothly to phone navigation dots.
 - Add animated dotted connectors between sections, paused outside the viewport and respecting reduced motion.
@@ -85,3 +85,5 @@
 - Centered partial toolkit rows, compact phone method cards, restored bounded letter motion, and compact contact spacing.
 - Static `/en/` page, reciprocal hreflang/canonical, social preview PNG, sitemap/robots, and corrected heading levels.
 - Added maintenance instructions and UTM guide. Account verification/deployment results are recorded separately after confirmation.
+
+The three horizontal brand rows share the complete 24-brand sequence with staggered starting positions and continuous wrapping. Side-card visibility follows the viewport width; pointer hover pauses, dragging moves freely, and pointer exit resumes. The surveying card uses an inline color total-station and helmet icon so sprite caching cannot hide it.

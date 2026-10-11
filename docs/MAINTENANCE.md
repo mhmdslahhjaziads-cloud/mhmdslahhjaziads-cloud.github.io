@@ -94,4 +94,6 @@ The contact form uses three connected steps and native radio choices. The conste
 
 Company hover colors and layout are in `interface-refinements.css` and `critical-source.css`. Update both, rebuild CSS, then run `build-seo.mjs`. Golden House requires its light logo backing to keep the black lettering visible. The supplied company logos retain their owners' rights and are separate from the platform sprite license.
 
-`brand-stage.js` controls both horizontal rows and pauses autoplay for hover, focus, hidden documents and reduced motion. `letter-train.js` controls following letters; `ruler-layout.js` controls numerical scroll progress. `platform-disclosure.js` manages the availability popover. `request-type-picker.js` synchronizes visible radio choices with the composer request type.
+`brand-stage.js` controls three horizontal rows and pauses autoplay for hover, focus, hidden documents and reduced motion. `letter-train.js` controls following letters; `ruler-layout.js` controls numerical scroll progress. `platform-disclosure.js` manages the availability popover. `request-type-picker.js` synchronizes visible radio choices with the composer request type.
+
+The three horizontal brand rows share the complete 24-brand sequence with staggered starting positions and continuous wrapping. Side-card visibility follows the viewport width; pointer hover pauses, dragging moves freely, and pointer exit resumes. The surveying card uses an inline color total-station and helmet icon so sprite caching cannot hide it.
