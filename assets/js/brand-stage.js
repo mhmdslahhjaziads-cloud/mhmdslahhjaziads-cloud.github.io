@@ -4,6 +4,7 @@
   const rows = [...stage.querySelectorAll('.hp-brand-row')].map((element, row) => ({element, cards:[...element.querySelectorAll('.hp-ref-brand-card')], index:row*8, phase:0, stride:334, radius:3}));
   const counter=stage.querySelector('.hp-brand-stage-counter');
   const reduced=matchMedia('(prefers-reduced-motion:reduce)');
+  const cardStates=new WeakMap();
   let inside=false,visible=false,timer,last=0,keyboard=false;
   function tick(time){
     const delta=last?Math.min(50,time-last):0;last=time;
@@ -30,17 +31,27 @@
     row.cards.forEach((card,index) => {
       let offset=(index-row.index-row.phase+row.cards.length)%row.cards.length;
       if(offset>row.cards.length/2) offset-=row.cards.length;
-      card.style.setProperty('--hp-card-offset',`${offset*row.stride}px`);
       const active=Math.abs(offset)<.5;
-      card.classList.toggle('is-active',active);
-      card.classList.toggle('is-offstage',Math.abs(offset)>row.radius);
-      card.setAttribute('aria-hidden',String(Math.abs(offset)>row.radius));
+      const shown=Math.abs(offset)<=row.radius;
+      const tabbable=Math.abs(offset)<=1;
+      let previous=cardStates.get(card);
+      if(!previous){previous={};cardStates.set(card,previous);}
+      if(shown) card.style.setProperty('--hp-card-offset',`${offset*row.stride}px`);
       const button=card.querySelector('button');
-      button.setAttribute('aria-pressed',String(active));
-      button.tabIndex=Math.abs(offset)<=1?0:-1;
-      card.querySelector('a').tabIndex=active?0:-1;
+      if(previous.active!==active){
+        card.classList.toggle('is-active',active);
+        button.setAttribute('aria-pressed',String(active));
+        card.querySelector('a').tabIndex=active?0:-1;
+      }
+      if(previous.shown!==shown){
+        card.classList.toggle('is-offstage',!shown);
+        card.setAttribute('aria-hidden',String(!shown));
+      }
+      if(previous.tabbable!==tabbable) button.tabIndex=tabbable?0:-1;
+      previous.active=active;previous.shown=shown;previous.tabbable=tabbable;
     });
-    counter.textContent=`${String(rows[0].index+1).padStart(2,'0')} / ${rows[0].cards.length}`;
+    const label=`${String(rows[0].index+1).padStart(2,'0')} / ${rows[0].cards.length}`;
+    if(counter.textContent!==label) counter.textContent=label;
   }
   rows.forEach(row => {
     row.cards.forEach((card,index)=>card.querySelector('button').addEventListener('click',()=>{row.index=index;row.phase=0;render(row);}));
