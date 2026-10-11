@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="map" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Z M9 3v16 M15 5v16"/></g></symbol>
+<symbol id="database" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5 M4 12c0 4 16 4 16 0"/></g></symbol>
+<symbol id="messages" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 3h13v10H8l-5 4V3Z M9 17h7l5 4V7h-2 M6 7h7 M6 10h5"/></g></symbol>
+<symbol id="chart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7 M9 21V9 M14 21v-8 M19 21V6 M3 8l6-5 5 5 7-6 M16 2h5v5"/></g></symbol>
+<symbol id="target" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></g></symbol>
+<symbol id="scan" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 3H4v5 M16 3h4v5 M4 16v5h4 M20 16v5h-4 M4 12h16"/></g></symbol>
+</defs></svg>
