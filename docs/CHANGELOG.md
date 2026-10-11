@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-12 · Approved availability, mobile layout and final contrast
+
+- Apply availability option 1, centered work modes and country flags on interaction.
+- Autoplay visible service tabs with interaction/focus pause; accelerate the letter train.
+- Unify all four toolkit panels into two rows and include Microsoft Clarity.
+- Compact career cards, add transparent Mostaql/Freelancer artwork and center the final mobile DOKKAN card.
+- Move desktop hero actions below the portrait and mobile actions below countries; retain a 28px portrait gap.
+- Add the approved desktop-only beta badge, matte journey/contact headings and contextual icons with safe clearance.
+- Fix contact/freelance dark-mode text contrast, give the beta badge safe portrait-hover clearance, and consolidate the work navigation label.
+- Cache brand-card controls and animate direct composite transforms to avoid per-frame descendant lookups and inherited position-variable updates.
+- Remove the replaced disclosure script and obsolete generated CSS snapshots.
+- Publish via PR #7, verify live assets and tracking-library loading, and record current PageSpeed results in the release report.
+
 ## 2026-10-11 · Final selected contact and company refinements
 
 - Adopt form option 2: three connected steps with equal request choices.
