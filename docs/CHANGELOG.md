@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-12 · Approved typography, content and phone motion
+
+- Use local Beiruti heading subsets and Tajawal text/button subsets with their OFL notices.
+- Keep the original folder-style navigation and replace repeated arrows with contextual section icons.
+- Keep original platform-icon colors in both themes and distinguish the dark platform-strip fill.
+- Add WordPress website design to the DOKKAN tracking role and replace the catalogs Meta mark with a product-card icon.
+- Raise Part-time slightly and reserve country-flag clearance while preserving the tracking grid width.
+- Increase the hero roles to 44/36px on desktop and 36/30px on phones; match both underlines to Freelance/Part-time feedback.
+- Pulse existing decorative phone states for 1.6 seconds on appearance, rearm after exit, and stop for hidden pages or reduced motion. Automatic feedback does not select career cards, open navigation or submit contact actions.
+- Add six regression tests for appearance/reset, exit/reentry, desktop, reduced motion and page visibility.
+- Confirm zero repository collaborators, no deploy keys and no installed GitHub Apps.
+
 ## 2026-10-12 · Approved availability, mobile layout and final contrast
 
 - Apply availability option 1, centered work modes and country flags on interaction.
