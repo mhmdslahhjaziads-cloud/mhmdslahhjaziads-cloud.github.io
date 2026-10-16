@@ -77,7 +77,13 @@ function translate(html) {
     'من شغلي': 'My work', 'الخلفية': 'Background', 'رحلتي': 'Experience', 'نتكلم': 'Contact',
     'تواصل مع محمد': 'Contact Mohamed', 'مؤشر أقسام الموقع': 'Site section progress',
     'نسبة تمرير الصفحة': 'Page scroll progress', 'فرص العمل والأسواق': 'Availability and markets',
-    'الرجوع لأعلى الصفحة': 'Back to top', 'Switch language': 'Switch to Arabic'
+    'الرجوع لأعلى الصفحة': 'Back to top', 'Switch language': 'Switch to Arabic',
+    'لقطات من متجر Carbon Originals': 'Animated previews from the Carbon Originals store',
+    'المعاينة السابقة': 'Previous preview', 'المعاينة التالية': 'Next preview',
+    'المعاينة 1': 'Preview 1', 'المعاينة 2': 'Preview 2', 'المعاينة 3': 'Preview 3',
+    'معاينة متحركة لمتجر Carbon Originals من الصفحة الرئيسية إلى المنتجات': 'Animated Carbon Originals homepage preview',
+    'معاينة متحركة لصفحة مجموعات الدفاتر في متجر Carbon Originals': 'Animated notebook bundles page preview',
+    'معاينة متحركة لتفاصيل منتج الدفاتر في متجر Carbon Originals': 'Animated notebook product details preview'
   };
   html = html.replace(/\b(aria-label|alt)="([^"]*)"/g, (tag, key, value) => labels[value] ? `${key}="${labels[value]}"` : tag);
   html = html.replace(/(<button\b[^>]*\bid="hp-(?:dock-)?language"[^>]*>)[\s\S]*?(<\/button>)/g, '$1العربية ↗$2');

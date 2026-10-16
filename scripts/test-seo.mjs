@@ -20,6 +20,14 @@ try {
   assert.match(english, /Goal &amp; audience/);
   assert.match(english, /Budget &amp; creative/);
   assert.match(english, /Read the results/);
+  assert.match(english, /Websites I worked on/);
+  assert.match(english, /Carbon Originals, an e-commerce store I worked on/);
+  assert.match(english, /<figcaption\b[^>]*>Store homepage<\/figcaption>/);
+  assert.match(english, /<figcaption\b[^>]*>Notebook bundles<\/figcaption>/);
+  assert.match(english, /<figcaption\b[^>]*>Product details<\/figcaption>/);
+  assert.match(english, /aria-label="Animated previews from the Carbon Originals store"/);
+  assert.match(english, /aria-label="Previous preview"/);
+  assert.match(english, /alt="Animated Carbon Originals homepage preview"/);
   assert.match(english, /href="\.\.\/assets\/cv\.pdf"/);
   assert.match(english, /href="#hp-contact"/);
   assert.doesNotMatch(english, /<base\b/i);

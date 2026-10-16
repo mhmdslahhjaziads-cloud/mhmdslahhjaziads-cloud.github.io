@@ -7,6 +7,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const enHtml = fs.readFileSync(path.join(root, 'en/index.html'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'assets/css/carbon-project.css'), 'utf8');
+const js = fs.readFileSync(path.join(root, 'assets/js/carbon-project.js'), 'utf8');
 
 const section = html.match(/<section class="hp-section hp-carbon-project"[\s\S]*?<\/section>/)?.[0] ?? '';
 const enSection = enHtml.match(/<section class="hp-section hp-carbon-project"[\s\S]*?<\/section>/)?.[0] ?? '';
@@ -20,6 +21,7 @@ for (const preview of new Set(previews)) {
 assert.match(css, /\.hp-carbon-window\{[^}]*overflow-x:\s*auto/i, 'Horizontal scroller works at the mobile breakpoint');
 assert.match(section, /hp-carbon-tech-wp/, 'Project heading includes a WordPress badge');
 assert.match(section, /hp-carbon-tech-codex/, 'Project heading includes a Codex badge');
+assert.match(js, /document\.querySelector\(['"]#hegazy-preview \.hp-carbon-title['"]\)/, 'Project title observer targets the heading outside the carousel');
 assert.match(css, /hp-carbon-title\.is-visible \.hp-carbon-tech\{animation:hp-carbon-tech-arrive/i, 'Technology badges animate when the project heading enters view');
 assert.match(css, /prefers-reduced-motion:reduce\)[\s\S]*?hp-carbon-title\.is-visible \.hp-carbon-tech\{animation:none/i, 'Badge motion respects reduced-motion preferences');
 assert.doesNotMatch(section, /class="hp-carbon-visit"/, 'Project card has no external visit button');
