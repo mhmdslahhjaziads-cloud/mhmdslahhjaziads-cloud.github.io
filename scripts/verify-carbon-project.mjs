@@ -22,6 +22,8 @@ assert.match(css, /\.hp-carbon-window\{[^}]*overflow-x:\s*auto/i, 'Horizontal sc
 assert.match(section, /hp-carbon-tech-wp/, 'Project heading includes a WordPress badge');
 assert.match(section, /hp-carbon-tech-codex/, 'Project heading includes a Codex badge');
 assert.match(js, /document\.querySelector\(['"]#hegazy-preview \.hp-carbon-title['"]\)/, 'Project title observer targets the heading outside the carousel');
+assert.match(js, /title\.addEventListener\(['"]pointerleave['"]/, 'Technology badges hide when the pointer leaves the title');
+assert.match(js, /setTimeout\([\s\S]*?title\.classList\.remove\(['"]is-visible['"]\)/, 'Technology badges reset after their automatic mobile reveal');
 assert.match(css, /hp-carbon-title\.is-visible \.hp-carbon-tech\{animation:hp-carbon-tech-arrive/i, 'Technology badges animate when the project heading enters view');
 assert.match(css, /prefers-reduced-motion:reduce\)[\s\S]*?hp-carbon-title\.is-visible \.hp-carbon-tech\{animation:none/i, 'Badge motion respects reduced-motion preferences');
 assert.doesNotMatch(section, /class="hp-carbon-visit"/, 'Project card has no external visit button');
