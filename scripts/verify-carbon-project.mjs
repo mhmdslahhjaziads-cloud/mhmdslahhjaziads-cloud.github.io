@@ -11,6 +11,10 @@ const js = fs.readFileSync(path.join(root, 'assets/js/carbon-project.js'), 'utf8
 
 const section = html.match(/<section class="hp-section hp-carbon-project"[\s\S]*?<\/section>/)?.[0] ?? '';
 const enSection = enHtml.match(/<section class="hp-section hp-carbon-project"[\s\S]*?<\/section>/)?.[0] ?? '';
+assert.match(html, /<link rel="stylesheet" href="assets\/css\/carbon-project\.css\?v=[^"]+">/, 'Arabic page loads the Carbon showcase styles');
+assert.match(enHtml, /<link rel="stylesheet" href="\.\.\/assets\/css\/carbon-project\.css\?v=[^"]+">/, 'English page loads the Carbon showcase styles');
+assert.match(html, /src="assets\/js\/carbon-project\.js\?v=20261016-dismiss1"/, 'Arabic page busts the cached badge behavior script');
+assert.match(enHtml, /src="\.\.\/assets\/js\/carbon-project\.js\?v=20261016-dismiss1"/, 'English page busts the cached badge behavior script');
 assert.ok(section, 'Carbon project section exists');
 const previews = [...section.matchAll(/assets\/projects\/carbon-originals\/([\w-]+\.webp)/gi)].map(match => match[1]);
 assert.ok(previews.length >= 6, 'Carbon gallery has mobile and desktop animated previews for three store pages');
