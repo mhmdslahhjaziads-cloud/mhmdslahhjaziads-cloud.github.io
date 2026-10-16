@@ -7,7 +7,7 @@
   const slides = [...track.querySelectorAll('.hp-carbon-slide')];
   const dots = [...root.querySelectorAll('.hp-carbon-dot')];
   const count = root.querySelector('.hp-carbon-count');
-  const title = root.querySelector('.hp-carbon-title');
+  const title = document.querySelector('#hegazy-preview .hp-carbon-title');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let index = 0;
   let timer = 0;
