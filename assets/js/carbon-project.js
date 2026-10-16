@@ -60,12 +60,48 @@
   document.addEventListener('visibilitychange', start);
   reducedMotion.addEventListener?.('change', start);
 
-  if (title && 'IntersectionObserver' in window) {
-    new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        title.classList.add('is-visible');
-      }
-    }, {threshold:.65, rootMargin:'0px 0px -8% 0px'}).observe(title);
+  if (title) {
+    const hoverInput = window.matchMedia('(hover: hover) and (pointer: fine)');
+    let badgeTimer = 0;
+    const hasKeyboardFocus = () => title.matches(':focus-within');
+    const hasHover = () => hoverInput.matches && title.matches(':hover');
+    function revealBadges() {
+      window.clearTimeout(badgeTimer);
+      title.classList.add('is-visible');
+    }
+    function hideBadges() {
+      window.clearTimeout(badgeTimer);
+      badgeTimer = 0;
+      title.classList.remove('is-visible');
+    }
+
+    title.addEventListener('pointerenter', () => {
+      if (hoverInput.matches) revealBadges();
+    });
+    title.addEventListener('pointerleave', () => {
+      if (!hasKeyboardFocus()) hideBadges();
+    });
+    title.addEventListener('focusin', revealBadges);
+    title.addEventListener('focusout', () => {
+      window.setTimeout(() => {
+        if (!hasKeyboardFocus() && !hasHover()) hideBadges();
+      }, 0);
+    });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          revealBadges();
+          if (!hasHover() && !hasKeyboardFocus()) {
+            badgeTimer = window.setTimeout(() => {
+              if (!hasKeyboardFocus() && !hasHover()) hideBadges();
+            }, 950);
+          }
+        } else if (!hasHover() && !hasKeyboardFocus()) {
+          hideBadges();
+        }
+      }, {threshold:.65, rootMargin:'0px 0px -8% 0px'}).observe(title);
+    }
   }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(entries => {
